@@ -35,9 +35,11 @@
             width: 100%;
             max-width: $container-max;
             margin: 0 auto;
+
+            box-shadow: none;
         }
     }
-    @include screen('mobile') {
+    @include screen('tablet') {
         display: none;
     }
     // 預設選單 ul
@@ -46,18 +48,29 @@
         padding: 0;
         list-style-type: none;
         display: flex;
-        flex-wrap: wrap;
+        flex-flow: row wrap;
+        background: #fff;
+        width: fit-content;
+        margin: auto;
+
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+
+        @include screen('tablet') {
+            background: transparent;
+            box-shadow: none;
+        }
+
         // 第一層選單樣式
         >li {
-            flex: 0 1 16%;
+            flex: 0 1 auto;
             >a {
                 display: block;
-                padding: 0 1em;
+                padding: .35em 2.5em;
                 min-height: 2.5em;
                 font-weight: bold;
                 line-height: 2.5em;
                 white-space: nowrap;
-                color: $color-word;
+                color: $secondaryColor;
             }
             &.hasChild {
                 >a {
@@ -78,13 +91,18 @@
             }
             &:hover {
                 >a {
-                    color: $aHover;
+                    background: $primaryColor;
+                    color: #fff;
                     &:after {
-                        border: 2px solid $aHover;
+                        border: 2px solid #fff;
                         border-bottom: none;
                         border-left: none;
                     }
                 }
+            }
+
+            @include screen('mobile') {
+                background: none;
             }
         }
     }

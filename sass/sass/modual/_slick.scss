@@ -271,7 +271,7 @@
 // 首頁大圖輪播 
 .mpSlider {
     width: 100%;
-    padding-bottom: 3em;
+    padding-bottom: 2em;
     @include gutter(0);
     .img-container {
         @include aspect-ratio(5,
@@ -293,16 +293,45 @@
             right: 2%;
         }
     }
+    .slick-dots li{
+        margin: 0 4px;
+        button{
+            width: 12px;
+            height: 12px;
+            &:before{
+                width: 12px;
+                height: 12px;
+            }
+        }
+
+        &.slick-active button{
+            &:before{
+                background: $primaryColor;
+            }
+        }
+    }
 }
+
+
+// tabSlider
+.tabSlider{}
+
 
 // slick._scss
 // adSlider
 .adSlider {
-    @include gutter(70px);
-    margin-bottom: 20px;
-    @include screen('mobile') {
-        @include gutter();
+    // @include gutter(70px);
+    // margin-bottom: 20px;
+
+    // @include screen('mobile') {
+    //     @include gutter();
+    // }
+
+    .slick-prev,
+    .slick-next {
+        top: calc(50% - 30px);
     }
+
     .slick-prev {
         background: url(../vendor/slick/icon_arrow_left_inverse.png) no-repeat center center;
         background-size: 80%;
@@ -314,9 +343,10 @@
         right: -15px;
     }
     .img-container {
-        width: 165px;
-        height: 55px;
-        margin: 0px 15px;
+        width: 180px;
+        height: 96px;
+        margin: 0px 4px;
+        background: transparent;
         a {
             display: block;
             text-align: center;
@@ -487,6 +517,15 @@
                 bottom: 0 !important;
             }
         }
+    }
+}
+
+// 多圖輪播
+.spotSlider{
+    .img-container {
+        width: 300px;
+        height: 400px;
+        margin: 0 4px;
     }
 }
 

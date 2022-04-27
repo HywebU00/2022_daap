@@ -3,15 +3,35 @@ footer {
     @include clearfix;
     text-align: left;
     font-size: 0.813em;
-    padding: 1em 0;
+    padding: 1.5em 0;
+
+    background: $fatfooterBgColor;
+    color: #fff;
+
+    // 裝飾線
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        width: calc(100% / 12 * 4);
+        height: 3px;
+        background: $lightColor;
+        left: 0;
+        top: -3px;
+    }
+
+    .accesskey{ left: 0; top: 0; }
     .container {
         @include gutter;
-        >div {
-            padding-bottom: 1em;
-        }
+        // >div { padding-bottom: 1em; }
+
         display: flex;
-        @include screen('tablet') {
-            flex-wrap:wrap;
+        justify-content: space-between;
+        @include screen('tablet') { flex-wrap:wrap; }
+
+        p, .footer_info{
+            flex: 0 1 50%;
+            align-self: center;
         }
     }
     a {
@@ -22,81 +42,69 @@ footer {
             color: darken($primaryColor, 10);
         }
     }
-    .footer_logo {
-        flex:0 1 240px;
-    }
-    .footer_info {
-        flex:1 1 auto;
-    }
-    .footer_icon {
-        flex:0 1 200px;
-        @include screen('tablet') {
-           flex:1 1 100%; 
-           text-align: right;
-       }
-   }
+    p { line-height: 1.65em; }
     // 版權連結
     .footer_link {
         @include li-reset();
         @include clearfix();
         display: flex;
+        flex-flow: row-reverse;
+
+        li {
+            flex: 0 1 auto;
+            margin-right: 5px;
+
+            a {
+                display: block;
+                padding: .5em 1em;
+                background: $primaryColor;
+                color: #FFF;
+                border-radius:4px;
+                text-align: center;
+                transition: all .3s ease-out;
+                &:hover,
+                &:focus {
+                    background: darken($primaryColor, 10);
+                }
+            }
+
+            &:nth-child(1){ order: 2;}
+            &:nth-child(2){ order: 1;}
+        }
+
         @include screen('mobile') {
             flex-direction: column;
+
+            li {
+                flex:1 1 100%;
+            }
         }
-        li {
-            flex:0 1 auto;
-            margin: 0px 5px 5px 0px;
-            @include screen('mobile') {
-             flex:1 1 100%; 
-         }
-         a {
-            display: block;
-            padding: .5em 1em;
-            background: $primaryColor;
-            color: #FFF;
-            border-radius:4px;
-            text-align: center;
-            transition: all .3s ease-out;
-            &:hover,
+    }
+    .footer_icon {
+        a {
+            display: inline-block;
+            vertical-align: top;
+            position:relative;
             &:focus {
-                background: darken($primaryColor, 10);
+                &:after {
+                    content: "";
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    box-shadow: 0px 0px 0px 1px $aHover inset;
+                    z-index: 99;
+                }
             }
         }
-    }
-}
-p {
-    line-height: 1.65em;
-}
-.update,
-.counter {
-    display: inline-block;
-    margin-right: 5px;
-    em {
-        font-style: normal;
-        color: $primaryColor;
-        padding: 0 .5em;
-    }
-}
-.footer_icon {
-    a {
-        display: inline-block;
-        vertical-align: top;
-        position:relative;
-        &:focus {
-            &:after {
-                content: "";
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                box-shadow: 0px 0px 0px 1px $aHover inset;
-                z-index: 99;
-            }
+        img {
+            max-width: 120px;
         }
     }
-    img {
-        max-width: 120px;
-    }
-}
+
+    // 裝飾線
+    position: relative;
+    border-top: 3px solid #fff;
+    &:before{}
 }

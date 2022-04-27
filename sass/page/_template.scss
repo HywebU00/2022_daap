@@ -16,6 +16,8 @@ body {
         margin: 0;
         padding: 0;
     }
+
+    background: url(../images/bg_headerTop.png) 50% top no-repeat, url(../images/bg.jpg) 50% top repeat;
 }
 
 // 最外圍預設為100%
@@ -42,6 +44,10 @@ body {
     // 可先設定一個中央區塊最大寬，限制accesskey對齊
     h2 {
         line-height: 1.25em;
+    }
+
+    @include screen('tablet') {
+        margin-top: 60px;
     }
 }
 

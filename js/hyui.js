@@ -37,6 +37,7 @@ $(function() {
         _sidebar = $('.sidebar'),
         _search = $('.search'),
         _nav = $('.navigation'),
+        _login = $('.login_btn'),
         _sidebarClose = $('.sidebarClose'),
         _sidebarCtrl = $('.sidebarCtrl'),
         _overlay = $('.menu_overlay'),
@@ -115,6 +116,7 @@ $(function() {
     });
 
     // 先複製過去
+    _login.clone().prependTo(_mArea);
     _nav.clone().prependTo(_mArea);
     _menu.clone().prependTo(_mArea);
     _megamenu.clone().prependTo(_mArea);
@@ -450,16 +452,25 @@ $(function() {
                 tabItemHeight = _tabItem.outerHeight(),
                 tabContentHeight = _tab.find('.active').next().innerHeight(),
                 tiGap = 0,
+                TTT = parseInt('4px'),
                 tabItemLength = _tabItem.length,
                 tabItemWidth;
             _tab.find('.active').next('.tabContent').show();
             if (ww >= wwSmall) {
                 _tabContent.css('top', tabItemHeight);
                 _tab.height(tabContentHeight + tabItemHeight);
-                tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
-                _tabItem.width(tabItemWidth).css('margin-left', tiGap);
+
+                // 寬度均分
+                // 算式：tabItem 寬度 ＝ (這個tab的總寬 - (tabItem總數量 - 1) * 0 ) / tabItem總數量
+                // tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
+
+                // tabItemWidth = ( tabwidth / tabItemLength);           // width 402
+                tabItemWidth = ( tabwidth / tabItemLength) - TTT;        // width 400
+
+                _tabItem.width(tabItemWidth).css('margin-left', '3px');
                 _tabItem.first().css('margin-left', 0);
                 _tabItem.last().css({ position: 'absolute', top: 0, right: 0 }).width(tabItemWidth);
+
             } else {
                 _tab.css('height', 'auto');
                 _tabItem.width(tabwidth);

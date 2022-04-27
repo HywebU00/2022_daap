@@ -67,9 +67,626 @@ a.more {
 }
 
 // 範例：
-.demosection {
-    [class^="col"] {
-        border: 2px solid #FFF;
-        background: #DEDEDE;
+// .demosection {
+//     [class^="col"] {
+//         border: 2px solid #FFF;
+//         background: #DEDEDE;
+//     }
+// }
+
+.MP{
+    header{
+        .container{
+            padding: 0 2em;
+        }
+
+        // 裝飾線
+        border-top: 3px solid $lightColor;
+        position: relative;
+        &:before{
+            content: '';
+            position: absolute;
+            width: calc(100% / 12 * 4);
+            height: 3px;
+            background: $primaryColor;
+            left: 0;
+            top: -3px;
+        }
+    }
+
+    .main{
+        section {
+            &.hasDeco{
+                .container{
+                    border-top: 3px solid $lightColor;
+
+                    position: relative;
+                    &:before{
+                        content: '';
+                        position: absolute;
+                        width: 30%;
+                        min-width: 120px;
+                        height: 3px;
+                        background: $primaryColor;
+                        left: 0;
+                        top: -3px;
+                    }
+                }
+            }
+
+            // 多欄 flex 對齊設定
+            &.traffic_path{
+                .container{
+                    @extend %flex_set;
+                }
+            }
+
+            .container{
+                padding: 3.4em 2em;
+            }
+            .title{
+                font-size: 2.2em;
+                margin: 0;
+                span{
+                    display: block;
+                    font-size: 75%;
+                    font-weight: 400;
+                    padding: .25em 0;
+                }
+            }
+
+            @include screen('mobile') {
+                .container{
+                    padding: 2em 1.5em;
+                }
+            }
+        }
+
+        // 左側預約 fixed
+        position: relative;
+        .side_fixed{
+            position: fixed;
+            width: 80px;
+            // background: rgba(0,0,0,.25);
+            left: calc( (100% - 1200px) / 2 - 60px );
+            bottom: 20%;
+            z-index: 9999;
+            a{
+                display: block;
+                width: 80px;
+                height: 80px;
+                padding: 1em 1.2em;
+                margin: 0.5em 0;
+                font-weight: bold;
+                border-radius: 50%;
+                line-height: 1.2;
+                font-size: 112.5%;
+
+                &:nth-child(1){
+                    background: darken($primaryColor, 6);
+                    color: #fff;
+                }
+                &:nth-child(2){
+                    background: $lightColor;
+                    color: $secondaryColor;
+                }
+            }
+
+            @include screen('notebook') {
+                left: 1em;
+                width: 200px;
+                height: 80px;
+                bottom: 90px;
+                a{
+                    display: inline-block;
+                    margin: 0;
+                }
+            }
+        }
+
+        .top_section{
+            // 塞在 menu 下
+            margin-top: -20px;
+
+            // mpSlider
+            // EXPO_mini
+            .container{
+                padding-top: 0;
+                background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
+                background-size: calc(100% - 3.8em);
+
+                @include screen('tablet') {
+                    background-size: cover;
+                    margin-top: 0;
+                    padding-top: 50px;
+                }
+            }
+        }
+        .mpSlider{
+            .slick-dots{
+                justify-content: flex-end;
+                padding-right: 2em;
+                bottom: -40px;
+                // background: pink;
+                z-index: auto;
+            }
+            @include screen('tablet') {
+                .slick-dots{
+                    bottom: -10px;
+                }
+            }
+        }
+        .EXPO_mini{
+            display: flex;
+            // flex-wrap: wrap;
+            align-items: end;
+            font-size: 1.125em;
+            font-weight: bold;
+            // padding-left: 5em;
+            padding: .5em 2em;
+            margin-top: -20px;
+            img{}
+            span{
+                display: inline-block;
+                padding: 0 1.5em;
+            }
+            .links{
+                a{
+                    // display: inline-block;
+                    padding: .45em .75em;
+                    margin-top: 10px;
+                    margin-right: 20px;
+                    color: rgba(30, 66, 99, 0.7);
+                    border-radius: 3px;
+                    transition: all 300ms ease-in;
+
+                    position: relative;
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        width: 2px;
+                        height: 20px;
+                        background: rgba(30, 66, 99, 0.7);
+                        top: 50%;
+                        right: -12px;
+                        margin-top: -10px;
+                    }
+
+                    &:last-child{
+                        margin-right: 20px;
+                        &:after{ display: none; }
+                    }
+
+                    &:hover, &:focus{
+                        background: rgba(30, 66, 99, 0.7);
+                        color: #fff;
+                    }
+                }
+            }
+
+            @include screen('tablet') {
+                margin-top: 0;
+
+                flex-wrap: wrap;
+                justify-content: center;
+                .links{
+                    width: 100%;
+                    text-align: center;
+                    a{
+                        display: inline-block;
+
+                        &:last-child{
+                            margin-right: 0;
+                        }
+                    }
+                }
+
+
+                // .links{
+                //     a{
+                //         display: block;
+                //         &:after{ display: none; }
+                //     }
+                // }
+            }
+
+            @include screen('mobile') {
+                padding: .5em 0 4em;
+                justify-content: center;
+
+                span{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                    padding: 0;
+                    line-height: 3;
+                }
+                .links{
+                    a{ margin-top: 0; }
+                }
+            }
+        }
+
+        // tab 連結
+
+        // 園區景點
+        .spot{
+            background: url(../images/bg_spot.jpg) 50% 50% no-repeat, #216f87;
+            // background-size: contain;
+            color: #fff;
+            text-align: center;
+
+            .title{
+                line-height: 1.2;
+                span{ padding: 0; }
+            }
+            p{
+                line-height: 2;
+                margin: 2.5em 0;
+            }
+
+            .spotSlider{ margin-top: 2em; }
+
+            .container{
+                padding: 5em 0 3.4em;
+                max-width: 100%;
+            }
+
+            @include screen('tablet') {
+                background-size: cover;
+            }
+        }
+        .spotSlider{
+
+            // transition: all 300ms ease-in;
+
+            .slick-prev, 
+            .slick-next{
+                width: 72px !important;
+                height: 72px !important;
+                border-radius: 50%;
+
+                transition: all 100ms ease-in;
+            }
+            .slick-next {
+                background: url(../images/icon/icon_arrow_right.svg) center center no-repeat ,RGBA(255, 255, 255, .5);
+                background-size: 18px 18px;
+
+                &:hover, &:focus{
+                    background: url(../images/icon/icon_arrow_right.svg) center center no-repeat ,RGBA(255, 255, 255, .75);
+                    background-size: 26px 26px;
+                }
+            }
+            .slick-prev {
+                background: url(../images/icon/icon_arrow_left.svg) center center no-repeat ,RGBA(255, 255, 255, .5);
+                background-size: 18px 18px;
+
+                &:hover, &:focus{
+                    background: url(../images/icon/icon_arrow_left.svg) center center no-repeat ,RGBA(255, 255, 255, .75);
+                    background-size: 26px 26px;
+                }
+            }
+            .slick-slide img { margin-bottom: 2em; }
+
+            .img-container{
+                background: transparent;
+                img{
+                    transform: scale(1);
+                    transition: all 300ms ease-in;
+                }
+                &:hover, &:focus{
+                    img{ transform: scale(1.15); }
+                    .caption{ color: $lightColor; }
+                }
+            }
+
+            .caption{
+                background: #1f6a82;
+                height: auto;
+                line-height: inherit;
+                text-align: left;
+                padding: .5em .75em;
+                font-size: 1em;
+                font-weight: bold;
+                text-align: center;
+                opacity: 1;
+            }
+
+        }
+
+        // 場館資訊（單欄）
+        .EXPO_info{
+            background: url(../images/bg_EXPO_info.png) 50% top no-repeat;
+            background-size: cover;
+
+            .container{}
+
+            .wrap{
+                background: url(../images/bg_sudo_tab.png) bottom 0 right 0 no-repeat;
+                background-size: 710px 610px;
+            }
+
+            .title{
+                color: $secondaryColor;
+                line-height: 1.2;
+                font-weight: bold;
+                padding: 1.5em 0;
+
+                span{ color: $primaryColor; }
+            }
+
+            .sudo_tabs{
+                position: relative;  // 父層A
+                height: 540px;       // 預設，需程式運算
+
+                // tab 標題：absolute，羅列在右上
+                .sudo_tabItem{
+                    position: absolute;
+                    // top: -180px;
+                    bottom: 106%;
+                    right: 0;
+                    z-index: 1;
+
+                    -webkit-writing-mode: vertical-lr;
+                    writing-mode: vertical-lr;
+                    width: 50px;
+                    padding: 0.65em 1em;
+                    font-size: 112.5%;
+                    line-height: 1.2;
+
+                    &.active{
+                        // color: $secondaryColor;
+                        border: solid 1px #dbdbda;
+                        font-weight: bold;
+
+                        background: $primaryColor;
+                        color: #fff;
+
+                        // position: relative;
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            width: 3px;
+                            height: 90px;
+                            background: $lightColor;
+                            left: 50%;
+                            bottom: -82px;
+                        }
+
+                        &:hover, &:focus{
+                            background: $primaryColor !important;
+                        }
+                    }
+
+                    &:hover, &:focus{
+                        background: #dbdbda;
+                    }
+
+                    // 定位：改用js控制
+                    background: transparent;
+                    border: transparent;
+                    &:nth-child(1){
+                        right: calc(60px * 4 + 10%);
+                    }
+                    &:nth-child(3){
+                        right: calc(60px * 3 + 10%);
+                    }
+                    &:nth-child(5){
+                        right: calc(60px * 2 + 10%);
+                    }
+                    &:nth-child(7){
+                        right: calc(60px * 1 + 10%);
+                    }
+                    &:nth-child(9){
+                        right: calc(60px * 0 + 10%);
+                    }
+                }
+                // tab 內容：absolute，疊在一起
+                .sudo_tabContent{
+                    position: relative;             // 父層B
+                    width: 100%;
+                    height: 540px;                  // 預設，需程式運算
+
+                    display: none;                  // 先全部隱藏
+                    &.active{ display: block; } 
+
+                    .info_box{
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        width: 100%;
+
+                        display: none;             // 先全部隱藏
+                        &.show{ display: block; }  // show 再出現
+
+                        .wrap{
+                            @extend %flex_set;
+
+                            .text{
+                                @include flex-xs(12, 0px);
+                                @include flex-sm(12, 0px);
+                                @include flex-md(5, 0px);
+                                @include flex-lg(5, 0px);
+
+                                color: $secondaryColor;
+                                padding-right: 4em;
+
+                                .sub_title{
+                                    margin-bottom: 2.5em;
+                                    font-size: 180%;
+                                    font-weight: bold;
+                                    line-height: 1.2;
+                                    span{
+                                        display: block;
+                                        font-size: 62%;
+                                        font-weight: normal;
+                                        padding: .75em 0;
+                                    }
+                                }
+                                p{
+                                    font-size: 112.5%;
+                                    line-height: 1.6;
+                                    margin: 2em 0;
+                                }
+                                a.more{}
+                            }
+                            .pic{
+                                @include flex-xs(12, 0px);
+                                @include flex-sm(12, 0px);
+                                @include flex-md(7, 0px);
+                                @include flex-lg(7, 0px);
+
+                                .img-container{
+                                    background-color: transparent;
+                                    margin-top: 20px;
+                                    margin-bottom: 3.8em;
+                                }
+                            }
+                        }
+                    }
+                    .img-container{}
+
+                    // 按鈕切換：absolute，在右下
+                    .slick-prev, 
+                    .slick-next{
+                        position: absolute;
+                        width: 42px !important;
+                        height: 42px !important;
+                        border-radius: 50%;
+                        top: auto;
+                        bottom: 10px;
+                    }
+                    .slick-next {
+                        right: 66px;
+                        background: url(../images/icon/icon_arrow_right2.svg) center center no-repeat $primaryColor;
+                        background-size: 18px 18px;
+                    }
+                    .slick-prev {
+                        left: auto;
+                        right: 120px;
+                        background: url(../images/icon/icon_arrow_left2.svg) center center no-repeat $primaryColor;
+                        background-size: 18px 18px;
+                    }
+                }
+
+                @include screen('tablet') {
+                    height: 1200px;
+                    .sudo_tabContent{
+                        height: 1050px;
+                        .info_box{
+                            .wrap{
+                                .text{ padding-right: 0; }
+                            }
+                        }
+                    }
+                }
+
+                @include screen('mobile') {
+                    height: 1020px;
+                    .sudo_tabItem{
+                        position: initial;
+                        width: 100%;
+                        margin: 0;
+                        border:  1px solid #888;
+                        margin-bottom: 10px;
+                        border-radius: 4px;
+                        &.active{
+                            border-radius: 4px 4px 0 0;
+                            &:after{ display: none; }
+                        }
+
+                    }
+                    .sudo_tabContent{
+                        height: 765px;
+                        .info_box{
+                            .wrap{
+                                background: none;
+                                .text{
+                                    padding: 1.5em 0;
+                                    .sub_title{ margin-bottom: 1em; }
+                                }
+                            }
+                        }
+                        .slick-prev, .slick-next{ bottom: 24px; }
+                        .slick-prev{ 
+                            left: 38%;
+                            right: auto;
+                        }
+                        .slick-next{
+                            left: auto;
+                            right: 38%;
+                        }
+                    }
+                }
+            }
+        }
+
+        // 交通
+        .traffic_path{
+
+            .container{
+                align-items: center !important;
+            }
+
+            .col{
+                @include flex-xs(12, 0px);
+                @include flex-sm(12, $m-gutter);
+                @include flex-md(7, $m-gutter);
+                @include flex-lg(7, $m-gutter);
+                >a{
+                    display: block;
+                    padding: 1em;
+                    .img-container{ background: transparent; }
+                }
+
+                &:nth-child(2){
+                    @include flex-xs(12, 0px);
+                    @include flex-sm(12, $m-gutter);
+                    @include flex-md(5, $m-gutter);
+                    @include flex-lg(5, $m-gutter);
+                    a{ padding: .25em 0; }
+                }
+            }
+            color: $secondaryColor;
+
+            h3{
+                border-bottom: 3px solid $lightColor;
+                position: relative;
+                margin: 0;
+                padding: .5em 0;
+                font-size: 125%;
+                &:before{
+                    content: '';
+                    position: absolute;
+                    width: 160px;
+                    height: 3px;
+                    bottom: -3px;
+                    background: $primaryColor;
+                }
+            }
+            p{}
+            a{
+                color: #0B6293;
+                text-decoration: underline;
+                font-size: 112.5%;
+                line-height: 1.2;
+                font-weight: bold;
+            }
+
+            @include screen('mobile') {
+                .col{
+                    a{ padding: 1em 0; }
+                }
+            }
+        }
     }
 }
+
+
+
+
+
+
+
+
+
