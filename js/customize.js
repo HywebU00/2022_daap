@@ -109,6 +109,24 @@ $(function() {
         }
     });
 
+    // 
+    $('.cards').find('.col').click(function(){
+        var TT = $(this).position().top,
+            ObH = $(this).height(),
+            ObMg = 16;
+
+        $('.cards .col').removeClass('active');
+        $(this).addClass('active');
+        $(this).next('.showbox').css({ top: TT + ObH + ObMg} );
+    })
+    // 點外面關閉showbox
+    $(document).on('touchend click', function(e) {
+        var container2 = $('.cards');
+        if (!container2.is(e.target) && container2.has(e.target).length === 0) {
+            $('.cards .showboxs').hide();
+        }
+    });
+
 
     /*-----------------------------------*/
     ///////////////// 變數 ////////////////

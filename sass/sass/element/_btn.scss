@@ -100,7 +100,7 @@ $btn-radius:.2em;
 }
 .btn-submit {
     // @extend %btn;
-    @include btn_setting(lighten($primaryColor, 5), #FFF);
+    @include btn_setting(lighten($primaryColor, 0), #FFF);
 }
 .btn-reset {
     // @extend %btn;
@@ -138,16 +138,18 @@ $btn-radius:.2em;
 }
 // 一般按鈕
 .btn-normal{
-    background: #f1f1f1!important;
-    color: #65656E !important;
-    border: solid 1px #c3c3c3!important;
-    text-shadow: none!important;
-    &:hover,
-    &:focus{
-        color: darken(#65656E, 15)!important;
-        background: #c3c3c3!important;
-        border: solid 1px #c3c3c3!important;
-    }
+    // background: #f1f1f1!important;
+    // color: #65656E !important;
+    // border: solid 1px #c3c3c3!important;
+    // text-shadow: none!important;
+    // &:hover,
+    // &:focus{
+    //     color: darken(#65656E, 15)!important;
+    //     background: #c3c3c3!important;
+    //     border: solid 1px #c3c3c3!important;
+    // }
+
+    @include btn_setting(#666, #FFF);
 }
 
 // 返回

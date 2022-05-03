@@ -1,10 +1,5 @@
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     &.noscroll {
@@ -17,7 +12,18 @@ body {
         padding: 0;
     }
 
-    background: url(../images/bg_headerTop.png) 50% top no-repeat, url(../images/bg.jpg) 50% top repeat;
+    // background: url(../images/bg_headerTop.png) 50% top no-repeat, url(../images/bg.jpg) 50% top repeat;
+    background: url(../images/bg.jpg) 50% top repeat;
+
+    position: relative;
+    &:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url(../images/bg_headerTop.png) 50% top no-repeat;
+        background-size: contain;
+    }
 }
 
 // 最外圍預設為100%
@@ -36,6 +42,7 @@ body {
     padding: 0;
     margin: 0 auto;
     max-width: $container-max; //請看_variable.scss
+    @include gutter(4em);  
 }
 
 .main {
@@ -54,9 +61,13 @@ body {
 ////////////////////////////////////////////////////////////
 // 為了與首頁區隔，請在內頁加上innerpage ClassName
 .innerpage {
+    padding-top: 2em;
     >.container {
-        @include gutter(); //gutter 代表左右要留白
+        // @include gutter(); //gutter 代表左右要留白
         display: flex;
+        padding-top: 2em;
+        padding-bottom: 2em;
+        background: #fff;
     }
     .center_block {
         flex: none;
@@ -95,8 +106,553 @@ body {
     &.large_size {
         font-size: 1.125em;
     }
+
+    // 
+    // .function_panel+section{
+    //     margin-top: 2em;
+    // }
 }
 
-.hidden {
-    display: none;
+.hidden { display: none; }
+
+// 共同設定 flex
+// .info_card .project,
+.hotNews,
+.thumbnail,
+.Steps ul{
+    @extend %flex_set;
 }
+
+// 園區植物
+.info_card{
+    .project{
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        .img-container{
+            flex: 0 0 360px;
+            border: solid 12px #f1f1f1;
+        }
+        .col{
+            flex: 1 1 100%;
+
+            table{
+                th, td{ border: transparent; }
+                th{ width: 90px; background: transparent; }
+                td{
+                    width: calc(100% - 90px);
+                    border-bottom: 1px solid #ddd;
+                    text-align: left;
+                }
+                tr{
+                    &:last-child{
+                        th, td{ border-bottom: transparent; }
+                    }
+                }
+            }
+        }
+
+        @include screen('tablet') {
+            flex-flow: row wrap;
+            .img-container{ display: none; }
+        }
+    }
+    >h4{
+        span{
+            display: inline-block;
+            // background: #666;
+            // border: 1px solid #666;
+            color: #666;
+            background: #ebebeb;
+            padding: 0.25em 1em;
+            border-radius: 4px;
+            font-size: 85%;
+        }
+    }
+    >p{}
+}
+
+// 圖文交疊
+.overlap{
+    overflow: hidden;
+    .col{
+        padding: 3em 0 5em;
+
+        position: relative;
+        .img-container{
+            position: absolute;
+            background: #ddd;
+            top: 0;
+            left: 0;
+            max-width: 60%;
+            bottom: 12%;
+        }
+
+        display: flex;
+        flex-flow: row-reverse nowrap;
+        .text{
+            width: 60%;
+            position: relative;
+            .title{
+                display: flex;
+                flex-flow: row-reverse nowrap;
+                >span{
+                    font-size: 6em;
+                    color: #ddd;
+                    display: inline-block;
+                    padding: 0 .25em;
+                }
+                >p{
+                    margin: 0;
+                    font-size: 140%;
+                }
+            }
+            >p{
+                background: #fff;
+                padding: 3em 2em;
+                // box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+                box-shadow: rgba(0, 0, 0, 0.1) -4px 9px 25px -6px;
+            }
+        }
+
+        &:nth-child(even){
+            .img-container{
+                left: auto;
+                right: 0;
+            }
+
+            flex-flow: row nowrap;
+            .text{
+                .title{ flex-flow: row nowrap; }
+            }
+        }
+    }
+}
+
+// LP 圖文欄
+.hotNews{
+    // @extend %flex_set;
+    .col{
+        @include flex-xs(12, 0px);
+        @include flex-sm(12, $m-gutter);
+        @include flex-md(7, $m-gutter);
+        @include flex-lg(7, $m-gutter);
+    }
+    .img-container{
+        @include flex-xs(12, 0px);
+        @include flex-sm(12, $m-gutter);
+        @include flex-md(5, $m-gutter);
+        @include flex-lg(5, $m-gutter);
+        @include aspect-ratio(16,9);
+    }
+}
+
+.thumbnail{
+    // @extend %flex_set;
+    .col{
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(2, 10px);
+        @include flex-md-equal(4, 10px);
+        @include flex-lg-equal(4, 10px);
+
+        margin: .5em 0;
+    }
+}
+
+// thumbnail
+.thumbnail{
+    // // @extend %flex_set;
+    // .col{
+    //     @include flex-xs-equal(1, 0px);
+    //     @include flex-sm-equal(2, 10px);
+    //     @include flex-md-equal(4, 10px);
+    //     @include flex-lg-equal(4, 10px);
+
+    //     margin: .5em 0;
+    // }
+
+    background: #FFF;
+    width: 100%;
+    margin: 1em 0;
+    border-radius: 3px;
+    overflow: hidden;
+    transition: all .3s ease;
+
+    a {
+        display: block;
+        height: 360px;
+        @include aSetting(#555);
+
+        position:relative;
+        .caption {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-left: solid 10px #fff;
+            color: #fff;
+
+            time, p{ position: absolute; }
+            time{
+                left: -10px;
+                top: 20px;
+                background: $secondaryColor;
+                padding: 0.45em 1em;
+                font-size: 90%;
+                font-weight: bold;
+            }
+            p{
+                width: 100%;
+                line-height: 1.4;
+                font-size: 90%;
+                margin: 0;
+                bottom:0;
+                padding: 1em 2em;
+                background: rgb(0,0,0);
+                background: -moz-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+                background: -webkit-linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+                background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#000000",endColorstr="#000000",GradientType=1);
+            }
+        }
+
+        .img-container { height: 100%; }
+
+        &:focus {
+            &:before{
+                content:"";
+                position:absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top:0;
+                right:0;
+                bottom:0;
+                z-index: 1;
+                box-shadow:0px 0px 0px 1px $aHover inset;
+            }
+        }
+    }
+}
+
+// 
+
+$spec_margin: 8px;
+.cards{
+    // 特殊作用 
+    display: flex;
+    flex-flow: row wrap;
+
+    .col{
+        // background: #f1f1f1;
+        margin: 8px $spec_margin;
+        flex: 0 1 auto;
+        flex-basis: calc(100% / 4 - 16px);
+
+        .img-container{
+            @include aspect-ratio(4,5);
+        }
+        span{
+            display: block;
+            text-align: center;
+            padding: 1em 0 0.5em;
+            font-size: 110%;
+            font-weight: bold;
+        }
+
+        a{
+            display: block;
+            padding: 1em;
+            color: #666;
+            background: #fff;
+            border: solid 1px #f2f2f2;
+            border-radius: 4px;
+
+            position: relative;
+            &:before{
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                background: transparent;
+                z-index: 2;
+                transform: rotate(45deg);
+                bottom: -6px;
+                left: 50%;
+                margin-left: -18px;
+            }
+
+            transition: all 300ms ease-in;
+            &:hover, &:focus{
+                background: $secondaryColor;
+                color: #fff;
+            }
+        }
+
+        &.active{
+            transition: all 300ms ease-in;
+            a{
+                background: $secondaryColor;
+                color: #fff;
+
+                span{
+                    position: relative;
+                    z-index: 2;
+                    // 避免箭頭擋住字
+                }
+
+                &:before{
+                    background: $secondaryColor;
+                }
+
+                transition: all 300ms ease-in;
+                &:hover, &:focus{
+                    background: $secondaryColor;
+                    color: #fff;
+                }
+            }
+
+            +.showbox{ display: block; }
+        }
+    }
+
+    position: relative;
+    .showbox{
+        // width: 100%;
+        margin: 0 $spec_margin;
+        padding: 1.25em 2em;
+        background: #fff;
+        // border: solid 1px #dfdfdf;
+        border-radius: 12px;
+        // box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+        // box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 60px 40px -7px;
+
+        position: absolute;
+        // top: calc(388px + 16px);
+        z-index: 1;
+
+        display: none;
+
+        .info_card{
+            .img-container{}
+            .col{
+                margin: 0;
+                background: transparent !important;
+            }
+            // >h4{
+            //     span{ font-size: 115%; }
+            // }
+        }
+    }
+
+    // @include screen('notebook') {
+    //     .col{
+    //         flex-basis: calc(100% / 2 - 16px);
+
+    //         .img-container{
+    //             @include aspect-ratio(4,3);
+    //         }
+    //     }
+    // }
+
+    @include screen('notebook') {
+        .col{
+            flex-basis: calc(100% / 2 - 16px);
+            .img-container{}
+        }
+    }
+    @include screen('mobile') {
+        .col{
+            flex-basis: 100%;
+        }
+        .showbox{
+            position: static;
+            width: 100%;
+            padding: 1.25em 1em;
+        }
+    }
+}
+
+
+// 步驟
+.Steps{
+    margin: 2em 0 .75em;
+    ul{
+        flex-flow: row nowrap;
+        @include li-reset;  
+        li{
+            flex: 1 0 auto;
+            text-align: center;
+            span{
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto;
+                background: #fff;
+                box-shadow: inset 0 0 2px #262626;
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 1.25em;
+                position: relative;
+            }
+            p{
+                margin: 6px 0 0;
+            }
+
+            // 線
+            position: relative;
+            &:before{
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 2px;
+                background: #F3F3F3;
+                top: 30px;
+                left: 50%;
+            }
+            &:last-child{
+                &:before{ display: none; }
+            }
+
+            &.past, &.now{
+                span{ box-shadow: none; }
+            }
+            &.past{
+                span{
+                    background: #f5f4f0;
+                    color: #656672;
+                }
+                p{ color: #656672; }
+            }
+            &.now{
+                span{
+                    background: $primaryColor;
+                    color: #fff;
+                }
+                p{
+                    color:$primaryColor;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+    
+    @include screen('mobile') {
+        ul{
+            li{
+                span{
+                    width: 20px;
+                    height: 20px;
+                    font-size: 0;
+                    margin: 20px auto;
+                }
+                p{ font-size: 0;}
+            }
+            .now{
+                span{
+                    width: 60px;
+                    height: 60px;
+                    font-size: 1.25em;
+                    margin: 0 auto;
+                }
+                p{ font-size: 1em;} 
+            }
+        }
+    }
+}
+
+// 共同設定
+.remind_notice,
+.tip_box,
+.result_box{
+    padding: 1em 2em;
+    border-radius: 5px;
+}
+
+
+// 提醒
+.remind_notice{
+    border: solid 1px $primaryColor;
+    background: lighten($primaryColor, 70);
+    margin-bottom: 30px;
+    line-height: 2em;
+    img{
+        display: block;
+        margin: 0 auto;
+    }
+    a{
+        color: #0270b3;
+        text-decoration: underline;
+        margin: 0 5px;
+        &:hover, &:focus, &:active{
+            text-decoration: none;
+        }
+    }
+    b{ color: darken($lightColor, 10) }
+    .Remind{
+        background: #cdefea;
+        padding: 1em 2em;
+        border-radius: 5px;
+    }
+    .btn_grp a{ text-decoration: none; line-height: 1.45em;}
+    @include screen('mobile') {
+        padding: 1em 1em;
+    }
+}
+// 提醒中的確認區塊
+.confirm_box{
+    padding: 1em;
+    text-align: center;
+    border-top: dotted 1px #247790;
+    // font-size: 1.125em;
+    label{}
+
+    .checkbox{ padding: 1em 0; }
+}
+
+// 小提示
+.tip_box{
+    background: #f7f4ef;
+    margin: 1em 0;
+
+    table{
+        tr{
+            border-bottom: 1px solid #d8cfc6;
+
+            &:last-child{
+                border-bottom: none;
+            }
+        }
+        th, td{
+            border: transparent;
+            background: transparent;
+        }
+    }
+
+    @include screen('xs_mobile') {
+        padding: 1em 1em;
+    }
+}
+
+// 操作結果
+.result_box{
+    text-align: center;
+    border: 1px solid #ddd;
+    span{
+        display: inline-block;
+        padding: 0.75em 2em;
+        font-size: 1.25em;
+        color: $primaryColor;
+        font-weight: bold;
+    }
+
+}
+
+
+
+
+
+
+
+

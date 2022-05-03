@@ -132,9 +132,7 @@
                 white-space: normal;
 
                 time{ margin: 0; }
-                a{
-                    padding: .3em 1em;
-                }
+                a{ padding: .3em 1em; }
 
                 // 第一筆，圖文
                 &:first-child{
@@ -150,14 +148,9 @@
                         @include flex-sm(8, $m-gutter);
                         @include flex-md(8, $m-gutter);
                         @include flex-lg(8, $m-gutter);
-                        padding: 1.5em 0;
 
-                        .title{
-                            font-size: 1.5em;
-                        }
-                        p{
-                            font-size: 1.125em;
-                        }
+                        .title{ font-size: 1.5em; }
+                        p{ font-size: 1.125em; }
                     }
                 }
 
@@ -170,6 +163,18 @@
         .more{
             text-align: center;
             margin: 1.5em auto;
+        }
+
+        @include screen('mobile') {
+            padding: 0 0;
+            ul{
+                li{
+                    // 第一筆，圖文
+                    &:first-child{
+                        a{ padding: 1.5em 0; }
+                    }
+                }
+            }
         }
     }
 }

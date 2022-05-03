@@ -14,7 +14,9 @@
     text-align: left;
     &:before {
         position: absolute;
-        top: 7px;
+        // top: 7px;
+        top: 50%;
+        margin-top: -7px;
         left: .25em;
         display: block;
         vertical-align: middle;
@@ -61,8 +63,12 @@
     }
 }
 *[class*="notice_warning"] {
-    color: #C23E00;
+    // color: #C23E00;
     // background-color: #FEEFB3;
+
+    color: #CE5605;
+    background-color: #FEEFB3;
+    border-left: 1em solid #FEEFB3;
     &:before {
         background: url(../images/basic/icon_warning.svg) no-repeat center center;
         background-size: 15px;

@@ -19,7 +19,17 @@ table {
     // }
     td {
         padding: .5em;
-        text-align: left;
+        text-align: center;
+
+        &.left{ text-align: left; }
+        &.right{ text-align: right; }
+
+        button,
+        input{
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            padding: 0.25em 1em !important;
+        }
     }
     td{
         border: #ddd 1px solid;
@@ -46,7 +56,7 @@ table {
         }
     }
 }
-.table_list {
+.table_list{
     @include screen('xs_mobile') {
         background-color: transparent !important; //Force table to not be like tables anymore
         thead,
@@ -88,6 +98,63 @@ table {
         }
     }
 }
+
+.table_list2{
+    table{
+        width: 100%;
+        min-width: auto !important;
+        th{
+            text-align: right;
+        }
+    }
+    @include screen('xs_mobile') {
+        background-color: transparent !important; //Force table to not be like tables anymore
+        thead,
+        tbody,
+        th,
+        td,
+        tr { display: block; }
+        // thead tr {
+        //     position: absolute;
+        //     top: -9999px;
+        //     left: -9999px;
+        // }
+        th{
+            text-align: left !important;
+            padding-bottom: 0;
+        }
+        tr {
+            // border: 1px solid #ccc;
+            border-bottom: 1px solid #d8cfc6;
+            margin-bottom: 10px; // background-color: #333;
+        }
+        td {
+            line-height: 1.2;
+            font-size: 90%;
+            padding-bottom: 1em;
+            // Behave  like a "row"
+            border: none !important;
+            border-bottom: 1px solid #eee !important;
+            // position: relative;
+            // padding-left: 35% !important;
+            white-space: normal;
+            text-align: left;
+            // &:before {
+            //     content: attr(data-title);
+            //     position: absolute;
+            //     top: .5em;
+            //     left: .5em;
+            //     width: 30%;
+            //     padding-right: 10px;
+            //     white-space: nowrap;
+            //     text-align: left;
+            //     font-weight: bold;
+            //     color: #000;
+            // }
+        }
+    }
+}
+
 // fix_th_table
 .fix_th_table {
     margin: 1em 0;

@@ -280,6 +280,9 @@ select::-ms-expand {
                     }
                 }
             }
+
+            // 不折行
+            flex-wrap: nowrap !important;
         }
 
         // 生日專屬
@@ -415,9 +418,12 @@ select::-ms-expand {
         // 第一層的 form_title
         .form_title{
             // padding: 18px 0;
-            color: darken($primaryColor, 10);
+            // color: darken($primaryColor, 10);
+            color: #444;
             font-weight: 500;
         }
+
+        +.btn_grp{ margin-top: 1.5em;}
 
     }
 
@@ -520,6 +526,7 @@ select::-ms-expand {
             // 調整標題
             .form_title{
                 color: #008175;
+                color: #444;
             }
 
             .form_content {
@@ -657,7 +664,6 @@ select::-ms-expand {
             @include flex-lg-equal(4, $m-gutter);
         }
     }
-
 
     .form_col-6-6 {
 
@@ -1369,6 +1375,7 @@ select::-ms-expand {
     }
 
     input[type="text"],
+    input[type="email"],
     input[type="password"],
     select,
     textarea,
@@ -1381,6 +1388,11 @@ select::-ms-expand {
     .input-i {
         width: auto;
         flex: 0 0 auto;
+    }
+
+    input[type="text"],
+    input[type="email"]{
+        flex: 1 0 auto;
     }
 
     .form_grp,

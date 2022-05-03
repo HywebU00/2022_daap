@@ -53,7 +53,8 @@
         width: fit-content;
         margin: auto;
 
-        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        // box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
 
         @include screen('tablet') {
             background: transparent;
