@@ -56,7 +56,7 @@ $btn-radius:.2em;
     margin:.25em .1em;
     
     i {
-        margin-right: .25em;
+        margin-right: .5em;
         margin-left: .25em;
     }
 }
@@ -161,6 +161,30 @@ $btn-radius:.2em;
     &:focus {
         background: darken($primaryColor, 10) !important;
         border: 1px solid #ddd !important;
+    }
+}
+
+// function control
+.btn-function{
+    color: #000 !important;
+    background: $lightColor2!important;
+    border: solid 1px $lightColor2!important;
+
+    i:before{
+        filter: invert(0);
+        margin-bottom: 3px;
+        transition: all .3s ease-in;
+    }
+
+    &:hover,
+    &:focus {
+        color: #fff !important;
+        background: darken($lightColor2, 12)!important;
+        border: solid 1px $lightColor2!important;
+        i:before{
+            filter: invert(1);
+        }
+
     }
 }
 

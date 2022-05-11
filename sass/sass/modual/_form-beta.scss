@@ -1556,6 +1556,10 @@ textarea {
     @include screen('xs_mobile') {
         width: 100%;
     }
+
+    +.checkbox label{
+        width: 100%;
+    }
 }
 
 button:focus,

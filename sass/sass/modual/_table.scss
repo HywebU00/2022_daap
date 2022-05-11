@@ -5,6 +5,7 @@ table {
     @include screen('xs_mobile') {
         width: 100%;
     }
+
     th,
     // td:not(.gsib_b,.gsc-search-button) {
     //     padding: .5em;
@@ -17,10 +18,18 @@ table {
     //         word-break: break-all;
     //     }
     // }
+
+    th {
+        background-color: #F3F3F3;
+        color: #333;
+        border: #DDD 1px solid;
+        text-align: center;
+        white-space: nowrap;
+        padding: .45em .25em;
+    }
     td {
         padding: .5em;
         text-align: center;
-
         &.left{ text-align: left; }
         &.right{ text-align: right; }
 
@@ -30,21 +39,12 @@ table {
             margin-bottom: 0 !important;
             padding: 0.25em 1em !important;
         }
-    }
-    td{
+
         border: #ddd 1px solid;
         word-break: break-all;
-        a {
-            word-break: break-all;
-        }
+        a { word-break: break-all; }
     }
-    th {
-        background-color: #F3F3F3;
-        color: #333;
-        border: #DDD 1px solid;
-        text-align: center;
-        white-space: nowrap;
-    }
+    
     &.table_hover {
         tr:hover {
             background: #F3F3F3;
@@ -56,6 +56,32 @@ table {
         }
     }
 }
+
+// 總計
+.total{
+    text-align: right;
+    padding: .5em 1em;
+    background: #f3f3f3;
+    span{
+        display: inline-block;
+        color: red;
+
+        &:before, &:after{
+            color: #222;
+        }
+
+        &:before{
+            content:'總計';
+            margin-right: 10px;
+        }
+
+        &:after{
+            content:'元';
+            margin-left: 10px;
+        }
+    }
+}
+
 .table_list{
     @include screen('xs_mobile') {
         background-color: transparent !important; //Force table to not be like tables anymore
@@ -228,18 +254,14 @@ table {
         }
     }
 }
-.scroltable{
-    min-width:600px !important;
-}
+.scroltable{ min-width:600px !important; }
 .scroltable-wrapper {
     position: relative;
     -webkit-overflow-scrolling: touch;
     -webkit-transform: translate3d(0, 0, 0);
     overflow-y: hidden;
 }
-.scroltable-container {
-    overflow: auto;
-}
+.scroltable-container { overflow: auto; }
 .scroltable-nav {
     display: none;
     position: absolute;

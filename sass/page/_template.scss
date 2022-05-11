@@ -520,8 +520,10 @@ $spec_margin: 8px;
             }
             &.past{
                 span{
-                    background: #f5f4f0;
-                    color: #656672;
+                    // background: #f5f4f0;
+                    // color: #656672;
+                    background: #d0d0d0;
+                    color: #5a5a5a;
                 }
                 p{ color: #656672; }
             }
