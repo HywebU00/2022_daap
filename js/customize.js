@@ -1,6 +1,7 @@
 // 自行加入的JS請寫在這裡
 $(function() {
     //sticky sidebar
+    // -------------------------------
     if ($('.stickySidebar').length > 0) {
         var stickySidebar = new StickySidebar('.stickySidebar', {
             containerSelector: '.main',
@@ -11,6 +12,7 @@ $(function() {
         });
     }
     // 首頁輪播
+    // -------------------------------
     $('.mpSlider').slick({
         mobileFirst: true,
         dots: true,
@@ -32,6 +34,7 @@ $(function() {
 
 
     // 多圖輪播
+    // -------------------------------
     $('.spotSlider').slick({
         centerMode: true,
         centerPadding: '60px',
@@ -59,6 +62,7 @@ $(function() {
 
 
     // 廣告輪播
+    // -------------------------------
     $('.adSlider').slick({
         mobileFirst: true,
         dots: false,
@@ -96,6 +100,7 @@ $(function() {
     });
 
     // header search switch
+    // -------------------------------
     $('.search .search_switch').click(function(e) {
 
         $(this).parent().siblings('.form_grp').fadeOut(300);
@@ -109,7 +114,7 @@ $(function() {
         }
     });
 
-    // 
+    // -------------------------------
     $('.cards').find('.col').click(function(){
         var TT = $(this).position().top,
             ObH = $(this).height(),
@@ -120,6 +125,7 @@ $(function() {
         $(this).next('.showbox').css({ top: TT + ObH + ObMg} );
     })
     // 點外面關閉showbox
+    // -------------------------------
     $(document).on('touchend click', function(e) {
         var container2 = $('.cards');
         if (!container2.is(e.target) && container2.has(e.target).length === 0) {
@@ -156,10 +162,64 @@ $(function() {
 
 
 
+    // 園區地圖
     // -------------------------------
+    $('.spot').find('.info').hide();
+    var _btnSpot = $('.spot .title');
+
+    _btnSpot.off().click(function(e) {
+        $('.info').stop(true, true).slideUp();
+        $(this).next('.info').stop(true, true).slideToggle();
+        e.preventDefault();
+    });
+    _btnSpot.keyup(function(event) {
+        $('.info').stop(true, true).slideUp();
+        $(this).next('.info').stop(true, true).slideDown();
+    });
+    $('.zoneMap')
+        // .find('.btn_grp>button:last')
+        .find('.btn_grp>button:last')
+        .focusout(function(event) {
+            $(this).parents('.info').slideUp();
+    });
+        
+    // 點外面關閉share
+    $(document).on('touchend click', function(e) {
+        var container4 = $('.spot');
+        if (!container4.is(e.target) && container4.has(e.target).length === 0) {
+            $('.spot .info').slideUp();
+        }
+    });
+
+
+    // 預約
+    // -------------------------------
+    $('.calander .today').find('a:first-child').addClass('act');
+    $('.calander td').find('a').click(function(event) {
+        $('.calander td').find('a').removeClass('act');
+        $(this).addClass('act');
+    });
+
+    $('.calander .weekly .today').find('a:first-child').removeClass('act');
+    $('.calander .weekly .list').find('a').click(function(event) {
+        $('.calander .weekly .list').find('a').removeClass('act');
+        $(this).addClass('act');
+    });
+
+
+    $('.mask_switch').click(function(event) {
+        if($(this).siblings('.mask').hasClass('show')){
+            $(this).siblings('.mask').removeClass('show');
+            $(this).text('顯示更多');
+        }else{
+            $(this).siblings('.mask').addClass('show');
+            $(this).text('顯示更少');
+        }
+    });
 
 
     //燈箱slick+lightBox組合
+    // -------------------------------
     $('.cp_slider').slick({
         dots: true,
         infinite: true,
@@ -274,6 +334,7 @@ $(function() {
     });
 
     // password_toggle
+    // -------------------------------
     var passShow = false;
     $('.password_toggle').each(function(index, el) {
         $(this).find('.btn-icon').off().click(function(e) {

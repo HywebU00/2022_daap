@@ -31,7 +31,7 @@ body {
     width: 100%;
     margin: 0px auto;
     @include screen('mobile') {
-        background: #FFF;
+        // background: #FFF;
         overflow: hidden;
         overflow-y: auto;
     }
@@ -42,7 +42,20 @@ body {
     padding: 0;
     margin: 0 auto;
     max-width: $container-max; //請看_variable.scss
-    @include gutter(4em);  
+    @include gutter(4em); 
+
+    @include screen('tablet') {
+        @include gutter(3em); 
+    }
+
+    a,
+    td{
+        &.unable{
+            cursor: not-allowed;
+            color: #666;
+            background: #f4f4f4;
+        }
+    }
 }
 
 .main {
@@ -67,7 +80,7 @@ body {
         display: flex;
         padding-top: 2em;
         padding-bottom: 2em;
-        background: #fff;
+        // background: #fff;
     }
     .center_block {
         flex: none;
@@ -138,7 +151,12 @@ body {
 
             table{
                 th, td{ border: transparent; }
-                th{ width: 90px; background: transparent; }
+                th{
+                    width: 90px;
+                    // background: transparent;
+                    background: #ebebeb;
+                    color: #666;
+                }
                 td{
                     width: calc(100% - 90px);
                     border-bottom: 1px solid #ddd;
@@ -507,7 +525,7 @@ $spec_margin: 8px;
                 position: absolute;
                 width: 100%;
                 height: 2px;
-                background: #F3F3F3;
+                background: #e0e0e0;
                 top: 30px;
                 left: 50%;
             }
@@ -567,7 +585,8 @@ $spec_margin: 8px;
 // 共同設定
 .remind_notice,
 .tip_box,
-.result_box{
+.result_box,
+.message{
     padding: 1em 2em;
     border-radius: 5px;
 }
@@ -615,12 +634,13 @@ $spec_margin: 8px;
 
 // 小提示
 .tip_box{
-    background: #f7f4ef;
+    // background: #f7f4ef;
+    background: #ecdfca;
     margin: 1em 0;
 
     table{
         tr{
-            border-bottom: 1px solid #d8cfc6;
+            border-bottom: 1px solid #c0a07f;
 
             &:last-child{
                 border-bottom: none;
@@ -629,6 +649,7 @@ $spec_margin: 8px;
         th, td{
             border: transparent;
             background: transparent;
+            color: #222;
         }
     }
 
@@ -638,9 +659,11 @@ $spec_margin: 8px;
 }
 
 // 操作結果
-.result_box{
+.result_box,
+.message{
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(0,118,144,.5);
+    background: #fff;
     span{
         display: inline-block;
         padding: 0.75em 2em;
@@ -648,9 +671,877 @@ $spec_margin: 8px;
         color: $primaryColor;
         font-weight: bold;
     }
-
 }
 
+.message{
+    border: transparent;
+    span{
+        color: #666;
+    }
+}
+
+
+// 園區地圖
+.zoneMap{
+    position: relative;
+    margin: 4em 0;
+
+    .spot{
+        position: absolute;
+        width: 320px;
+
+        .title{
+            font-size: 1em;
+            margin: .5em 0 !important;
+            text-align: center;
+            a{
+                display: inline-block;
+                margin: auto;
+                color: #fff;
+                background: rgba(0,0,0,.5);
+                padding: 4px 20px;
+                font-weight: bold;
+                border-radius: 4px;
+
+                &:hover, &:focus{
+                    background: rgba(0,118,144,.85);
+                }
+            }
+        }
+        .info{
+            background: #fff;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+            padding: .75em 1.5em;
+            border-radius: 6px;
+
+            position: relative;
+            z-index: 1;
+
+            display: none;
+            p{
+                margin: .5em 0;
+                line-height: 1.4;
+            }
+            .btn_grp{
+                padding: .25em 0;
+                .btn{
+                    padding: .45em 1.5em;
+                    font-size: .9em;
+                }
+            }
+        }
+
+        &.no-1{
+            // 霧峯亭
+            left: 0; top: 140px;
+        }
+        &.no-2{
+            // 後山公園
+            left: 270px; top: 27px;
+        }
+        &.no-3{
+            // 議事大樓
+            right: 300px; top: 27px;
+        }
+        &.no-4{
+            // 議政博物館
+            right: 0; top: 110px;
+        }
+        &.no-5{
+            // 朝琴紀念館
+            left: 160px; top: 210px;
+        }
+        &.no-6{
+            // 黃朝琴先生像
+            left: 360px; top: 210px;
+        }
+        &.no-7{
+            // 議蘆會館
+            left: 160px; top: 320px;
+        }
+        &.no-8{
+            // 日月池
+            right: 210px; top:290px;
+        }
+        &.no-9{
+            // 民主草坪
+            right: 20px; top: 330px;
+        }
+        &.no-10{
+            // 椰林大道
+            right: 330px; top: 400px;
+        }
+        &.no-11{
+            // 福桂林道
+            left: 50px; top: 460px;
+        }
+        &.no-12{
+            // 圓形花圃
+            left: 160px; top: 510px;
+        }
+        &.no-13{
+            // 健康步道
+            left: 380px; top: 480px;
+        }
+        &.no-14{
+            // 入口Ｖ型拱門
+            left: 480px; bottom: 90px;
+        }
+    }
+}
+
+
+// 各種預約
+.Reserves{
+    // 表單
+    .flex-form{
+        .form_grp{
+            border-bottom: transparent;
+        }
+    }
+
+    // sp3參訪預約導覽
+    .visit{
+        @extend %flex_set;
+        margin-top: 2em;
+        padding-top: 2em;
+    }
+    .col{
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(1, $m-gutter);
+        @include flex-md-equal(2, $m-gutter);
+        @include flex-lg-equal(2, $m-gutter);
+    }
+
+    // // 月曆：sp3參訪預約導覽
+    // .calander{
+    //     position: relative;
+    //     // 月份切換
+    //     .month_ctl{
+    //         position: absolute;
+    //         top: 0;
+
+    //         // 左右對齊
+    //         &.space_between{
+    //             width: 100%;
+    //             // background: rgba(222,222,222,.25);
+    //             height: 66px;
+    //         }
+    //         .btn{
+    //             text-indent: -9999px;
+    //             padding: 1em;
+    //             border-radius: 50%;
+    //             width: 46px;
+    //             height: 46px;
+    //             min-width: auto !important;
+    //             border: transparent;
+    //         }
+
+    //         .btn.pre, .btn.next{
+    //             position: absolute;
+    //             top: 8px;
+    //         }
+
+    //         .btn.pre{
+    //             background: url(../images/icon/icon_arrow_left.svg) 50% 50% no-repeat, #eee;
+    //             background-size: 18px 18px;
+
+    //             &:hover, &:focus{
+    //                  background: url(../images/icon/icon_arrow_left2.svg) 50% 50% no-repeat, #333;
+    //                  background-size: 18px 18px;
+    //             }
+    //         }
+    //         .btn.next{
+    //             background: url(../images/icon/icon_arrow_right.svg) 50% 50% no-repeat, #eee;
+    //             background-size: 18px 18px;
+    //             right: 0;
+    //             &:hover, &:focus{
+    //                 background: url(../images/icon/icon_arrow_right2.svg) 50% 50% no-repeat, #333;
+    //                 background-size: 18px 18px;
+    //             }
+    //         }
+    //     }
+
+    //     time.date{
+    //         text-align: center;
+    //         font-weight: bold;
+    //         display: block;
+    //         font-size: 1.5em;
+    //         line-height: 2.6;
+    //     }
+    //     table{
+
+    //         th{
+    //             width: calc(100% / 7);
+    //         }
+    //         td{
+    //             padding: 0;
+    //             a{
+    //                 display: block;
+    //                 padding: .5em;
+    //                 &:hover{ background: #ecdfca; }
+    //                 &:focus{
+    //                     color: #fff;
+    //                     background: darken($lightColor2, 8);
+    //                 }
+    //             }
+
+    //             &.act{
+    //                 a{
+    //                     color: #fff;
+    //                     background: darken($lightColor2, 8);
+    //                 }
+    //             }
+
+    //             &.unable{
+    //                 color: #ddd;
+    //                 cursor: not-allowed;
+    //             }
+                
+    //             &.today{
+    //                 color: #fff;
+    //                 span{
+    //                     display: block;
+    //                     width: 32px;
+    //                     height: 32px;
+    //                     line-height: 32px;
+    //                     margin: auto;
+    //                     background: $primaryColor;
+    //                     color: #fff;
+    //                     // color: darken($primaryColor, 5);
+    //                     font-weight: bold;
+    //                     // box-shadow: inset 0 0 0 2px $primaryColor;
+    //                     border-radius: 50%;
+    //                 }
+
+    //                 &.act{
+    //                     span{
+    //                         background: #fff;
+    //                         color: darken($lightColor2, 10);
+    //                         box-shadow: none;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+    // 時段
+    .period{
+        padding-left: .75em;
+        .sub_title{
+            margin: 0;
+            padding-left: 0.35em;
+            line-height: 2.6;
+        }
+        .AM, .PM, .NT{
+            section{
+                @extend %flex_set;
+                align-items: center;
+                border-bottom: 1px solid #666;
+
+                &:last-child{
+                    border-bottom: 0;
+                }
+
+                .col{
+                    @include flex-xs-equal(2, $m-gutter);
+                    @include flex-sm-equal(2, $m-gutter);
+                    @include flex-md-equal(2, $m-gutter);
+                    @include flex-lg-equal(2, $m-gutter);
+
+                    &:first-child{
+                        text-align: center;
+                    }
+
+                    &:last-child{
+                        button{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            // border: 1px solid #000;
+            margin-bottom: 1em;
+            padding-bottom: 1em;
+            padding-left: 4em;
+            position: relative;
+
+
+            &:before{
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 3em;
+                height: 100%;
+                // writing-mode: vertical-lr;
+                text-align: center;
+                font-size: 1.125em;
+                font-weight: bold;
+                line-height: 3em;
+                // padding: 12px 0;
+                // background: rgba(152,137,48,.25 );
+            }
+
+            @include screen('mobile'){
+                padding-left: 0;
+                &:before{
+                    position: static;
+                    writing-mode: horizontal-tb;
+                }
+            }
+        }
+
+        .AM{
+            // margin-bottom: 1em;
+            // padding-bottom: 1em;
+            &:before{
+                content: '上午';
+                // background: pink;
+            }
+        }
+        .PM{
+            &:before{
+                content: '下午';
+                // background: deeppink;
+            }
+        }
+        .NT{
+            &:before{
+                content: '夜間';
+            }
+        }
+
+        .btn_grp{ padding: 0 0;}
+
+        .btn{
+            padding: .5em 1.25em;
+            padding-left: 1.75em;
+            // 加入
+            &.add{
+                background: url(../images/icon/icon_add.svg) 16px 50% no-repeat, #e2e2e2;
+                background-size: 16px 16px;
+            }
+            // 已選取
+            &.picked{
+                color: #fff;
+                background: url(../images/icon/icon_check2.svg) 16px 50% no-repeat, darken($lightColor2, 8);
+                background-size: 14px 14px;
+            }
+            // 已加入
+            &.added{
+                background: url(../images/icon/icon_bookmark.svg) 16px 50% no-repeat;
+                background-size: 16px 16px;
+                border: 1px solid transparent;
+
+                &:hover, &:focus{
+                    border: 1px solid #666;
+                }
+            }
+        }
+
+        @include screen('mobile'){
+            padding-left: 0;
+            margin-top: 2em;
+            .sub_title{
+                padding-left: 0;
+            }
+            .AM, .PM{
+                padding-left: 0;
+                &:before{
+                    position: static;
+                    writing-mode: horizontal-tb;
+                    // line-height: 1.4;
+                }
+            }
+        }
+    }
+
+    @include screen('mobile'){
+        .visit{
+            margin-top: 0;
+            padding-top: 1em;
+        }
+    }
+}
+
+// 月曆：sp3、sp4參訪預約導覽
+// 共用
+.calander{
+
+    // 月曆切換模組(header)
+    .month_ctl{
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    // selector 館別選擇
+    .function{
+        .flex-form{
+            border-bottom: 0;
+            margin: 0;
+            .form_grp{
+                margin: 0;
+                .form_title{
+                    display: block;
+                    text-indent: -9999px;
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    // 月份切換
+    .toggle{
+        .btn{
+            text-indent: -9999px;
+            padding: 1em;
+            border-radius: 50%;
+            width: 46px;
+            height: 46px;
+            min-width: auto !important;
+            border: transparent;
+            // background: red;
+
+            &.pre, &.next{}
+
+            &.pre{
+                background: url(../images/icon/icon_arrow_left2.svg) 50% 50% no-repeat, #bbb;
+                background-size: 18px 18px;
+
+                &:hover, &:focus{
+                    background: url(../images/icon/icon_arrow_left2.svg) 50% 50% no-repeat, #333;
+                     background-size: 18px 18px;
+                }
+            }
+            &.next{
+                background: url(../images/icon/icon_arrow_right2.svg) 50% 50% no-repeat, #bbb;
+                background-size: 18px 18px;
+                right: 0;
+                &:hover, &:focus{
+                    background: url(../images/icon/icon_arrow_right2.svg) 50% 50% no-repeat, #333;
+                    background-size: 18px 18px;
+                }
+            }
+        }
+    }
+
+    // 當前月份
+    time.this_date{
+        text-align: center;
+        font-weight: bold;
+        display: block;
+        font-size: 1.5em;
+        line-height: 2.6;
+    }
+
+    // 月曆 table
+    table{
+
+        th{
+            width: calc(100% / 7);
+            line-height: 1.2;
+            font-size: .9em;
+            padding: .5em 0;
+            b{ display: block;}
+        }
+        td{
+            padding: 0;
+            a{
+                display: block;
+                padding: .5em;
+                @include text-overflow; 
+
+                &:hover{ background: #ecdfca; color: #333; }
+                &:focus{
+                    color: #fff;
+                    background: darken($lightColor2, 8);
+                }
+
+                &.act{
+                    color: #fff;
+                    background: darken($lightColor2, 8);
+                }
+            }
+
+            &.unable{
+                // color: #666;
+                // cursor: not-allowed;
+                // background: #f4f4f4;
+                // 統一整理到 51 行
+                a{
+                    &:hover, &:focus{
+                        background: transparent;
+                        color: #222;
+                    }
+                }
+            }
+            
+            &.today{
+                color: #fff;
+                span{
+                    display: block;
+                    width: 32px;
+                    height: 32px;
+                    line-height: 32px;
+                    margin: auto;
+                    background: $primaryColor;
+                    color: #fff;
+                    // color: darken($primaryColor, 5);
+                    font-weight: bold;
+                    // box-shadow: inset 0 0 0 2px $primaryColor;
+                    border-radius: 50%;
+                }
+
+                a.act{
+                    span{
+                        background: #fff;
+                        color: darken($lightColor2, 10);
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+
+        // link list
+        &.links{
+            td{
+                text-align: left;
+                vertical-align: baseline;
+                padding: .25em;
+
+                >span{
+                    display: inline-block;
+                    margin-left: .65em;
+                    width: 28px;
+                    height: 28px;
+                    line-height: 28px;
+                    text-align: center;
+                    font-size: .813em;
+                }
+
+                a{
+                    font-size: .813em;
+                    padding: .25em 0 .25em 1.125em;
+                    line-height: 1.4;
+                    border-radius: 12px;
+                    @include text-overflow;
+                    max-width: 146px;
+
+                    position: relative;
+                    &:before{
+                        content: '';
+                        display: block;
+                        width: 4px;
+                        height: 4px;
+                        background: #222;
+                        border-radius: 50%;
+                        position: absolute;
+                        left: .5em;
+                        top: 50%;
+                        margin-top: -2px;
+                    }
+
+                    &.act{
+                        color: #fff;
+                        background: darken($lightColor2, 8);
+                        &:before{ background: rgba(255,255,255,.85); }
+                    }
+                }
+                
+                &.unable{}
+                &.today{
+                    background: #ecdfca;
+                    >span{
+                        background: #fff;
+                        color: darken($lightColor2, 10);
+                        box-shadow: none;
+                    }
+
+                    a{
+                        // color: #222;
+                        // background: transparent;
+                    }
+
+                    &.act{
+                        color: #fff;
+                        background: darken($lightColor2, 8);
+                        &:before{ background: rbga(255,255,255,.5); }
+                    }
+                }
+
+                .mask{
+                    padding: 8px 0;
+                    height: 90px;
+                    overflow: hidden;
+
+                    &.show{ height: 100%; }
+                }
+                .mask_switch{
+                    font-size: .813em;
+                    font-weight: bold;
+                    width: -webkit-fill-available;
+                    line-height: 2;
+                    padding: 0 !important;
+                }
+
+                // 手機版樣式
+                .mobile_type{
+                    text-align: right;
+                    margin: 0.25em 0.4em;
+                    a{
+                        display: inline-block;
+                        width: 36px;
+                        height: 36px;
+                        text-align: center;
+                        line-height: 36px;
+                        background: darken($lightColor2, 5);
+                        color: #fff;
+                        font-size: .813em;
+                        border-radius: 50%;
+                        padding: inherit;
+
+                        &:before{ display: none;}
+                    }
+                    display: none; //預設隱藏
+                }
+            }
+
+            @media screen and (max-width: 1300px) {
+                td{
+                    a{
+                        border-radius: 4px;
+                        max-width: inherit;
+                        line-height: 1.2;
+                        time{ display: block; }
+                        &:before{ top: 14px; }
+                    }
+                    .mask{
+                        height: 130px;
+                    }
+                }
+            }
+
+            @include screen('tablet'){
+                td{
+                    .mask, .mask_switch{ display: none; }
+                    // 手機版樣式
+                    .mobile_type{ display: block; }
+                }
+            }
+            @include screen('mobile'){
+                // 手機版樣式
+                .mobile_type{ margin: 0.25em 0.4em; }
+            }
+        }
+    }
+
+    &.type_2{
+        .month_ctl{
+            display: block;
+            position: relative;
+        }
+        // 月份切換
+        .toggle{
+            position: absolute;
+            top: 0;
+
+            // 左右對齊
+            width: 100%;
+            height: 66px;
+
+            .btn{
+                &.pre, &.next{
+                    position: absolute;
+                    top: 8px;
+                }
+            }
+
+            .btn.pre, .btn.next{
+                position: absolute;
+                top: 8px;
+            }
+        }
+    }
+
+    @include screen('mobile'){
+        .month_ctl{
+            flex-flow: column wrap;
+
+            +table{
+                margin-top: 1.5em;
+            }
+        }
+        // selector 館別選擇
+        .function{
+            order: 1;
+            margin: 0;
+            .flex-form .form_grp .form_title{
+                display: none;
+            }
+        }
+        // 月份切換
+        .toggle{
+            order: 2;
+        }
+        // 當前月份
+        time.this_date{}
+    }
+}
+// 手機版 list link
+.link_list{
+    padding: 1em 0;
+    display: flex;
+    flex-flow: row nowrap;
+    display: none;
+
+    >time{
+        flex: 0 0 auto;
+        font-size: 1.25em;
+        color: #222;
+        line-height: 1.4;
+
+        span{
+            display: inline-block;
+            padding: .5em 1.65em .35em;
+            background: #ddd;
+            color: #222;
+            &:before{
+                content: '您選擇的日期：';
+                display: block;
+                font-size: 50%
+            }
+        }
+    }
+    .items{
+        flex: 1 1 auto;
+        
+        a{
+            display: block;
+            line-height: 2.6;
+            text-align: center;
+
+        }
+    }
+
+    @include screen('tablet'){
+        display: flex;
+    }
+}
+
+// 週曆：sp4參訪預約導覽
+.weekly{
+    @extend %flex_set;
+    background: #fff;
+    border: #ddd 1px solid;
+    flex-flow: row nowrap;
+    align-items: initial;
+
+    .day{
+        @include flex-xs-equal(1, 0px);
+        @include flex-sm-equal(1, 0px);
+        @include flex-md-equal(7, 0px);
+        @include flex-lg-equal(7, 0px);
+
+        text-align: center;
+        border-right: #ddd 1px solid;
+        &:last-child{ border-right: 0; }
+        // &:hover, &:focus{
+        //     background: #eee;
+        //     .items{
+        //         .gallery{ border: 1px solid transparent; }
+        //     }
+        // }
+
+        &.today{
+            background: #ecdfca;
+            .date{
+                position: relative;
+                z-index: 1;
+                &:after{
+                    content: '';
+                    position: absolute;
+                    width: 10px;
+                    height: 10px;
+                    background: pink;
+                    border-radius: 50%;
+                    left: 16%;
+                    top: 15%;
+                }
+            }
+        }
+
+        .date{
+            line-height: 1.2;
+            font-size: .9em;
+            padding: 0.5em 0;
+            background-color: #6c5e4b;
+            color: #fff;
+            b{ display: block; }
+        }
+        .items{
+            .gallery{
+                margin: .5em .75em;
+                border: #ddd 1px solid;
+                border-radius: 6px;
+                background: #fff;
+                .gallery_title{
+                    font-size: .9em;
+                    font-weight: bold;
+                    padding: .45em 0;
+
+                    position: relative;
+                    &:after{
+                        content: '';
+                        position: absolute;
+                        width: 80px;
+                        height: 1px;
+                        background: #000;
+                        bottom: .45em;
+                        left: 50%;
+                        margin-left: -40px;
+                    }
+                }
+                .list{
+                    a{
+                        display: block;
+                        font-size: .813em;
+                        line-height: 1.2;
+                        padding: 6px 0;
+                        color: #333;
+
+                        time{}
+
+                        &:hover{ background: #ecdfca; color: #333; }
+                        &:focus{
+                            color: #fff;
+                            background: darken($lightColor2, 8);
+                        }
+
+                        &.act{
+                            color: #fff;
+                            background: darken($lightColor2, 8);
+                        }
+                    }
+                }
+            }
+
+            @media screen and (max-width: 1300px) {
+                .gallery{
+                    .list{
+                        time{ display: block; }
+                    }
+                }
+            }
+        }
+    }
+
+    @include screen('tablet'){
+        flex-flow: row wrap;
+    }
+}
 
 
 

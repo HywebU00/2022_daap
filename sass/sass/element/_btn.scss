@@ -152,6 +152,35 @@ $btn-radius:.2em;
     @include btn_setting(#666, #FFF);
 }
 
+.btn-google,
+.btn-fb{
+    color: #666;
+    border: 1px solid #ddd;
+
+    &:hover, &:focus{
+        color: #222;
+    }
+}
+
+.btn-google{
+    background:  url(../images/icon_google.svg) 18% 50% no-repeat, #fff;
+    background-size: 32px 32px;
+    &:hover, &:focus{
+        background:  url(../images/icon_google.svg) 18% 50% no-repeat, #ddd;
+        background-size: 32px 32px;
+    }
+}
+.btn-fb{
+    background:  url(../images/icon_fb2.svg) 14% 50% no-repeat, #fff;
+    background-size: 32px 32px;
+    &:hover, &:focus{
+        background:  url(../images/icon_fb2.svg) 14% 50% no-repeat, #ddd;
+        background-size: 32px 32px;
+    }
+}
+
+
+
 // 返回
 .btn-back{
     background: #555 !important;

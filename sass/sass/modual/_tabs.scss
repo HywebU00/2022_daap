@@ -95,6 +95,80 @@
     }
 }
 
+// lp2
+.walkmap{
+    button{
+        position: relative;
+
+        &.no-1, &.no-2, &.no-3, &.no-4{
+            &.active, &:hover{
+                &:before{
+                    content: '';
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    left: 50%;
+                    bottom: -10px;
+                    margin-left: -10px;
+                    transform: rotate(45deg);
+                    border-radius: 4px;
+                }
+            }
+        }
+
+        &.no-1{
+            background: #DEE157;
+            color: #222;
+            &.active, &:hover{
+                color: #222;
+                background: #DEE157;
+            }
+            &.active{
+                &:before{ background: #DEE157; }
+            }
+        }
+        &.no-2{
+            background: #616497;
+            &.active, &:hover{ background: #616497; }
+            &.active{
+                &:before{ background: #616497; }
+            }
+        }
+        &.no-3{
+            background: rgba(0, 118, 144, 1);
+            &.active, &:hover{ background: rgba(0, 118, 144, 1); }
+            &.active{
+                &:before{ background: rgba(0, 118, 144, 1); }
+            }
+        }
+        &.no-4{
+            background: rgba(11, 98, 147, 1);
+            &.active, &:hover{ background: rgba(11, 98, 147, 1); }
+            &.active{
+                &:before{ background: rgba(11, 98, 147, 1); }
+            }
+        }
+    }
+
+    .tabItem{
+        overflow: visible;
+        font-size: 1.125em;
+        transition: all .3s ease-in;
+
+        &.active, &:hover, &:focus{}
+    }
+    .tabContent{
+        padding: 4em;
+
+        .tip{
+            position: absolute;
+            left: 0;
+            top: 2em;
+            width: 300px;
+        }
+    }
+}
+
 // mp 
 .tab_mp_type{
 
@@ -179,6 +253,17 @@
     }
 }
 
+// 會員預約記錄
+.records{
+    &>.tabItem {
+        height: 72px;
+        line-height: 1.2;
+    }
+
+    button{
+        b{ display: block; }
+    }
+}
 
 // 顯示content
 .active+.tabContent {

@@ -1,0 +1,158 @@
+.login, .reset{
+    width: 75%;
+    margin: 3em auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2.75em 6em;
+
+    p{
+        text-align: center;
+        b{
+            padding-right: 12px;
+        }
+    }
+
+    .flex-form{
+        .form_grp{
+            border-bottom: 0;
+            .form_title{ text-align: center; }
+            .form_content{
+                img+input{
+                    width: calc(100% - 200px);
+                }
+            }
+        }
+    }
+
+    .btn_grp{
+        .btn{
+            border-radius: 60px;
+            max-width: 70%;
+            padding: 0.75em 0;
+        }
+    }
+
+    .others{
+        display: flex;
+        flex-flow: row nowrap;
+        button{
+            flex: 1 1 50%;
+            padding: .75em 1em;
+        }
+
+        +span{
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 2em 0;
+            position: relative;
+            &:before, &:after{
+                content: '';
+                position: absolute;
+                width: 46%;
+                height: 1px;
+                background: #222;
+                top: 50%;
+            }
+
+             &:before{ left: 0;}
+             &:after{ right: 0;}
+        }
+    }
+}
+
+.register{
+    width: 90%;
+    margin: 3em auto;
+    background: #fff;
+    border-radius: 8px;
+    padding: 2.75em 6em;
+
+    p{
+        text-align: center;
+        a{
+            display: inline-block;
+            padding: 4px 8px;
+        }
+    }
+}
+
+
+// 已登入
+.logged_in{
+    //search
+    .search {
+        margin-right: 6.2em;
+    }
+}
+
+// 帳號設定
+// 預約紀錄
+
+// 會員預約記錄
+.records{
+    .tabContent{
+        padding: 20px 0;
+    }
+
+    .item{
+        background: #fff;
+        // box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+        border: 1px solid #ddd;
+        padding: 1.25em 2em;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        >p{
+            color: $primaryColor;
+            @extend %clearfix;
+            button{
+                float: right;
+            }
+        }
+        .tip{
+            padding: 0.5em 1em;
+            border-bottom: solid 1px #990000;
+            border-top: solid 1px #990000;
+            color: #990000;
+            text-align: center;
+            margin-top: 1em;
+        }
+        .btnbox{
+            text-align: center;
+            padding: 1em 0 0;
+        }
+        .btn-switch{}
+        .detail{
+            // background: #eee;
+            border-top: 1px solid #ddd;
+            margin: 0 -2em;
+            padding: 1em 2em;
+            >p{ color: darken($lightColor2, 5); }
+
+            // display: none;
+        }
+        ul.state{
+            @extend %flex_set;
+            li{
+                @include flex-xs-equal(1, 0px);
+                @include flex-sm-equal(2, 0px);
+                @include flex-md-equal(3, 0px);
+                @include flex-lg-equal(3, 0px);
+                font-size: 82%;
+                border-bottom: 0;
+                b{
+                    display: block;
+                    font-size: 120%;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+

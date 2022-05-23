@@ -2,6 +2,7 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    font-size: 90%;
     @include screen('xs_mobile') {
         width: 100%;
     }
@@ -13,15 +14,17 @@ table {
     // }
     // td:not(.gsib_a,.gsc-search-button){
     //     border: #ddd 1px solid;
-    //     word-break: break-all;
+    //     word-break: break-all; 
     //     a {
     //         word-break: break-all;
     //     }
-    // }
+    // 
 
     th {
-        background-color: #F3F3F3;
-        color: #333;
+        // background-color: #F3F3F3;
+        // color: #333;
+        background-color: #6c5e4b;
+        color: #fff;
         border: #DDD 1px solid;
         text-align: center;
         white-space: nowrap;
@@ -30,6 +33,7 @@ table {
     td {
         padding: .5em;
         text-align: center;
+        background: #fff;
         &.left{ text-align: left; }
         &.right{ text-align: right; }
 
@@ -61,7 +65,7 @@ table {
 .total{
     text-align: right;
     padding: .5em 1em;
-    background: #f3f3f3;
+    background: #fff;
     span{
         display: inline-block;
         color: red;
