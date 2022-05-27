@@ -7,7 +7,7 @@ $(function() {
             containerSelector: '.main',
             topSpacing: 93,
             bottomSpacing: 0,
-            minWidth: 768,
+            minWidth: 991,
             resizeSensor: true,
         });
     }
@@ -161,7 +161,6 @@ $(function() {
     });
 
 
-
     // 園區地圖
     // -------------------------------
     $('.spot').find('.info').hide();
@@ -191,6 +190,20 @@ $(function() {
         }
     });
 
+    // 會員專區 頁籤：展開詳細內容
+    // -------------------------------
+    // $('.records .tabContent').find('.detail').hide();
+    $('.item .detail').addClass('show');
+
+    $('.records .tabContent').find('.item .switch').click(function(event) {
+        if($(this).parent().siblings('.detail').hasClass('show')){
+            $(this).parent().siblings('.detail').removeClass('show').slideUp();
+            $(this).text('展開詳細內容');
+        }else{
+            $(this).parent().siblings('.detail').addClass('show').slideDown();
+            $(this).text('顯示更少');
+        }
+    });
 
     // 預約
     // -------------------------------
@@ -205,7 +218,6 @@ $(function() {
         $('.calander .weekly .list').find('a').removeClass('act');
         $(this).addClass('act');
     });
-
 
     $('.mask_switch').click(function(event) {
         if($(this).siblings('.mask').hasClass('show')){
@@ -233,7 +245,6 @@ $(function() {
         $('.sidebar-schedule .content').addClass('act');
     });
 
-
     // click close、關閉右側邊欄
     $('.sidebar-schedule .btn-close').click(function(event) {
         $('.sidebar-schedule').fadeOut();
@@ -251,7 +262,18 @@ $(function() {
         }
     });
 
+    // 側邊欄
+    // -------------------------------
+    $('.left_block').find('.title a.handle').click(function(event) {
 
+        if($(this).parents('.left_block').hasClass('show')){
+            $(this).parents('.left_block').removeClass('show');
+            $(this).text('開啟');
+        }else{
+            $(this).parents('.left_block').addClass('show');
+            $(this).text('收合');
+        }
+    });
 
 
     //燈箱slick+lightBox組合

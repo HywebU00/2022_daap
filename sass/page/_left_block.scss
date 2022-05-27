@@ -82,9 +82,8 @@
 // 左側節點選單
 .leftblock_nodemenu {
     padding: 0 0 .5em 0;
-    margin-bottom: 1.5em;
     background-color: #fff;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     .title {
         margin: 0 0 1em;
         padding: .65em 1.25em;
@@ -96,6 +95,7 @@
         padding: .25em 1.25em 1em;
         b{}
     }
+
     // 第一層
     >ul {
         margin: 0;

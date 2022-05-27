@@ -110,9 +110,11 @@
             text-align: center;
             margin-top: 1em;
         }
-        .btnbox{
-            text-align: center;
-            padding: 1em 0 0;
+        .btn_grp{
+            // text-align: center;
+            // padding: 1em 0 0;
+            margin-bottom: 0;
+            padding-bottom: .25em;
         }
         .btn-switch{}
         .detail{
@@ -133,9 +135,11 @@
                 @include flex-lg-equal(3, 0px);
                 font-size: 82%;
                 border-bottom: 0;
+                color: #666;
                 b{
                     display: block;
                     font-size: 120%;
+                    color: #000;
                 }
             }
         }
@@ -388,7 +392,7 @@
                 }
                 // 台灣縣市
                 .county{
-                    background: #f2f2f2;
+                    background: #f7f7f7;
                     // margin-left: -2em;
                     // margin-right: -2em;
                     padding: 1em 1.5em;
