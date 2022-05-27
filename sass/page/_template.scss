@@ -224,7 +224,7 @@ body {
         align-items: center;
         .img-container{
             flex: 0 0 360px;
-            border: solid 12px #f1f1f1;
+            border: solid 12px #fff;
         }
         .col{
             flex: 1 1 100%;
@@ -325,6 +325,28 @@ body {
             }
         }
     }
+
+    @include screen('mobile'){
+        .col{
+            .img-container{
+                max-width: initial;
+                width: 100%;
+            }
+            .text{
+                width: 90%;
+                margin-top: 180px;
+                .title{
+                    background: rgba(0,0,0,.5);
+                    padding-top: 3em;
+                    color: #fff;
+                    >p{}
+                }
+                >p{
+                    margin-top: 0;
+                }
+            }
+        }
+    } 
 }
 
 // LP 圖文欄
