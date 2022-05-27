@@ -218,6 +218,42 @@ $(function() {
     });
 
 
+    // 值班紀錄：排班表 right sidebar
+    // -------------------------------
+    
+    // 月曆、開啟右側邊欄
+    $('.calander .links.schedule').find('.mask a').click(function(event) {
+        $('.sidebar-schedule').fadeIn();
+        $('.sidebar-schedule .content').addClass('act');
+    });
+
+    // 手機版
+    $('.calander .link_list').find('.items a').click(function(event) {
+        $('.sidebar-schedule').fadeIn();
+        $('.sidebar-schedule .content').addClass('act');
+    });
+
+
+    // click close、關閉右側邊欄
+    $('.sidebar-schedule .btn-close').click(function(event) {
+        $('.sidebar-schedule').fadeOut();
+        $('.sidebar-schedule .content').removeClass('act');
+    });
+    // click 編輯、展開 .county
+    $('.sidebar-schedule .item').find('button.switch').click(function(event) {
+        // alert('有');
+        if($(this).parent().siblings('.county').hasClass('show')){
+            $(this).parent().siblings('.county').removeClass('show');
+            $(this).text('編輯');
+        }else{
+            $(this).parent().siblings('.county').addClass('show');
+            $(this).text('收合');
+        }
+    });
+
+
+
+
     //燈箱slick+lightBox組合
     // -------------------------------
     $('.cp_slider').slick({

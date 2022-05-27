@@ -19,11 +19,14 @@ $(function() {
     /////// header選單 tab及 fix設定////////
     /*-----------------------------------*/
     var _menu = $('.menu'),
-        _megamenu = $('.megamenu');
+        _megamenu = $('.megamenu'),
+        _leftSldeMenu = $('.leftblock_nodemenu ul');
     _menu.find('li').has('ul').addClass('hasChild');
     _megamenu.find('li').has('ul').addClass('hasChild');
+    _leftSldeMenu.find('li').has('ul').addClass('hasChild');
     var liHasChild = _menu.find('li.hasChild'),
         liHasChild2 = _megamenu.children('ul').children('li.hasChild');
+        liHasChild3 = _leftSldeMenu.find('li.hasChild');
     /*-----------------------------------*/
     ////////////// 行動版選單切換////////////
     /*-----------------------------------*/
@@ -94,6 +97,24 @@ $(function() {
     _menu.find('li:last>a').focusout(function() {
         _menu.find('li ul').hide();
     });
+
+    // 左側邊欄選單
+    liHasChild3.children('a').keyup(function() {
+        $(this).siblings('ul').show();
+        $(this)
+            .parent('li')
+            .siblings()
+            .focus(function() {
+                $(this).hide();
+            });
+    });
+    _leftSldeMenu.find('li').keyup(function() {
+        $(this).siblings().children('ul').hide();
+    });
+    _leftSldeMenu.find('li:last>a').focusout(function() {
+        _menu.find('li ul').hide();
+    });
+
     // megamenu
     liHasChild2.children('a').keyup(function() {
         $(this).siblings('ul').fadeIn();
@@ -238,6 +259,19 @@ $(function() {
                 },
             });
             liHasChild.off('click');
+
+            // 副選單滑出
+            liHasChild3.on({
+                mouseenter: function() {
+                    $(this).children('ul').stop(true, false).slideDown();
+                },
+                mouseleave: function() {
+                    $(this).parent().siblings('ul').hide();
+                    $(this).children('ul').stop(true, false).slideUp();
+                },
+            });
+            liHasChild.off('click');
+
             // megamenu
             // 副選單滑出
             liHasChild2.on({

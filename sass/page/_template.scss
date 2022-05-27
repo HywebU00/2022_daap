@@ -89,8 +89,8 @@ body {
     }
     .left_block {
         flex: none;
-        flex-basis: 260px;
-        max-width: 260px;
+        flex-basis: 220px;
+        max-width: 220px;
         margin-right: 40px;
         &.hidden {
             +.center_block {
@@ -1065,9 +1065,97 @@ $spec_margin: 8px;
     }
 }
 
+// 
+.News{
+    padding: 1em 2em;
+    background: #fff;
+
+    .sub_title{
+        margin: 0;
+        padding: 0.5em 0;
+        color: darken($primaryColor, 10);
+        font-weight: bold;
+        border-bottom: solid 2px #e7e7e7;
+    }
+    ol{
+        li{
+            a{
+                font-size: .9em;
+                display: block;
+                color: #666;
+                time{
+                    display: inline-block;
+                    padding: 0 1.25em;
+                    margin-right: 6px;
+                    font-size: .813em;
+                    border-radius: 3px;
+                    box-shadow: inset 0 0 0 1px #ddd;
+                }
+
+                &:hover, &:focus{
+                    color: $aHover;
+                    time{
+                        background: $aHover;
+                        color: #fff;
+                        border-radius: 3px;
+                        box-shadow: none;
+                    }
+                }
+            }
+        }
+    }
+
+    // @include screen('mobile'){
+    //     @include gutter();
+    // }
+}
+
 // 月曆：sp3、sp4參訪預約導覽
 // 共用
 .calander{
+
+    .tip{
+        // padding: 30px 0;
+        margin: 20px 0;
+        font-size: .9em;
+        span{
+            display: inline-block;
+            margin-right: 12px;
+        }
+        b{
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            margin-bottom: 3px;
+            margin-left: 2px;
+         }
+
+        .today, .unfilled, .done{
+            b{ border-radius: 50%; }
+        }
+        .today{
+            b{ background: $primaryColor; }
+        }
+        .occupied{
+            b{
+                background: url(../images/icon/icon_close.svg) 50% 50% no-repeat;
+                background-size: 14px 14px;
+            }
+        }
+        .unfilled{
+            b{ background: #ff5722;}
+        }
+        .done{
+            b{
+                background: url(../images/icon/icon_check.svg) 50% 50% no-repeat, yellowgreen;
+                background-size: 12px 12px;
+            }
+        }
+        .picked{
+            b{ background: darken($lightColor2, 8); }
+        }
+    }
 
     // 月曆切換模組(header)
     .month_ctl{
@@ -1152,7 +1240,7 @@ $spec_margin: 8px;
             a{
                 display: block;
                 padding: .5em;
-                @include text-overflow; 
+                // @include text-overflow; 
 
                 &:hover{ background: #ecdfca; color: #333; }
                 &:focus{
@@ -1205,12 +1293,50 @@ $spec_margin: 8px;
             }
         }
 
+        .mask{
+            // 其他人：他人設定項目，不可被點選者，以純文字顯示
+            p{
+                color: #333;
+                // font-size: .813em;
+                margin: 0;
+                padding: .25em 1.125em;
+                line-height: 1.2;
+                time{ padding-right: 2px;}
+
+                position: relative;
+                &:before{
+                    content: '';
+                    display: block;
+                    width: 4px;
+                    height: 4px;
+                    background: #757575;
+                    border-radius: 50%;
+                    position: absolute;
+                    left: .5em;
+                    top: 50%;
+                    margin-top: -2px;
+                }
+            }
+        }
+
         // link list
         &.links{
+
+            +.tip{
+                .today{
+                    b{ background: #ecdfca; }
+                }
+                .picked{
+                    b{ background: darken($lightColor2, 8); }
+                }
+            }
+
             td{
                 text-align: left;
                 vertical-align: baseline;
                 padding: .25em;
+                padding-bottom: 0.5em;
+                font-size: .813em;
 
                 >span{
                     display: inline-block;
@@ -1219,16 +1345,15 @@ $spec_margin: 8px;
                     height: 28px;
                     line-height: 28px;
                     text-align: center;
-                    font-size: .813em;
                 }
 
+                // 你自己
                 a{
-                    font-size: .813em;
-                    padding: .25em 0 .25em 1.125em;
+                    padding: .45em 1.125em;
                     line-height: 1.4;
                     border-radius: 12px;
-                    @include text-overflow;
-                    max-width: 146px;
+                    // @include text-overflow;
+                    // max-width: 146px;
 
                     position: relative;
                     &:before{
@@ -1240,8 +1365,7 @@ $spec_margin: 8px;
                         border-radius: 50%;
                         position: absolute;
                         left: .5em;
-                        top: 50%;
-                        margin-top: -2px;
+                        top: 11px;
                     }
 
                     &.act{
@@ -1249,6 +1373,8 @@ $spec_margin: 8px;
                         background: darken($lightColor2, 8);
                         &:before{ background: rgba(255,255,255,.85); }
                     }
+
+                    time{ padding-right: 2px;}
                 }
                 
                 &.unable{}
@@ -1273,20 +1399,17 @@ $spec_margin: 8px;
                 }
 
                 .mask{
-                    padding: 8px 0;
-                    height: 90px;
+                    margin: 8px 0 0;
+                    max-height: 66px;
                     overflow: hidden;
-
-                    &.show{ height: 100%; }
+                    &.show{ max-height: initial; }
                 }
                 .mask_switch{
-                    font-size: .813em;
                     font-weight: bold;
                     width: -webkit-fill-available;
                     line-height: 2;
                     padding: 0 !important;
                 }
-
                 // 手機版樣式
                 .mobile_type{
                     text-align: right;
@@ -1297,43 +1420,145 @@ $spec_margin: 8px;
                         height: 36px;
                         text-align: center;
                         line-height: 36px;
-                        background: darken($lightColor2, 5);
-                        color: #fff;
-                        font-size: .813em;
-                        border-radius: 50%;
+                        background: #ebebeb;
+                        border: 1px solid #ddd;
+                        color: #222;
+                        font-weight: bold;
+                        font-size: 1.25em;
                         padding: inherit;
 
                         &:before{ display: none;}
+
+                        &.act{
+                            color: #fff;
+                            background: darken($lightColor2, 8);
+                        }
                     }
                     display: none; //預設隱藏
                 }
             }
 
-            @media screen and (max-width: 1300px) {
+            // 我的值勤班表
+            &.schedule{
+                td{
+                    .mask{
+                        max-height: initial;
+                        height: auto;
+                        margin: 8px 0;
+                    }
+                    a{
+                        border-radius: 4px;
+                        &:before{ background: #ff5722; }
+                        &:hover{}
+
+                        &.act{
+                            &:before{ background: #fff; }
+                        }
+
+                        &.finish{
+                            padding-right: 20px;
+                            &:before{
+                                width: 18px;
+                                height: 18px;
+                                background: url(../images/icon/icon_check.svg) 50% 50% no-repeat, yellowgreen;
+                                background-size: 8px 8px;
+                                margin-top: -9px;
+                                left: initial;
+                                right: 2px;
+                                top: 50%;
+                            }
+
+                            &.act{
+                                &:before{ filter: invert(1); }
+                            }
+                        }
+                    }
+                    p:before{ display: none; }
+
+                    input[type="checkbox"],
+                    input[type="radio"] { padding: 0 !important; }
+                    input[disabled]{ opacity: 0;}
+
+                    // 我要排班
+                    .shift-based{
+                        text-align: center;
+                        border-radius: 3px;
+                        font-weight: bold;
+                        width: -webkit-fill-available;
+                        line-height: 2;
+                        padding: 0 !important;
+                        background: #e7e7e7;
+                        color: #444;
+
+                        &:hover, &:focus{
+                            background: darken(#e7e7e7, 10);
+                            color: #222;
+                        }
+                    }
+                }
+            }
+        }
+        @media screen and (max-width: 1300px) {
+            // link list
+            &.links{
                 td{
                     a{
                         border-radius: 4px;
                         max-width: inherit;
                         line-height: 1.2;
                         time{ display: block; }
-                        &:before{ top: 14px; }
+                        // &:before{ top: 12px; }
                     }
                     .mask{
-                        height: 130px;
+                        max-height: initial;
+                        height: 110px;
+                        &.show{
+                            max-height: 100%;
+                            height: auto;
+                        }
+
+                        p{
+                            time{ display: block; }
+                        }
                     }
                 }
             }
+        }
+        @include screen('tablet'){
 
-            @include screen('tablet'){
+            // link list
+            &.links{
                 td{
                     .mask, .mask_switch{ display: none; }
                     // 手機版樣式
                     .mobile_type{ display: block; }
                 }
+                // 我的值勤班表
+                &.schedule{
+                    td{
+                        .check_grp{ display: none; }
+                    }
+                }
             }
-            @include screen('mobile'){
-                // 手機版樣式
-                .mobile_type{ margin: 0.25em 0.4em; }
+        }
+        @include screen('mobile'){
+            // link list
+            &.links{
+                td{
+                    // 手機版樣式
+                    .mobile_type{ margin: 0.25em 0.4em; }
+                }
+
+                // 我的值勤班表
+                &.schedule{
+                    td{
+                        // 我要排班
+                        .shift-based{
+                            line-height: 1.2;
+                            padding: 10px 2px !important;
+                        }
+                    }
+                }
             }
         }
     }
@@ -1367,6 +1592,20 @@ $spec_margin: 8px;
     }
 
     @include screen('mobile'){
+
+        margin-left: -1.5em;
+        margin-right: -1.5em;
+
+        .tip,
+        .month_ctl,
+        .function,
+        .link_list,
+        .tip_box,
+        .News{
+            margin-left: 1em;
+            margin-right: 1em;
+        }
+
         .month_ctl{
             flex-flow: column wrap;
 
@@ -1383,9 +1622,7 @@ $spec_margin: 8px;
             }
         }
         // 月份切換
-        .toggle{
-            order: 2;
-        }
+        .toggle{ order: 2; }
         // 當前月份
         time.this_date{}
     }
@@ -1399,35 +1636,97 @@ $spec_margin: 8px;
 
     >time{
         flex: 0 0 auto;
-        font-size: 1.25em;
+        font-size: 1.5em;
         color: #222;
         line-height: 1.4;
 
         span{
             display: inline-block;
             padding: .5em 1.65em .35em;
-            background: #ddd;
+            // color: #fff;
+            // background: darken($lightColor2, 8);
             color: #222;
             &:before{
                 content: '您選擇的日期：';
                 display: block;
-                font-size: 50%
+                font-size: 60%
             }
         }
     }
     .items{
         flex: 1 1 auto;
-        
-        a{
-            display: block;
+        padding: 1.25em 1em;
+        background: #fff;
+        p, a{
             line-height: 2.6;
             text-align: center;
-
+            time{ margin-right: 6px; }
         }
+        p{
+            margin: 0;
+        }
+        a{
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background: #942603;
+            border: 1px solid #ddd;
+            color: #fff;
+
+            position: relative;
+            &:before{
+                content: '';
+                display: block;
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                margin-top: -12px;
+                right: 16px;
+                top: 50%;
+
+                // background: #ff5722;
+                background: url(../images/icon/icon_important.svg) 50% 50% no-repeat,#ff5722;
+                background-size: 12px 12px;
+            }
+
+            &.finish{
+                background: #fff;
+                border: 1px solid #ddd;
+                color: #222;
+                &:before{
+                    background: url(../images/icon/icon_check.svg) 50% 50% no-repeat, yellowgreen;
+                    background-size: 12px 12px;
+                }
+
+                &.act{
+                    &:before{ filter: invert(1); }
+                }
+            }
+        }
+
+        input[disabled]{ opacity: 0;}
+        label{ display: block; padding: .5em 0; }
     }
 
     @include screen('tablet'){
         display: flex;
+    }
+
+    @include screen('mobile'){
+        flex-flow: row wrap;
+
+        >time, .items{ flex: 1 1 100%; }
+        >time{
+            text-align: center;
+            span{
+                // background: transparent;
+                // color: #222;
+                margin-block: 10px;
+                &:before{}
+            }
+        }
+        .items{}
     }
 }
 
@@ -1438,6 +1737,12 @@ $spec_margin: 8px;
     border: #ddd 1px solid;
     flex-flow: row nowrap;
     align-items: initial;
+
+    +.tip{
+        .today{
+            b{ background: #ecdfca; }
+        }
+    }
 
     .day{
         @include flex-xs-equal(1, 0px);
@@ -1465,11 +1770,14 @@ $spec_margin: 8px;
                     position: absolute;
                     width: 10px;
                     height: 10px;
-                    background: pink;
+                    background: #ecdfca;
                     border-radius: 50%;
                     left: 16%;
-                    top: 15%;
+                    top: 10px;
                 }
+            }
+            .items{
+                .gallery{ border: 1px solid #d2c4b0 }
             }
         }
 
@@ -1487,6 +1795,7 @@ $spec_margin: 8px;
                 border: #ddd 1px solid;
                 border-radius: 6px;
                 background: #fff;
+                overflow: hidden;
                 .gallery_title{
                     font-size: .9em;
                     font-weight: bold;
@@ -1505,24 +1814,29 @@ $spec_margin: 8px;
                     }
                 }
                 .list{
-                    a{
+                    a, p{
                         display: block;
                         font-size: .813em;
                         line-height: 1.2;
                         padding: 6px 0;
+                        margin: 0;
                         color: #333;
 
                         time{}
 
-                        &:hover{ background: #ecdfca; color: #333; }
-                        &:focus{
-                            color: #fff;
-                            background: darken($lightColor2, 8);
-                        }
+                        // &:hover{ background: #ecdfca; color: #333; }
+                        // &:focus{
+                        //     color: #fff;
+                        //     background: darken($lightColor2, 8);
+                        // }
 
-                        &.act{
-                            color: #fff;
-                            background: darken($lightColor2, 8);
+                        // &.act{
+                        //     color: #fff;
+                        //     background: darken($lightColor2, 8);
+                        // }
+                        &.unable{
+                            color: #333;
+                            background: #f4f4f4;
                         }
                     }
                 }
@@ -1540,6 +1854,21 @@ $spec_margin: 8px;
 
     @include screen('tablet'){
         flex-flow: row wrap;
+        .day{
+            .items{
+                font-size: 110%;
+                // .gallery{
+                //     .list{
+                //         a, p{ font-size: 1.125em; }
+                //     }
+                // }
+            }
+        }
+    }
+
+    @include screen('mobile'){
+        margin-left: 1em;
+        margin-right: 1em;
     }
 }
 

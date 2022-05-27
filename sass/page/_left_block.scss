@@ -96,33 +96,81 @@
         padding: .25em 1.25em 1em;
         b{}
     }
-    ul {
+    // 第一層
+    >ul {
         margin: 0;
         padding: 0;
         // padding: 0 1.25em 0em;
         list-style-type: none;
-        li {
+
+        li{
+            a{
+                // &.act{
+                //     background: $lightColor2;
+                //     color: #222;
+                // }
+                &:hover, &:focus{
+                    background: $lightColor2;
+                    color: #000;
+                }
+            }
+        }
+
+        >li {
             font-size: 0.938rem;
             margin: 0;
-            // padding: 0 0 5px;
             border-bottom: 1px solid #ccc;
-            &:last-child {
-                border: none;
-            }
-            a {
+
+            &:last-child { border: none; }
+            >a {
                 display: block;
                 padding: .75em 1.25em;
                 line-height: 1.4em;
                 color: #333;
-                &:hover {
-                    background: #ddd;
+            }
+
+            &.hasChild {
+                >a {
+                    &:after {
+                        content: '';
+                        width: 4px;
+                        height: 4px;
+                        display: inline-block;
+                        margin-left: 0.5em;
+                        vertical-align: middle;
+                        border: 2px solid lighten($color-word, 40);
+                        transform: rotate(135deg);
+                        border-bottom: none;
+                        border-left: none;
+                        margin-bottom: 0.2em;
+                    }
+                }
+            }
+
+            // 第二層
+            >ul{
+                @include li-reset;
+                li{
+                    border-bottom: transparent;
+                    margin-bottom: 0;
+                    a{
+                        display: block;
+                        color: darken($lightColor2, 15);
+                        background: #f3f3f3;
+                        padding: 6px 10px 6px 36px;
+                    }
                 }
 
-                &.act{
-                    background: $lightColor2;
-                    color: #222;
-                }
+                display: none;
             }
         }
     }
 }
+
+
+
+
+
+
+
+

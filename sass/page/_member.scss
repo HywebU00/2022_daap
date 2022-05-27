@@ -60,7 +60,6 @@
         }
     }
 }
-
 .register{
     width: 90%;
     margin: 3em auto;
@@ -76,8 +75,6 @@
         }
     }
 }
-
-
 // 已登入
 .logged_in{
     //search
@@ -85,10 +82,6 @@
         margin-right: 6.2em;
     }
 }
-
-// 帳號設定
-// 預約紀錄
-
 // 會員預約記錄
 .records{
     .tabContent{
@@ -146,6 +139,347 @@
                 }
             }
         }
+    }
+}
+
+// 排班表 right sidebar
+// .sidebar-schedule{
+//     // position: fixed;
+//     // top: 0;
+//     // left: 0;
+//     // height: 100%;
+//     // width: 100%;
+//     // z-index: 999999;
+//     // overflow-x: hidden !important;
+//     // overflow-y: auto !important;
+//     // -webkit-overflow-scrolling: touch;
+//     // -webkit-transform: translate3d(0, 0, 0);
+//     // box-sizing: border-box;
+
+//     .content{
+//         // position: fixed;
+//         // top: 0;
+//         // right: 0;
+//         // width: 60%;
+//         // height: 100%;
+//         // z-index: 9999;
+//         // overflow-x: hidden !important;
+//         // overflow-y: auto !important;
+//         // -webkit-overflow-scrolling: touch;
+//         // -webkit-transform: translate3d(0, 0, 0);
+//         // box-sizing: border-box;
+//         // background: $primaryColor;
+//         // background: rgba(0,0,0,.85);
+//         background: rgba(255,255,255,1);
+
+//         padding: 2em;
+//         color: #222;
+//         .title{}
+//         .list{
+//             // border-top: 1px solid yellow;
+//             .item{
+//                 border: 1px solid #ddd;
+//                 margin: 16px 0;
+//                 // 值班時段
+//                 .duty-time{
+//                     margin: 0;
+//                     font-size: 1.5em;
+//                     // display: inline-block;
+//                     padding: 1em;
+//                     background: #f9f9f9;
+//                 }
+//                 ul{
+//                     li{
+//                         span{}
+//                         b{
+//                             display: inline-block;
+//                             width: 28px;
+//                             height: 28px;
+//                             color: $primaryColor;
+//                             line-height: 28px;
+//                             text-align: center;
+//                             margin: 0 4px;
+//                         }
+//                     }
+//                 }
+//                 // 台灣縣市
+//                 .county{
+//                     background: #f2f2f2;
+//                     margin-left: -2em;
+//                     margin-right: -2em;
+//                     padding: 1.5em 2em;
+
+//                     display: none; //預設關閉
+//                     .county-wrap{
+//                         .location{
+//                             margin: 0;
+//                             border-top: 1px solid rgba(0,0,0,.5);
+//                             padding: 6px 10px 2px;
+//                             font-size: .813em;
+//                             font-weight: bold;
+//                         }
+//                         .check_grp{
+//                             @extend %flex_set;
+
+//                             &.form_inline{
+//                                 padding-bottom: 10px;
+//                                 input[type="text"]{
+//                                     max-width: inherit;
+//                                     padding: 4px 6px;
+//                                 }
+//                             }
+
+//                             >label{
+//                                 @include flex-xs-equal(1, 0px);
+//                                 @include flex-sm-equal(1, 0px);
+//                                 @include flex-md-equal(3, 0px);
+//                                 @include flex-lg-equal(3, 0px);
+//                                 margin: 0;
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//         .btn-close{
+//             position: absolute;
+//             top: 20px;
+//             right: 24px;
+//         }
+//     }
+//     .overlay{
+//         // background: RGBA(0, 0, 0, .5);
+//         // position: fixed;
+//         // top: 0;
+//         // left: 0;
+//         // right: 0;
+//         // bottom: 0;
+//         // width: 100%;
+//         // height: 100%;
+//         // z-index: 9;
+//         // overflow-x: hidden !important;
+//         // overflow-y: auto !important;
+//     }
+// }
+
+.sidebar-schedule{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0, 0, 0);
+    box-sizing: border-box;
+    z-index: 999999;
+
+    display: none;
+
+    .content,
+    .overlay{
+        position: fixed;
+        height: 100%;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+        -webkit-transform: translate3d(0, 0, 0);
+        box-sizing: border-box;
+    }
+
+    .content{
+        right: -65%;
+        width: 65%;
+        z-index: 9999;
+        background: rgba(255,255,255,1);
+        padding: 2em;
+        color: #222;
+
+        transition: all .45s ease-in;
+        &.act{ right: 0%; }
+
+        .title{
+            margin: 0 10px 0 0;
+            font-size: 1.5em;
+            display: inline-block;
+
+            +time{
+                display: inline-block;
+                line-height: 1.6;
+                letter-spacing: 1px;
+                b{
+                    display: inline-block;
+                    // background: $lightColor;
+                    border-top: solid 1px #ddd;
+                    border-bottom: solid 1px #ddd;
+                    font-size: 2em;
+                    width: 100px;
+                    // height: 100px;
+                    line-height: 60px;
+                    text-align: center;
+                    margin-left: 6px;
+                }
+            }
+        }
+        .list{
+            // background: pink;
+            overflow-y: scroll;
+            height: calc(100% - 60px);
+            .item{
+                border: 1px solid #ddd;
+                margin: 16px 0;
+                border-radius: 4px;
+                overflow: hidden;
+
+                // 值班時段
+                .duty-time{
+                    margin: 0;
+                    font-size: 1.5em;
+                    padding: 1em;
+                    color: #fff;
+                    background: #942603;
+
+                    span{
+                        position: relative;
+                        &:after{
+                            content: '';
+                            width: 26px;
+                            height: 26px;
+                            position: absolute;
+                            border-radius: 50%;
+                            background: url(../images/icon/icon_important.svg) 50% 50% no-repeat, #ff5722;
+                            background-size: 12px 12px;
+                            margin-top: -12px;
+                            margin-left: 4px;
+                            top: 50%;
+                        }
+                    }
+                }
+                // 已填寫
+                &.finish{
+                    .duty-time{
+                        background: #f9f9f9;
+                        color: #222;
+
+                        span{
+                            position: relative;
+                            &:after{
+                                background: url(../images/icon/icon_check.svg) 50% 50% no-repeat, yellowgreen;
+                                background-size: 12px 12px;
+                            }
+                        }
+                    }
+                }
+
+                ul{
+                    li{
+                        span{}
+                        b{
+                            display: inline-block;
+                            width: 28px;
+                            height: 28px;
+                            color: $primaryColor;
+                            line-height: 28px;
+                            text-align: center;
+                            margin: 0 4px;
+                        }
+                    }
+                }
+                // 台灣縣市
+                .county{
+                    background: #f2f2f2;
+                    // margin-left: -2em;
+                    // margin-right: -2em;
+                    padding: 1em 1.5em;
+
+                    display: none; //預設關閉
+                    &.show{ display: block; }
+
+                    .county-wrap{
+                        .location{
+                            margin: 0;
+                            border-top: 1px solid rgba(0,0,0,.5);
+                            padding: 6px 10px 2px;
+                            font-size: .813em;
+                            font-weight: bold;
+                        }
+                        .check_grp{
+                            @extend %flex_set;
+
+                            &.form_inline{
+                                padding-bottom: 10px;
+                                input[type="text"]{
+                                    max-width: 76px;
+                                    padding: 4px 6px;
+                                }
+                            }
+
+                            >label{
+                                @include flex-xs-equal(1, 0px);
+                                @include flex-sm-equal(1, 0px);
+                                @include flex-md-equal(3, 0px);
+                                @include flex-lg-equal(3, 0px);
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .btn_grp{ padding-bottom: .25em;}
+        }
+        .btn-close{
+            position: absolute;
+            top: 2em;
+            right: 2em;
+            background: url(../images/icon/icon_close.svg) 50% 50%no-repeat ,#fff;
+            background-size: 12px 12px;
+            text-indent: -9999px;
+            padding: 0;
+            min-width: initial;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+        }
+
+        @include screen('tablet'){
+            right: -75%;
+            width: 75%;
+        }
+
+        @include screen('mobile'){
+            right: -90%;
+            width: 90%;
+            .title{
+                display: block;
+
+                +time{
+                    margin-top: 10px;
+                    b{
+                        display: block;
+                        margin-left: 0;
+                    }
+                }
+            }
+            .list{
+                .item{
+                    // 值班時段
+                    .duty-time{ font-size: 1.125em; }
+                }
+            }
+        }
+    }
+
+    .overlay{
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 9;
+        background: RGBA(0, 0, 0, .5);
     }
 }
 
