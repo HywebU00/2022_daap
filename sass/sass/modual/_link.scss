@@ -28,15 +28,19 @@
         }
         a {
             border-radius: 4px;
-            border: 2px solid #DDD;
+            border: 2px solid darken(#f1efe9, 10);
             padding: 1em 2em;
             display: block;
             vertical-align: top;
             position: relative;
             height: 100%;  
             box-sizing: border-box;
-            @include aSetting_nocolor;
+            // @include aSetting_nocolor;
             // @include text-overflow;
+            background: #f1efe9;
+            color: darken(#f1efe9, 60);
+
+            transition: all .3s ease;
             .num {
                 position: absolute;
                 width: 1em;
@@ -49,8 +53,9 @@
             }
             &:hover,
             &:focus {
-               border: 2px solid $primaryColor;
-                color: $primaryColor;
+               border: 2px solid  darken(#f1efe9, 60);
+               background: darken(#f1efe9, 60);
+               color: #fff;
             }
         }
     }

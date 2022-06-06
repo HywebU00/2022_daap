@@ -159,12 +159,25 @@
     }
     .tabContent{
         padding: 4em;
-
         .tip{
             position: absolute;
             left: 0;
             top: 2em;
-            width: 300px;
+            width: 280px;
+        }
+    }
+
+    @include screen('mobile') {
+        .tabContent{
+            padding: 0;
+
+            .tip{
+                top: inherit;
+
+                +img{
+                    margin-top: 7.5em;
+                }
+            }
         }
     }
 }

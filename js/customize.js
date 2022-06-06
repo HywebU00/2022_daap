@@ -129,7 +129,7 @@ $(function() {
     $(document).on('touchend click', function(e) {
         var container2 = $('.cards');
         if (!container2.is(e.target) && container2.has(e.target).length === 0) {
-            $('.cards .showboxs').hide();
+            $('.cards .col').removeClass('active');
         }
     });
 
@@ -164,16 +164,16 @@ $(function() {
     // 園區地圖
     // -------------------------------
     $('.spot').find('.info').hide();
-    var _btnSpot = $('.spot .title');
+    var _btnSpot = $('.spot .title').find('a');
 
     _btnSpot.off().click(function(e) {
         $('.info').stop(true, true).slideUp();
-        $(this).next('.info').stop(true, true).slideToggle();
+        $(this).parent('.title').next('.info').stop(true, true).slideDown();
         e.preventDefault();
     });
     _btnSpot.keyup(function(event) {
         $('.info').stop(true, true).slideUp();
-        $(this).next('.info').stop(true, true).slideDown();
+        $(this).parent('.title').next('.info').stop(true, true).slideDown();
     });
     $('.zoneMap')
         // .find('.btn_grp>button:last')

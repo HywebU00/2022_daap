@@ -132,10 +132,11 @@ table {
                 font-size: .813em;
                 padding: 0 .65em;
                 border-radius: 3px;
-                box-shadow: inset 0 0 0 1px #ddd;
-                @include screen("mobile") {
-                    display: block;
-                }
+                // box-shadow: inset 0 0 0 1px #ddd;
+                background: #dfdccf;
+                // @include screen("mobile") {
+                //     display: block;
+                // }
             }
             time {
                 display: block;

@@ -294,15 +294,18 @@ body {
             .title{
                 display: flex;
                 flex-flow: row-reverse nowrap;
+                align-items: center;
                 >span{
                     font-size: 6em;
                     color: #ddd;
                     display: inline-block;
-                    padding: 0 .25em;
+                    line-height: 1;
                 }
                 >p{
                     margin: 0;
                     font-size: 140%;
+                    padding: 0 1em;
+                    line-height: 1.2;
                 }
             }
             >p{
@@ -326,27 +329,52 @@ body {
         }
     }
 
-    @include screen('mobile'){
+    @include screen('tablet'){
         .col{
             .img-container{
                 max-width: initial;
                 width: 100%;
             }
             .text{
-                width: 90%;
-                margin-top: 180px;
+                width: 75%;
+                margin-top: 200px;
                 .title{
                     background: rgba(0,0,0,.5);
-                    padding-top: 3em;
+                    padding: 0.5em 1.25em;
                     color: #fff;
+                    >span{
+                        font-size: 3em;
+                    }
                     >p{}
                 }
                 >p{
                     margin-top: 0;
+                    line-height: 1.5;
+                    padding: 1.25em 1.5em;
                 }
             }
         }
-    } 
+    }
+
+    @include screen('mobile') {
+        .col{
+            display: block;
+            padding: 1em 0;
+
+            .img-container{ position: inherit; }
+            .text{
+                width: 100%;
+                margin-top: 0;
+
+                .title{
+                    background: #fff;
+                    color: #222;
+                    padding: 1.5em 1.25em 0;
+                    flex-flow: row nowrap;
+                }
+            }
+        }
+    }
 }
 
 // LP 圖文欄
@@ -391,16 +419,16 @@ body {
     //     margin: .5em 0;
     // }
 
-    background: #FFF;
+    // background: #FFF;
     width: 100%;
     margin: 1em 0;
     border-radius: 3px;
     overflow: hidden;
-    transition: all .3s ease;
 
     a {
         display: block;
         height: 360px;
+        overflow: hidden;
         @include aSetting(#555);
 
         position:relative;
@@ -409,12 +437,12 @@ body {
             top: 0;
             width: 100%;
             height: 100%;
-            border-left: solid 10px #fff;
+            // border-left: solid 10px #fff;
             color: #fff;
 
             time, p{ position: absolute; }
             time{
-                left: -10px;
+                // left: -10px;
                 top: 20px;
                 background: $secondaryColor;
                 padding: 0.45em 1em;
@@ -426,6 +454,7 @@ body {
                 line-height: 1.4;
                 font-size: 90%;
                 margin: 0;
+                margin-left: 10px;
                 bottom:0;
                 padding: 1em 2em;
                 background: rgb(0,0,0);
@@ -436,22 +465,39 @@ body {
             }
         }
 
-        .img-container { height: 100%; }
+        .img-container {
+            height: 100%;
+            width: calc(100% - 10px);
+            margin-left: 10px;
 
-        &:focus {
-            &:before{
-                content:"";
-                position:absolute;
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top:0;
-                right:0;
-                bottom:0;
-                z-index: 1;
-                box-shadow:0px 0px 0px 1px $aHover inset;
+            img{
+                transform: scale(1.0);
+                transition:  all .3s ease;
             }
         }
+
+        // &:focus {
+        //     &:before{
+        //         content:"";
+        //         position:absolute;
+        //         width: 100%;
+        //         height: 100%;
+        //         left: 0;
+        //         top:0;
+        //         right:0;
+        //         bottom:0;
+        //         z-index: 1;
+        //         box-shadow:0px 0px 0px 1px $aHover inset;
+        //     }
+        // }
+
+        &:hover, &:focus{
+            .caption {}
+            .img-container{
+                img{ transform: scale(1.2); }
+            }
+        }
+
     }
 }
 
@@ -742,7 +788,7 @@ $spec_margin: 8px;
 
     table{
         tr{
-            border-bottom: 1px solid #c0a07f;
+            border-bottom: 1px solid #d0bfad;
 
             &:last-child{
                 border-bottom: none;
@@ -790,20 +836,22 @@ $spec_margin: 8px;
 
     .spot{
         position: absolute;
-        width: 320px;
+        width: 290px;
+        text-align: center;
 
         .title{
-            font-size: 1em;
-            margin: .5em 0 !important;
+            margin: 0 0 !important;
             text-align: center;
+            font-size: .9em;
             a{
                 display: inline-block;
                 margin: auto;
                 color: #fff;
                 background: rgba(0,0,0,.5);
-                padding: 4px 20px;
+                padding: 0 20px;
+                line-height: 2;
                 font-weight: bold;
-                border-radius: 4px;
+                border-radius: 3px;
 
                 &:hover, &:focus{
                     background: rgba(0,118,144,.85);
@@ -823,6 +871,8 @@ $spec_margin: 8px;
             p{
                 margin: .5em 0;
                 line-height: 1.4;
+                text-align: left;
+                font-size: .9em;
             }
             .btn_grp{
                 padding: .25em 0;
@@ -835,59 +885,91 @@ $spec_margin: 8px;
 
         &.no-1{
             // 霧峯亭
-            left: 0; top: 140px;
+            // left: 0; top: 140px;
+            left: -3%; top: 17%;
         }
         &.no-2{
             // 後山公園
-            left: 270px; top: 27px;
+            // left: 270px; top: 27px;
+            left: 13.8%; top: 2%;
         }
         &.no-3{
             // 議事大樓
-            right: 300px; top: 27px;
+            // right: 300px; top: 27px;
+            right: 26.5%; top: 2%;
         }
         &.no-4{
             // 議政博物館
-            right: 0; top: 110px;
+            // right: 0; top: 110px;
+            right: 0%; top: 13.6%;
         }
         &.no-5{
             // 朝琴紀念館
-            left: 160px; top: 210px;
+            // left: 160px; top: 210px;
+            left: 11%; top: 26%;
         }
         &.no-6{
             // 黃朝琴先生像
-            left: 360px; top: 210px;
+            // left: 360px; top: 210px;
+            left: 31.85%; top: 26%;
         }
         &.no-7{
             // 議蘆會館
-            left: 160px; top: 320px;
+            // left: 160px; top: 320px;
+            left: 14%; top: 39.6%;
         }
         &.no-8{
             // 日月池
-            right: 210px; top:290px;
+            // right: 210px; top:290px;
+            right: 18.58%; top:35.89%;
         }
         &.no-9{
             // 民主草坪
-            right: 20px; top: 330px;
+            // right: 20px; top: 330px;
+            right: 1.77%; top: 40.84%;
         }
         &.no-10{
             // 椰林大道
-            right: 330px; top: 400px;
+            // right: 330px; top: 400px;
+            right: 29.2%; top: 49.5%;
         }
         &.no-11{
             // 福桂林道
-            left: 50px; top: 460px;
+            // left: 50px; top: 460px;
+            left: 4.42%; top: 56.93%;
         }
         &.no-12{
             // 圓形花圃
-            left: 160px; top: 510px;
+            // left: 160px; top: 510px;
+            left: 14.15%; top: 63.11%;
         }
         &.no-13{
             // 健康步道
-            left: 380px; top: 480px;
+            // left: 380px; top: 480px;
+            left: 33.62%; top: 59.4%;
         }
         &.no-14{
             // 入口Ｖ型拱門
-            left: 480px; bottom: 90px;
+            // left: 480px; bottom: 90px;
+            left: 42.27%; bottom: 11.13%;
+        }
+    }
+
+    @include screen('mobile') {
+        margin: 2em 0;
+        .spot{
+            position: static;
+            width: 100%;
+            margin: 10px 0;
+
+            .title{
+                a{
+                    display: block;
+                    font-size: 1em;
+                    line-height: 2.6;
+                }
+            }
+            .info{}
         }
     }
 }
@@ -1550,15 +1632,20 @@ $spec_margin: 8px;
                     }
                     a{
                         border-radius: 4px;
+                        color: #980000;
                         &:before{ background: #ff5722; }
                         &:hover{}
 
                         &.act{
+                            color: #fff;
                             &:before{ background: #fff; }
+
+                            &.finish{ color: #fff !important; }
                         }
 
                         &.finish{
                             padding-right: 20px;
+                            color: #222;
                             &:before{
                                 width: 18px;
                                 height: 18px;
