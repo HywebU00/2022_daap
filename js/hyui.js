@@ -20,6 +20,7 @@ $(function() {
     /*-----------------------------------*/
     var _menu = $('.menu'),
         _megamenu = $('.megamenu'),
+        _sidefixed = $('.side_fixed'),
         _leftSldeMenu = $('.leftblock_nodemenu ul');
     _menu.find('li').has('ul').addClass('hasChild');
     _megamenu.find('li').has('ul').addClass('hasChild');
@@ -138,6 +139,7 @@ $(function() {
 
     // 先複製過去
     _login.clone().prependTo(_mArea);
+    _sidefixed.clone().prependTo(_mArea);
     _nav.clone().prependTo(_mArea);
     _menu.clone().prependTo(_mArea);
     _megamenu.clone().prependTo(_mArea);
@@ -502,7 +504,7 @@ $(function() {
                 // tabItemWidth = ( tabwidth / tabItemLength);           // width 402
                 tabItemWidth = ( tabwidth / tabItemLength) - TTT;        // width 400
 
-                _tabItem.width(tabItemWidth).css('margin-left', '3px');
+                _tabItem.width(tabItemWidth).css('margin-left', '6px');
                 _tabItem.first().css('margin-left', 0);
                 _tabItem.last().css({ position: 'absolute', top: 0, right: 0 }).width(tabItemWidth);
 

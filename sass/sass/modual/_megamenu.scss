@@ -405,6 +405,37 @@
             border-top: none;
         }
     }
+
+    .side_fixed{
+        text-align: center;
+        margin-top: 2em;
+        a{
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            padding: 1em 1.2em;
+            margin: 0.5em 0;
+            font-weight: bold;
+            border-radius: 50%;
+            line-height: 1.2;
+            font-size: 112.5%;
+            &:nth-child(1){
+                background: darken($primaryColor, 6);
+                color: #fff;
+            }
+            &:nth-child(2){
+                background: $lightColor;
+                color: $secondaryColor;
+            }
+        }
+    }
+
+    .login_btn{
+        margin: 1em 2em;
+        .btn{
+            width: 100%;
+        }
+    }
 }
 //animation
 @keyframes showMenu {

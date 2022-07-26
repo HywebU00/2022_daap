@@ -179,6 +179,30 @@ $btn-radius:.2em;
     }
 }
 
+@include screen('tablet') {
+    .btn-google,
+    .btn-fb{
+        text-align: left;
+    }
+
+    .btn-google{
+        background:  url(../images/icon_google.svg) 8% 50% no-repeat, #fff;
+        background-size: 32px 32px;
+        &:hover, &:focus{
+            background:  url(../images/icon_google.svg) 6% 50% no-repeat, #ddd;
+            background-size: 32px 32px;
+        }
+    }
+    .btn-fb{
+        background:  url(../images/icon_fb2.svg) 8% 50% no-repeat, #fff;
+        background-size: 32px 32px;
+        &:hover, &:focus{
+            background:  url(../images/icon_fb2.svg) 6% 50% no-repeat, #ddd;
+            background-size: 32px 32px;
+        }
+    }
+}
+
 
 
 // 返回

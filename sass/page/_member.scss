@@ -1,6 +1,6 @@
 .login, .reset{
     width: 75%;
-    margin: 3em auto;
+    margin: 1.5em auto;
     background: #fff;
     border-radius: 8px;
     padding: 2.75em 6em;
@@ -15,8 +15,15 @@
     .flex-form{
         .form_grp{
             border-bottom: 0;
-            .form_title{ text-align: right; padding-right: 6px; }
+            .form_title{
+                text-align: center;
+                padding-right: 6px;
+                max-width: 90px;
+                flex: 0 0 90px;
+            }
             .form_content{
+                max-width: calc(100% - 90px);
+                flex-basis: calc(100% - 90px);
                 img+input{
                     width: calc(100% - 200px);
                 }
@@ -59,6 +66,39 @@
              &:after{ right: 0;}
         }
     }
+
+    @include screen('notebook') {
+        width: 84%;
+    }
+
+    @include screen('tablet') {
+        width: 90%;
+        padding: 2.5em 3em;
+
+        .flex-form{
+            .form_grp{
+                .form_title{
+                    text-align: left;
+                    max-width: 100%;
+                    flex: 0 0 100%;
+                }
+                .form_content{
+                    max-width: 100%;
+                    flex-basis: 100%;
+                }
+            }
+        }
+
+        .others{
+            flex-flow: row wrap;
+            button{
+                flex: 1 1 100%;
+                padding-left: 19%
+            }
+        }
+    }
+
+    @include screen('mobile') {}
 }
 .register{
     width: 90%;
@@ -286,7 +326,7 @@
         position: fixed;
         height: 100%;
         overflow-x: hidden !important;
-        overflow-y: auto !important;
+        overflow-y: hidden !important;
         -webkit-overflow-scrolling: touch;
         -webkit-transform: translate3d(0, 0, 0);
         box-sizing: border-box;

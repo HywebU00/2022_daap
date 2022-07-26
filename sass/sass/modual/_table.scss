@@ -62,26 +62,29 @@ table {
 }
 
 // 總計
-.total{
-    text-align: right;
-    padding: .5em 1em;
-    background: #fff;
-    span{
-        display: inline-block;
-        color: red;
+.table_list,
+.table_list2{
+    .total{
+        text-align: right;
+        padding: .5em 1em;
+        background: #fff;
+        span{
+            display: inline-block;
+            color: red;
 
-        &:before, &:after{
-            color: #222;
-        }
+            &:before, &:after{
+                color: #222;
+            }
 
-        &:before{
-            content:'總計';
-            margin-right: 10px;
-        }
+            &:before{
+                content:'總計';
+                margin-right: 10px;
+            }
 
-        &:after{
-            content:'元';
-            margin-left: 10px;
+            &:after{
+                content:'元';
+                margin-left: 10px;
+            }
         }
     }
 }

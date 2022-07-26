@@ -118,7 +118,7 @@ a.more {
             }
 
             .container{
-                padding: 3.4em 2em;
+                padding: 1em 2em;
             }
             .title{
                 font-size: 2.2em;
@@ -170,13 +170,18 @@ a.more {
 
             @include screen('notebook') {
                 left: 1em;
-                width: 200px;
-                height: 80px;
-                bottom: 90px;
-                a{
-                    display: inline-block;
-                    margin: 0;
-                }
+                // width: 200px;
+                // height: 80px;
+                // bottom: 90px;
+                // a{
+                //     display: inline-block;
+                //     margin: 0;
+                // }
+            }
+
+            @include screen('tablet') {
+                position: static;
+                display: none;
             }
         }
 
@@ -187,7 +192,8 @@ a.more {
             // mpSlider
             // EXPO_mini
             .container{
-                padding-top: 0;
+                padding: 0 2em 3.4em;
+                // padding-top: 0;
                 background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
                 background-size: calc(100% - 3.8em);
 
