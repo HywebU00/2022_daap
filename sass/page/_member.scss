@@ -164,7 +164,7 @@
             padding: 1em 2em;
             >p{ color: darken($lightColor2, 5); }
 
-            // display: none;
+            display: none;
         }
         ul.state{
             @extend %flex_set;

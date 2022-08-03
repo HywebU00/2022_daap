@@ -622,7 +622,7 @@ $spec_margin: 8px;
     //     }
     // }
 
-    @include screen('notebook') {
+    @include screen('tablet') {
         .col{
             flex-basis: calc(100% / 2 - 16px);
             .img-container{}

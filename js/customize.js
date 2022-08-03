@@ -193,7 +193,7 @@ $(function() {
     // 會員專區 頁籤：展開詳細內容
     // -------------------------------
     // $('.records .tabContent').find('.detail').hide();
-    $('.item .detail').addClass('show');
+    // $('.item .detail').addClass('show');
 
     $('.records .tabContent').find('.item .switch').click(function(event) {
         if($(this).parent().siblings('.detail').hasClass('show')){

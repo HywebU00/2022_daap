@@ -66,6 +66,7 @@
         text-decoration: none;
         @include text-overflow;
         box-sizing: border-box;
+        border: 0 !important;
         &:hover, &:focus {
             background: $primaryColor;
         }
@@ -186,11 +187,28 @@
 .tab_mp_type{
 
     button{
-        border: transparent;
-        border-bottom: 3px solid $lightColor;
+        // border: transparent;
+        // border-bottom: 3px solid $lightColor;
         border-radius: 4px 4px 0 0;
+
+        position: relative;
+        &:after{
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: $lightColor;
+            bottom: 0;
+            left: 0;
+        }
+
         &.active{
-            border-bottom: 3px solid $primaryColor;
+            // border-bottom: 3px solid $primaryColor;
+
+            &:after{
+                background: $primaryColor;
+            }
+
         }
     }
     .tabItem{

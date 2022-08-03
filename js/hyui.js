@@ -489,9 +489,10 @@ $(function() {
                 tabItemHeight = _tabItem.outerHeight(),
                 tabContentHeight = _tab.find('.active').next().innerHeight(),
                 tiGap = 0,
-                TTT = parseInt('4px'),
+                tabGutter= parseInt('4px'),
                 tabItemLength = _tabItem.length,
-                tabItemWidth;
+                tabItemWidth,
+                marginLeft;
             _tab.find('.active').next('.tabContent').show();
             if (ww >= wwSmall) {
                 _tabContent.css('top', tabItemHeight);
@@ -501,10 +502,11 @@ $(function() {
                 // 算式：tabItem 寬度 ＝ (這個tab的總寬 - (tabItem總數量 - 1) * 0 ) / tabItem總數量
                 // tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
 
-                // tabItemWidth = ( tabwidth / tabItemLength);           // width 402
-                tabItemWidth = ( tabwidth / tabItemLength) - TTT;        // width 400
+                // tabItemWidth = ( tabwidth / tabItemLength);                      // width 402
+                tabItemWidth = ( tabwidth / tabItemLength) - tabGutter;             // 單欄寬度 - gutter(左右各2px)
+                marginLeft = (tabGutter * tabItemLength) / (tabItemLength - 1);     // margin-left = gutter * tab個數 / (tab個數 -1)
 
-                _tabItem.width(tabItemWidth).css('margin-left', '6px');
+                _tabItem.width(tabItemWidth).css('margin-left', marginLeft);
                 _tabItem.first().css('margin-left', 0);
                 _tabItem.last().css({ position: 'absolute', top: 0, right: 0 }).width(tabItemWidth);
 
