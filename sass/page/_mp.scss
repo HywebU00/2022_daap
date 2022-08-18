@@ -138,19 +138,26 @@ a.more {
             }
         }
 
+        &.small_size { font-size: .938em; }
+        &.large_size { font-size: 1.125em; }
+
         // 左側預約 fixed
         position: relative;
         .side_fixed{
             position: fixed;
-            width: 80px;
+            width: 90px;
             // background: rgba(0,0,0,.25);
             left: calc( (100% - 1200px) / 2 - 60px );
             bottom: 20%;
             z-index: 9999;
             a{
-                display: block;
-                width: 80px;
-                height: 80px;
+                // display: block;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                width: 90px;
+                height: 90px;
                 padding: 1em 1.2em;
                 margin: 0.5em 0;
                 font-weight: bold;
@@ -231,6 +238,7 @@ a.more {
             span{
                 display: inline-block;
                 padding: 0 1.5em;
+                color: #ac150f;
             }
             .links{
                 a{
@@ -314,7 +322,8 @@ a.more {
         // 園區景點
         .spot{
             background: url(../images/bg_spot.png) 50% 50% no-repeat, #1f6a82;
-            // background-size: contain;
+            background-attachment: fixed;
+            background-size: contain;
             color: #fff;
             text-align: center;
 
@@ -330,7 +339,7 @@ a.more {
             .spotSlider{ margin-top: 2em; }
 
             .container{
-                padding: 5em 0 3.4em;
+                padding: 3.2em 0 1.5em;
                 max-width: 100%;
             }
 
@@ -368,7 +377,7 @@ a.more {
                     background-size: 26px 26px;
                 }
             }
-            .slick-slide img { margin-bottom: 2em; }
+            .slick-slide img { margin-bottom: 2.6em; }
 
             .img-container{
                 background: transparent;
@@ -377,13 +386,17 @@ a.more {
                     transition: all 300ms ease-in;
                 }
                 &:hover, &:focus{
-                    img{ transform: scale(1.15); }
-                    .caption{ color: $lightColor; }
+                    img{ transform: scale(1.2); }
+                    .caption{
+                        color: $lightColor;
+                        background: rgba(0,0,0,.65);
+                    }
                 }
             }
 
             .caption{
-                background: #1f6a82;
+                // background: #1f6a82;
+                background: none;
                 height: auto;
                 line-height: inherit;
                 text-align: left;
@@ -392,6 +405,8 @@ a.more {
                 font-weight: bold;
                 text-align: center;
                 opacity: 1;
+
+                transition: .3s;
             }
 
         }

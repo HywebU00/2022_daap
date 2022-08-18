@@ -478,131 +478,6 @@ $(function() {
         }, 50);
     });
 
-    // 一般
-    function tabSet() {
-        $('.tabs').each(function() {
-            var _tab = $(this),
-                _tabItem = _tab.find('.tabItem'),
-                // _tabItemA = _tabItem.children('a'), //改button後，這行沒有
-                _tabContent = _tab.find('.tabContent'),
-                tabwidth = _tab.width(),
-                tabItemHeight = _tabItem.outerHeight(),
-                tabContentHeight = _tab.find('.active').next().innerHeight(),
-                tiGap = 0,
-                tabGutter= parseInt('4px'),
-                tabItemLength = _tabItem.length,
-                tabItemWidth,
-                marginLeft;
-            _tab.find('.active').next('.tabContent').show();
-            if (ww >= wwSmall) {
-                _tabContent.css('top', tabItemHeight);
-                _tab.height(tabContentHeight + tabItemHeight);
-
-                // 寬度均分
-                // 算式：tabItem 寬度 ＝ (這個tab的總寬 - (tabItem總數量 - 1) * 0 ) / tabItem總數量
-                // tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
-
-                // tabItemWidth = ( tabwidth / tabItemLength);                      // width 402
-                tabItemWidth = ( tabwidth / tabItemLength) - tabGutter;             // 單欄寬度 - gutter(左右各2px)
-                marginLeft = (tabGutter * tabItemLength) / (tabItemLength - 1);     // margin-left = gutter * tab個數 / (tab個數 -1)
-
-                _tabItem.width(tabItemWidth).css('margin-left', marginLeft);
-                _tabItem.first().css('margin-left', 0);
-                _tabItem.last().css({ position: 'absolute', top: 0, right: 0 }).width(tabItemWidth);
-
-            } else {
-                _tab.css('height', 'auto');
-                _tabItem.width(tabwidth);
-                _tabItem.css('margin-left', 0).last().css('position', 'relative');
-            }
-            _tabItem.focus(tabs); //改button後，前面改_tabItem
-            _tabItem.click(tabs); //改button後，前面改_tabItem
-            function tabs(e) {
-                var _tabItemNow = $(this), //改button後，原來$(this).parent(),改$(this)
-                    tvp = _tab.offset().top,
-                    tabIndex = _tabItemNow.index() / 2,
-                    scollDistance = tvp + tabItemHeight * tabIndex - tab_headerHeight;
-                _tabItem.removeClass('active');
-                _tabItemNow.addClass('active');
-                if (ww <= wwSmall) {
-                    _tabItem.not('.active').next().slideUp();
-                    _tabItemNow.next().slideDown();
-                    $('html,body').stop(true, false).animate({ scrollTop: scollDistance });
-                } else {
-                    _tabItem.not('.active').next().hide();
-                    _tabItemNow.next().show();
-                    tabContentHeight = _tabItemNow.next().innerHeight();
-                    _tab.height(tabContentHeight + tabItemHeight);
-                }
-                e.preventDefault();
-            }
-        });
-    }
-    $('.tabs>.tabItem:first-child>a').trigger('click');
-    tabSet();
-
-    // 建行地圖
-    function tabSet2() {
-        $('.walkmap').each(function() {
-            var _tab = $(this),
-                _tabItem = _tab.find('.tabItem'),
-                _tabContent = _tab.find('.tabContent'),
-                tabwidth = _tab.width(),
-                tabItemHeight = _tabItem.outerHeight(),
-                tabContentHeight = _tab.find('.active').next().innerHeight(),
-                tiGap = 0,
-                T1 = parseInt('256px'),    // 120 * 2 + 16 
-                tabItemLength = _tabItem.length,
-                tabItemWidth;
-            _tab.find('.active').next('.tabContent').show();
-            if (ww >= wwSmall) {
-                _tabContent.css('top', tabItemHeight);
-                _tab.height(tabContentHeight + tabItemHeight);
-
-                // 寬度均分
-                // 算式：tabItem 寬度 ＝ (這個tab的總寬 - (tabItem總數量 - 1) * 0 ) / tabItem總數量
-                // tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
-
-                // tabItemWidth = ( tabwidth / tabItemLength);           // width 402
-
-                AA = tabwidth - T1;
-                tabItemWidth = ( AA / tabItemLength);        // width 400
-
-                _tabItem.width(tabItemWidth).css('margin-left', '3px');
-                _tabItem.first().css('margin-left', '120px' );
-                _tabItem.last().css({ position: 'absolute', top: 0, right: '120px' }).width(tabItemWidth);
-
-            } else {
-                _tab.css('height', 'auto');
-                _tabItem.width(tabwidth);
-                _tabItem.css('margin-left', 0).last().css('position', 'relative');
-            }
-            _tabItem.focus(tabs); //改button後，前面改_tabItem
-            _tabItem.click(tabs); //改button後，前面改_tabItem
-            function tabs(e) {
-                var _tabItemNow = $(this), //改button後，原來$(this).parent(),改$(this)
-                    tvp = _tab.offset().top,
-                    tabIndex = _tabItemNow.index() / 2,
-                    scollDistance = tvp + tabItemHeight * tabIndex - tab_headerHeight;
-                _tabItem.removeClass('active');
-                _tabItemNow.addClass('active');
-                if (ww <= wwSmall) {
-                    _tabItem.not('.active').next().slideUp();
-                    _tabItemNow.next().slideDown();
-                    $('html,body').stop(true, false).animate({ scrollTop: scollDistance });
-                } else {
-                    _tabItem.not('.active').next().hide();
-                    _tabItemNow.next().show();
-                    tabContentHeight = _tabItemNow.next().innerHeight();
-                    _tab.height(tabContentHeight + tabItemHeight);
-                }
-                e.preventDefault();
-            }
-        });
-    }
-    $('.tabs>.tabItem:first-child>a').trigger('click');
-    tabSet2();
-
 
     /*-----------------------------------*/
     ///////////////置頂go to top////////////
@@ -714,6 +589,7 @@ $(function() {
         .click(function(e) {
             $(this).parent('li').siblings('li').find('a').removeClass('active');
             $('.innerpage').removeClass('large_size').addClass('small_size');
+            $('.MP').find('.main').removeClass('large_size').addClass('small_size');
             $(this).blur().addClass('active');
             e.preventDefault();
             createCookie('FontSize', 'small', 356);
@@ -723,6 +599,7 @@ $(function() {
         .click(function(e) {
             $(this).parent('li').siblings('li').find('a').removeClass('active');
             $('.innerpage').removeClass('large_size small_size');
+            $('.MP').find('.main').removeClass('large_size small_size');
             $(this).blur().addClass('active');
             e.preventDefault();
             createCookie('FontSize', 'medium', 356);
@@ -732,6 +609,7 @@ $(function() {
         .click(function(e) {
             $(this).parent('li').siblings('li').find('a').removeClass('active');
             $('.innerpage').removeClass('small_size').addClass('large_size');
+            $('.MP').find('.main').removeClass('small_size').addClass('large_size');
             $(this).blur().addClass('active');
             e.preventDefault();
             createCookie('FontSize', 'large', 356);
@@ -745,43 +623,6 @@ $(function() {
         } else expires = '';
         document.cookie = name + '=' + value + expires + '; path=/';
     }
-
-    function readCookie(name) {
-        var nameEQ = name + '=';
-        var ca = document.cookie.split(';');
-        for (var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-    window.onload = function(e) {
-        var cookie = readCookie('FontSize');
-        //alert('cookie='+cookie);
-        if (cookie == 'small') {
-            //$('.font_size').find('.small').click();
-            $('.font_size').find('.small').parent('li').siblings('li').find('a').removeClass('active');
-            $('.innerpage').removeClass('large_size medium_size').addClass('small_size');
-            $('.font_size').find('.small').addClass('active');
-            e.preventDefault();
-        } else {
-            if (cookie == 'large') {
-                //$('.font_size').find('.large').click();
-                $('.font_size').find('.large').parent('li').siblings('li').find('a').removeClass('active');
-                $('.innerpage').removeClass('small_size medium_size').addClass('large_size');
-                $('.font_size').find('.large').addClass('active');
-                e.preventDefault();
-            } else {
-                //這裡是預設宣告
-                //$('.font_size').find('.medium').click();
-                $('.font_size').find('.medium').parent('li').siblings('li').find('a').removeClass('active');
-                $('.innerpage').removeClass('large_size small_size');
-                $('.font_size').find('.medium').addClass('active');
-                e.preventDefault();
-            }
-        }
-    };
     /*-----------------------------------*/
     /////////// category active  //////////
     /*-----------------------------------*/
@@ -970,3 +811,105 @@ $(function() {
         threshold: 0,
     });
 });
+function readCookie(name) {
+    var nameEQ = name + '=';
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+window.onload = function(e) {
+    var cookie = readCookie('FontSize');
+    //alert('cookie='+cookie);
+    if (cookie == 'small') {
+        //$('.font_size').find('.small').click();
+        $('.font_size').find('.small').parent('li').siblings('li').find('a').removeClass('active');
+        $('.innerpage').removeClass('large_size medium_size').addClass('small_size');
+        $('.font_size').find('.small').addClass('active');
+        e.preventDefault();
+    } else {
+        if (cookie == 'large') {
+            //$('.font_size').find('.large').click();
+            $('.font_size').find('.large').parent('li').siblings('li').find('a').removeClass('active');
+            $('.innerpage').removeClass('small_size medium_size').addClass('large_size');
+            $('.font_size').find('.large').addClass('active');
+            e.preventDefault();
+        } else {
+            //這裡是預設宣告
+            //$('.font_size').find('.medium').click();
+            $('.font_size').find('.medium').parent('li').siblings('li').find('a').removeClass('active');
+            $('.innerpage').removeClass('large_size small_size');
+            $('.font_size').find('.medium').addClass('active');
+            e.preventDefault();
+        }
+    }
+    tabSet();
+    $($('.tabs>.tabItem')[0]).trigger('click');
+    //setTimeout(function(){$($('.tabs>.tabItem')[0]).trigger('click')}, 200);
+}
+// 一般
+function tabSet() {
+    var wwSmall = 768;
+    var tab_headerHeight = Math.floor($('.header').outerHeight(true));
+    var ww = $(window).outerWidth();
+    $('.tabs').each(function() {
+        var _tab = $(this),
+            _tabItem = _tab.find('.tabItem'),
+            // _tabItemA = _tabItem.children('a'), //改button後，這行沒有
+            _tabContent = _tab.find('.tabContent'),
+            tabwidth = _tab.width(),
+            tabItemHeight = _tabItem.outerHeight(),
+            tiGap = 0,
+            tabGutter= parseInt('4px'),
+            tabItemLength = _tabItem.length,
+            tabItemWidth,
+            marginLeft;
+        _tab.find('.active').next('.tabContent').show();
+        var tabContentHeight = _tab.find('.active').next().innerHeight();
+        if (ww >= wwSmall) {
+            _tabContent.css('top', tabItemHeight);
+            _tab.height(tabContentHeight + tabItemHeight);
+
+            // 寬度均分
+            // 算式：tabItem 寬度 ＝ (這個tab的總寬 - (tabItem總數量 - 1) * 0 ) / tabItem總數量
+            // tabItemWidth = (tabwidth - (tabItemLength - 1) * tiGap) / tabItemLength;
+
+            // tabItemWidth = ( tabwidth / tabItemLength);                      // width 402
+            tabItemWidth = ( tabwidth / tabItemLength) - tabGutter;             // 單欄寬度 - gutter(左右各2px)
+            marginLeft = (tabGutter * tabItemLength) / (tabItemLength - 1);     // margin-left = gutter * tab個數 / (tab個數 -1)
+
+            _tabItem.width(tabItemWidth).css('margin-left', marginLeft);
+            _tabItem.first().css('margin-left', 0);
+            _tabItem.last().css({ position: 'absolute', top: 0, right: 0 }).width(tabItemWidth);
+
+        } else {
+            _tab.css('height', 'auto');
+            _tabItem.width(tabwidth);
+            _tabItem.css('margin-left', 0).last().css('position', 'relative');
+        }
+        _tabItem.focus(tabs); //改button後，前面改_tabItem
+        _tabItem.click(tabs); //改button後，前面改_tabItem
+        function tabs(e) {
+            var _tabItemNow = $(this), //改button後，原來$(this).parent(),改$(this)
+                tvp = _tab.offset().top,
+                tabIndex = _tabItemNow.index() / 2,
+                scollDistance = tvp + tabItemHeight * tabIndex - tab_headerHeight;
+            _tabItem.removeClass('active');
+            _tabItemNow.addClass('active');
+            if (ww <= wwSmall) {
+                _tabItem.not('.active').next().slideUp();
+                _tabItemNow.next().slideDown();
+                $('html,body').stop(true, false).animate({ scrollTop: scollDistance });
+            } else {
+                _tabItem.not('.active').next().hide();
+                _tabItemNow.next().show();
+                tabContentHeight = _tabItemNow.next().innerHeight();
+                _tab.height(tabContentHeight + tabItemHeight);
+            }
+            e.preventDefault();
+        }
+    });
+}

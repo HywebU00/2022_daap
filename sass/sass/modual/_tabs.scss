@@ -67,6 +67,7 @@
         @include text-overflow;
         box-sizing: border-box;
         border: 0 !important;
+
         &:hover, &:focus {
             background: $primaryColor;
         }
@@ -87,14 +88,14 @@
 
 
 //多組 可設定差異
-.example-2 {
-    .tabItem:hover {
-        background: $secondaryColor;
-    }
-    .tabItem.active {
-        background: $secondaryColor;
-    }
-}
+// .example-2 {
+//     .tabItem:hover {
+//         background: $secondaryColor;
+//     }
+//     .tabItem.active {
+//         background: $secondaryColor;
+//     }
+// }
 
 // lp2
 .walkmap{
@@ -228,19 +229,34 @@
     .tabs{}
 
     .tabContent{
-        padding: 30px 0;
+        padding: 30px 0 0;
         ul{
             li{
                 margin: 0;
-                padding: .65em 0;
+                padding: .65em 1em;
                 border-bottom: solid 2px rgba(10, 61, 136, .15);
                 white-space: normal;
 
-                time{ margin: 0; }
-                a{ padding: .3em 1em; }
+                display: flex;
+                flex-wrap: nowrap;
+                align-items: center;
+                time{
+                    margin: 0;
+                    flex: 0 0 auto;
+                }
+                a{
+                    flex: 1 1 auto;
+                    padding: .3em 1em;
+                    display: block;
+
+                    &:hover, &:focus{
+                        color: #000;
+                    }
+                }
 
                 // 第一筆，圖文
                 &:first-child{
+                    padding: .65em 0;
                     @extend %flex_set;
                     .img-container{
                         @include flex-xs(12, 0px);
@@ -267,7 +283,7 @@
 
         .more{
             text-align: center;
-            margin: 1.5em auto;
+            margin: .5em auto;
         }
 
         @include screen('mobile') {
@@ -324,11 +340,13 @@
         }
         a {
             @include aSetting_nocolor;
+            font-weight: 500;
+            font-size: 1.125em;
         }
         time {
             display: inline-block;
             margin: 0 0 0 1em;
-            font-size: .813em;
+            // font-size: .813em;
             color: #666;
         }
     }

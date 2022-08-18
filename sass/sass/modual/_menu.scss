@@ -54,7 +54,8 @@
         margin: auto;
 
         // box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-        box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+        // box-shadow: rgba(0, 0, 0, 0.09) 0px 3px 12px;
+        box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 
         @include screen('tablet') {
             background: transparent;

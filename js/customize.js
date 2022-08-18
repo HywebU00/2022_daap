@@ -19,7 +19,7 @@ $(function() {
         arrows: false,
         infinite: true,
         speed: 500,
-        autoplay: false,
+        autoplay: true,
         fade: true,
         lazyLoaded: true,
         lazyLoad: 'ondemand',
@@ -39,6 +39,8 @@ $(function() {
         centerMode: true,
         centerPadding: '60px',
         infinite: true,
+        speed: 500,
+        autoplay: true,
         slidesToShow: 3,
         slidesToScroll: 1,
         responsive: [{
@@ -200,7 +202,7 @@ $(function() {
             $(this).parent().siblings('.detail').removeClass('show').slideUp();
             $(this).text('展開詳細內容');
         }else{
-            $(this).parent().siblings('.detail').addClass('show').slideDown();
+            $(this).parent().siblings('.detail').addClass('show').slideDown(400, function(){tabSet();});
             $(this).text('顯示更少');
         }
     });
@@ -410,4 +412,45 @@ $(function() {
             e.preventDefault();
         });
     });
+    // 場館資訊
+    $('.sudo_tabItem').each(function(index){
+        $(this).on('focus click', function() {
+            $('.sudo_tabItem').each(function(){$(this).removeClass('active')});
+            $('.sudo_tabContent').each(function(){$(this).removeClass('active');});
+            $('.info_box').each(function(){$(this).removeClass('show')});
+            $(this).addClass('active');
+            var content = $('.sudo_tabContent')[index];
+            $(content).addClass('active');
+            $($(content).find('.info_box')[0]).addClass('show');
+            $(content).find('.slick-prev').off('click').on('click', function(){
+                var length = $(content).find('.info_box').length;
+                var curActiveIndex = 0;
+                $(content).find('.info_box').each(function(infoIndex){
+                    if($(this).hasClass('show')) {
+                        curActiveIndex = infoIndex;
+                        $(this).removeClass('show');
+                    }
+                });
+                var newIndex = curActiveIndex - 1;
+                if(newIndex < 0)
+                    newIndex = length - 1;
+                $($(content).find('.info_box')[newIndex]).addClass('show');
+            });
+            $(content).find('.slick-next').off('click').on('click', function(){
+                var length = $(content).find('.info_box').length;
+                var curActiveIndex = 0;
+                $(content).find('.info_box').each(function(infoIndex){
+                    if($(this).hasClass('show')) {
+                        curActiveIndex = infoIndex;
+                        $(this).removeClass('show');
+                    }
+                });
+                var newIndex = (curActiveIndex + 1) % length;
+                $($(content).find('.info_box')[newIndex]).addClass('show');
+            });
+        });
+    });
+    
+    $($('.sudo_tabItem')[0]).trigger('click');
+    $('.switch').trigger('click');
 });
