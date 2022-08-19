@@ -164,6 +164,10 @@ a.more {
                 border-radius: 50%;
                 line-height: 1.2;
                 font-size: 112.5%;
+                cursor: pointer;
+
+                transform: rotateZ(0deg);
+                transition: .3s;
 
                 &:nth-child(1){
                     background: darken($primaryColor, 6);
@@ -172,6 +176,12 @@ a.more {
                 &:nth-child(2){
                     background: $lightColor;
                     color: $secondaryColor;
+                }
+
+                &:hover, &:focus{
+                    transform: rotateZ(45deg);
+                    background: #870600;
+                    color: #fff;
                 }
             }
 
@@ -195,14 +205,16 @@ a.more {
         .top_section{
             // 塞在 menu 下
             margin-top: -20px;
+            background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
+            // background-size: contain;
 
             // mpSlider
             // EXPO_mini
             .container{
-                padding: 0 2em 3.4em;
+                padding: 0 2em 5em;
                 // padding-top: 0;
-                background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
-                background-size: calc(100% - 3.8em);
+                // background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
+                // background-size: calc(100% - 3.8em);
 
                 @include screen('tablet') {
                     background-size: cover;
@@ -235,14 +247,21 @@ a.more {
             padding: .5em 2em;
             margin-top: -20px;
             img{}
+            .ani-icon{
+                padding: 0 10px;
+            }
             span{
                 display: inline-block;
-                padding: 0 1.5em;
-                color: #ac150f;
+                padding: .45em 1em;
+                margin: 0 .75em;
+                color: #fff;
+                background: #870600;
+                border-radius: 3px;
+                // border: solid 1px #222;
             }
             .links{
                 a{
-                    // display: inline-block;
+                    display: inline-block;
                     padding: .45em .75em;
                     margin-top: 10px;
                     margin-right: 20px;
@@ -310,6 +329,7 @@ a.more {
                     text-align: center;
                     padding: 0;
                     line-height: 3;
+                    margin: 1em 0;
                 }
                 .links{
                     a{ margin-top: 0; }
@@ -577,12 +597,22 @@ a.more {
                         right: 66px;
                         background: url(../images/icon/icon_arrow_right2.svg) center center no-repeat $primaryColor;
                         background-size: 18px 18px;
+
+                        &:hover, &:focus{
+                            background: url(../images/icon/icon_arrow_right2.svg) center center no-repeat #870600;
+                            background-size: 18px 18px;
+                        }
                     }
                     .slick-prev {
                         left: auto;
                         right: 120px;
                         background: url(../images/icon/icon_arrow_left2.svg) center center no-repeat $primaryColor;
                         background-size: 18px 18px;
+
+                        &:hover, &:focus{
+                            background: url(../images/icon/icon_arrow_left2.svg) center center no-repeat #870600;
+                            background-size: 18px 18px;
+                        }
                     }
                 }
 

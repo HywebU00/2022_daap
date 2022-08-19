@@ -187,6 +187,8 @@
 // mp 
 .tab_mp_type{
 
+    min-height: 780px;
+
     button{
         // border: transparent;
         // border-bottom: 3px solid $lightColor;
@@ -246,11 +248,13 @@
                 }
                 a{
                     flex: 1 1 auto;
-                    padding: .3em 1em;
+                    padding: .3em 0 .3em 1em;
                     display: block;
+                    transition: .3s;
 
                     &:hover, &:focus{
-                        color: #000;
+                        // color: #000;
+                        padding: .3em 0 .3em 2em;
                     }
                 }
 
@@ -258,11 +262,39 @@
                 &:first-child{
                     padding: .65em 0;
                     @extend %flex_set;
-                    .img-container{
+                    .deco{
                         @include flex-xs(12, 0px);
                         @include flex-sm(4, $m-gutter);
                         @include flex-md(4, $m-gutter);
                         @include flex-lg(4, $m-gutter);
+
+                        padding: 3em;
+                        background: url(../images/img-dot-1.png) left top no-repeat;
+                        background-size: 180px 180px;
+
+                        position: relative;
+                        &:after{
+                            content: '';
+                            position: absolute;
+                            width: 120px;
+                            height: 120px;
+                            background: url(../images/img-dot-2.png) 50% 50% no-repeat;
+                            background-size: 90px 90px;
+
+                            right: 0;
+                            bottom: 0;
+                        }
+
+                        .img-container{
+                            border-radius: 3px;
+                            overflow: hidden;
+                            border: 2px solid #fff;
+                        }
+                        // img{
+                        //     border: 1px solid #fff;
+                        //     border-radius: 3px;
+                        //     overflow: hidden;
+                        // }
                     }
                     a{
                         @include flex-xs(12, 0px);
@@ -270,7 +302,11 @@
                         @include flex-md(8, $m-gutter);
                         @include flex-lg(8, $m-gutter);
 
-                        .title{ font-size: 1.5em; }
+                        .title{
+                            font-size: 1.5em;
+                            // color: #870600;
+                            color: $primaryColor;
+                        }
                         p{ font-size: 1.125em; }
                     }
                 }
@@ -342,6 +378,11 @@
             @include aSetting_nocolor;
             font-weight: 500;
             font-size: 1.125em;
+            color: #747b80;
+
+            &:hover, &:focus{
+                color: $primaryColor;
+            }
         }
         time {
             display: inline-block;
