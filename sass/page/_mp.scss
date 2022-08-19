@@ -208,6 +208,10 @@ a.more {
             background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
             // background-size: contain;
 
+            @include screen('tablet') {
+                background: url(../images/bg_EXPO_mini.png) right 0 bottom no-repeat;
+            }
+
             // mpSlider
             // EXPO_mini
             .container{
@@ -219,7 +223,7 @@ a.more {
                 @include screen('tablet') {
                     background-size: cover;
                     margin-top: 0;
-                    padding-top: 50px;
+                    padding: 50px 2em 2em;
                 }
             }
         }
