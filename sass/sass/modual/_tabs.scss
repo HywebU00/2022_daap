@@ -261,46 +261,46 @@
                 // 第一筆，圖文
                 &:first-child{
                     padding: .65em 0;
-                    @extend %flex_set;
-                    .deco{
-                        @include flex-xs(12, 0px);
-                        @include flex-sm(4, $m-gutter);
-                        @include flex-md(4, $m-gutter);
-                        @include flex-lg(4, $m-gutter);
+                    // @extend %flex_set;
+                    // .deco{
+                    //     @include flex-xs(12, 0px);
+                    //     @include flex-sm(4, $m-gutter);
+                    //     @include flex-md(4, $m-gutter);
+                    //     @include flex-lg(4, $m-gutter);
 
-                        padding: 3em;
-                        background: url(../images/img-dot-1.png) left top no-repeat;
-                        background-size: 180px 180px;
+                    //     padding: 3em;
+                    //     background: url(../images/img-dot-1.png) left top no-repeat;
+                    //     background-size: 180px 180px;
 
-                        position: relative;
-                        &:after{
-                            content: '';
-                            position: absolute;
-                            width: 120px;
-                            height: 120px;
-                            background: url(../images/img-dot-2.png) 50% 50% no-repeat;
-                            background-size: 90px 90px;
+                    //     position: relative;
+                    //     &:after{
+                    //         content: '';
+                    //         position: absolute;
+                    //         width: 120px;
+                    //         height: 120px;
+                    //         background: url(../images/img-dot-2.png) 50% 50% no-repeat;
+                    //         background-size: 90px 90px;
 
-                            right: 0;
-                            bottom: 0;
-                        }
+                    //         right: 0;
+                    //         bottom: 0;
+                    //     }
 
-                        .img-container{
-                            border-radius: 3px;
-                            overflow: hidden;
-                            border: 2px solid #fff;
-                        }
-                        // img{
-                        //     border: 1px solid #fff;
-                        //     border-radius: 3px;
-                        //     overflow: hidden;
-                        // }
-                    }
+                    //     .img-container{
+                    //         border-radius: 3px;
+                    //         overflow: hidden;
+                    //         border: 2px solid #fff;
+                    //     }
+                    //     // img{
+                    //     //     border: 1px solid #fff;
+                    //     //     border-radius: 3px;
+                    //     //     overflow: hidden;
+                    //     // }
+                    // }
                     a{
-                        @include flex-xs(12, 0px);
-                        @include flex-sm(8, $m-gutter);
-                        @include flex-md(8, $m-gutter);
-                        @include flex-lg(8, $m-gutter);
+                        // @include flex-xs(12, 0px);
+                        // @include flex-sm(8, $m-gutter);
+                        // @include flex-md(8, $m-gutter);
+                        // @include flex-lg(8, $m-gutter);
 
                         .title{
                             font-size: 1.5em;
