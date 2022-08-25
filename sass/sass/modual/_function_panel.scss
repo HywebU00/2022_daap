@@ -1,7 +1,7 @@
 // function_panel setting   ------------------------
 .function_panel {   
-    margin: .25em 0;
-    padding: .5em 0 .5em;
+    // margin: .25em 0;
+    // padding: .5em 0 .5em;
     min-height: 35px;
     // border-top: 1px solid #DDD;
     // border-bottom: 1px solid #DDD;
@@ -166,7 +166,7 @@ div.function{
                     text-align: center;
                     line-height: 46px;
                     border-radius: 50%;
-                    background: $lightColor2;
+                    background: #e1e1e1;
                     text-indent: -9999px;
                     position: relative;
 
@@ -248,7 +248,7 @@ div.function{
         position:relative;
         a.shareButton{
             display: block;
-            background: $lightColor2;
+            background: #e1e1e1;
             border-radius: 50%;
             width: 46px;
             height: 46px;

@@ -1,9 +1,9 @@
 // 文章標籤
 div.tag{
     @extend %clearfix;
-    padding: .5em 0;
+    // padding: .5em 0;
     // margin-bottom: .5em;
-    margin: .25em 0;
+    // margin: .25em 0;
     position:relative;
 
     &:before{

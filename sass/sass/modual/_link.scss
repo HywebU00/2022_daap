@@ -35,6 +35,7 @@
             position: relative;
             height: 100%;  
             box-sizing: border-box;
+            font-size: 1.125em;
             // @include aSetting_nocolor;
             // @include text-overflow;
             background: #f1efe9;
@@ -53,9 +54,10 @@
             }
             &:hover,
             &:focus {
-               border: 2px solid  darken(#f1efe9, 60);
-               background: darken(#f1efe9, 60);
-               color: #fff;
+                padding: 1em 2em 1em 2.5em;
+                border: 2px solid  darken(#f1efe9, 60);
+                background: darken(#f1efe9, 60);
+                color: #fff;
             }
         }
     }

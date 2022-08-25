@@ -142,7 +142,7 @@ body {
 ////////////////////////////////////////////////////////////
 // 為了與首頁區隔，請在內頁加上innerpage ClassName
 .innerpage {
-    padding-top: 2em;
+    // padding-top: 2em;
     >.container {
         // @include gutter(); //gutter 代表左右要留白
         display: flex;
@@ -357,7 +357,7 @@ body {
         display: flex;
         flex-flow: row-reverse nowrap;
         .text{
-            width: 60%;
+            width: 45%;
             position: relative;
             .title{
                 display: flex;
@@ -445,6 +445,43 @@ body {
     }
 }
 
+// 
+.page-ctrl{
+    display: flex;
+    justify-content: space-between;
+
+    .btn{
+        padding: .5em 1.5em;
+        font-size: 1.125em;
+        color: #000 !important;
+        background: $lightColor2!important;
+        border: solid 1px $lightColor2!important;
+        transition: .3s;
+        i:before{ filter: invert(0); }
+        &.prev{ padding: .5em 1.5em .5em 3em; }
+        &.next{ padding: .5em 3em .5em 1.5em; }
+
+        &:hover,
+        &:focus {
+            color: #fff !important;
+            background: darken($lightColor2, 12)!important;
+            border: solid 1px $lightColor2!important;
+            i:before{ filter: invert(1); }
+            &.prev{ padding: .5em 3em .5em 1.5em; }
+            &.next{ padding: .5em 1.5em .5em 3em; }
+        }
+    }
+
+    @include screen('mobile') {
+        .btn{
+            &.prev, &.next{
+                padding: 0.5em 1em;
+                font-size: 1em;
+            }
+        }
+    }
+}
+
 // LP 圖文欄
 .hotNews{
     // @extend %flex_set;
@@ -460,6 +497,7 @@ body {
         @include flex-md(5, $m-gutter);
         @include flex-lg(5, $m-gutter);
         @include aspect-ratio(16,9);
+        margin: 12px 0;
     }
 }
 
@@ -543,7 +581,6 @@ body {
                 transition:  all .3s ease;
             }
         }
-
         // &:focus {
         //     &:before{
         //         content:"";
@@ -565,7 +602,47 @@ body {
                 img{ transform: scale(1.2); }
             }
         }
+    }
 
+    // 純連結
+    &.links{
+        .img-container{
+            height: initial;
+            width: 100%;
+            margin-left: 0;
+        }
+        .caption{
+            position: static;
+            top: 0;
+            width: 100%;
+            height: auto;
+            color: #222;
+            padding: 1em 1.25em;
+
+            time, p{
+                position: static;
+                background: transparent;
+                padding: 0;
+            }
+            p{
+                margin-left: 0;
+                margin-top: 6px;
+                font-size: 1em;
+            }
+        }
+
+        .col{
+            background: #fff;
+            box-shadow: transparent;
+            transition: .3s;
+            &:hover, &:focus{
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            }
+            a{
+                border-radius: 3px;
+                overflow: hidden;
+            }
+        }
     }
 }
 
@@ -1480,6 +1557,11 @@ $spec_margin: 8px;
     // 月曆 table
     table{
 
+        thead th{
+            &:first-child, &:last-child{
+                background: #870600;
+            }
+        }
         th{
             width: calc(100% / 7);
             line-height: 1.2;
@@ -2015,6 +2097,13 @@ $spec_margin: 8px;
         text-align: center;
         border-right: #ddd 1px solid;
         &:last-child{ border-right: 0; }
+
+        &:first-child, &:last-child{
+            .date{
+                background: #870600;
+            }
+
+        }
         // &:hover, &:focus{
         //     background: #eee;
         //     .items{

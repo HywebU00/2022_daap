@@ -383,7 +383,7 @@ $(function() {
         infinite: true
     });
     $('.Slider-nav').slick({
-        slidesToShow: 2,
+        slidesToShow: 4,
         slidesToScroll: 1,
         asNavFor: '.Slider-for',
         dots: true,
