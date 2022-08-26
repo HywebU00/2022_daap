@@ -139,6 +139,56 @@ body {
     }
 }
 
+// MP 重要訊息提示
+.tip{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 99999;
+    .wrap{
+        width: 560px;
+        max-height: 80%;
+        // background: url(../images/bg_tip_L.png) left bottom no-repeat, #fff;
+        background: #fff;
+        padding: 2em 3.6em;
+        border-radius: 4px;
+        margin: 4em auto;
+        font-size: 1.125em;
+        line-height: 1.6;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        h2{
+            color: #874d1a;
+            border-bottom: solid 2px #874d1a;
+            margin: 0;
+            padding: .65em 0;
+        }
+
+        a{
+            text-decoration: underline;
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+
+        position: relative;
+        &:after{
+            content: '';
+            width: 280px;
+            height: 210px;
+            position: absolute;
+            background: url(../images/img-brush.png) 50% 50% no-repeat;
+            background-size: contain;
+            right: -18%;
+            top: -30%;
+        }
+
+        .btn_grp{ padding: 0; }
+    }
+}
+
 ////////////////////////////////////////////////////////////
 // 為了與首頁區隔，請在內頁加上innerpage ClassName
 .innerpage {

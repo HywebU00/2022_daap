@@ -32,7 +32,6 @@ $(function() {
         }
     });
 
-
     // 多圖輪播
     // -------------------------------
     $('.spotSlider').slick({
@@ -61,7 +60,6 @@ $(function() {
             }
         }]
     });
-
 
     // 廣告輪播
     // -------------------------------
@@ -133,6 +131,11 @@ $(function() {
         if (!container2.is(e.target) && container2.has(e.target).length === 0) {
             $('.cards .col').removeClass('active');
         }
+    });
+
+    // 重要公告
+    $('.tip').find('.close').click(function(event) {
+        $('.tip').fadeOut();
     });
 
     // 查詢條件
@@ -413,6 +416,7 @@ $(function() {
         });
     });
     // 場館資訊
+    // -------------------------------
     $('.sudo_tabItem').each(function(index){
         $(this).on('focus click', function() {
             $('.sudo_tabItem').each(function(){$(this).removeClass('active')});
