@@ -134,8 +134,8 @@ $(function() {
     });
 
     // 重要公告
-    $('.tip').find('.close').click(function(event) {
-        $('.tip').fadeOut();
+    $('.tiptop').find('.close').click(function(event) {
+        $('.tiptop').fadeOut();
     });
 
     // 查詢條件
