@@ -235,6 +235,28 @@ body {
 
         .btn_grp{ padding: 0; }
     }
+
+    @include screen('mobile') {
+        .wrap{
+            width: 90%;
+            padding: 1.2em 2.4em;
+
+            &:after{
+                // width: 280px;
+                // height: 210px;
+            }
+        }
+    }
+    @include screen('xs_mobile') {
+        .wrap{
+            &:after{
+                width: 280px;
+                height: 210px;
+                right: -50%;
+                top: -40%;
+            }
+        }
+    }
 }
 
 ////////////////////////////////////////////////////////////
@@ -1261,76 +1283,76 @@ $spec_margin: 8px;
         &.no-1{
             // 霧峯亭
             // left: 0; top: 140px;
-            left: -3%; top: 17%;
+            left: 23%; top: 13%;
         }
         &.no-2{
             // 後山公園
             // left: 270px; top: 27px;
-            left: 13.8%; top: 2%;
+            left: 39.8%; top: 20%;
         }
         &.no-3{
             // 議事大樓
             // right: 300px; top: 27px;
-            right: 26.5%; top: 22%;
+            right: 26.5%; top: 37%;
         }
         &.no-4{
             // 議政博物館
             // right: 0; top: 110px;
-            right: 0%; top: 13.6%;
+            right: 0%; top: 32.6%;
         }
         &.no-5{
             // 朝琴紀念館
             // left: 160px; top: 210px;
-            left: 11%; top: 26%;
+            left: 11%; top: 41%;
         }
         &.no-6{
             // 黃朝琴先生像
             // left: 360px; top: 210px;
-            left: 30%; top: 24%;
+            left: 30%; top: 39%;
         }
         &.no-7{
             // 議員會館
             // left: 160px; top: 320px;
-            left: 21%; top: 43.6%;
+            left: 21%; top: 54.6%;
         }
         &.no-8{
             // 日月池
             // right: 210px; top:290px;
-            right: 18.58%; top:35.89%;
+            right: 18.58%; top:50.89%;
         }
         &.no-9{
             // 民主草坪
             // right: 20px; top: 330px;
-            right: 1.77%; top: 40.84%;
+            right: 2.77%; top: 52.84%;
         }
         &.no-10{
             // 椰林大道
             // right: 330px; top: 400px;
-            right: 29.2%; top: 49.5%;
+            right: 31.2%; top: 56.5%;
         }
         &.no-11{
             // 福桂林道
             // left: 50px; top: 460px;
-            left: 4.42%; top: 56.93%;
+            left: 4.42%; top: 64.93%;
         }
         &.no-12{
             // 圓形花圃
             // left: 160px; top: 510px;
-            left: 22.15%; top: 63.11%;
+            left: 22.15%; top: 69.11%;
         }
         &.no-13{
             // 健康步道
             // left: 380px; top: 480px;
-            left: 35.62%; top: 59.4%;
+            left: 35.62%; top: 63.4%;
         }
         &.no-14{
             // 入口Ｖ型拱門
             // left: 480px; bottom: 90px;
-            left: 42.27%; bottom: 13.13%;
+            left: 42.27%; bottom: 12.13%;
         }
         &.no-15{
             // 情人樹石
-            left: 36%; top: 38%;
+            left: 36%; top: 49%;
         }
     }
 
