@@ -98,7 +98,10 @@
         }
     }
 
-    @include screen('mobile') {}
+    @include screen('mobile') {
+        width: 100%;
+        padding: 2.5em 2em;
+    }
 }
 .register{
     width: 90%;
