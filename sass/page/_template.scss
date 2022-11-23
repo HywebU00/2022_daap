@@ -55,6 +55,7 @@ body {
             cursor: not-allowed;
             color: #666;
             background: #f4f4f4;
+            padding: .5em;
             &.holiday{
                 a, span{ color: #874e4b; }
 
@@ -1889,6 +1890,18 @@ $spec_margin: 8px;
                         box-shadow: none;
                     }
                 }
+
+                &.unable{
+                    cursor: not-allowed;
+                    padding: 0 !important;
+                    a, a.act{
+                        background: #f4f4f4 !important;
+                        span{
+                            background: $primaryColor;
+                            color: #fff;
+                        }
+                    }
+                }
             }
         }
 
@@ -2171,6 +2184,7 @@ $spec_margin: 8px;
         .month_ctl{
             display: block;
             position: relative;
+            height: 66px;
         }
         // 月份切換
         .toggle{
