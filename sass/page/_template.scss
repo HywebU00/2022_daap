@@ -1894,13 +1894,13 @@ $spec_margin: 8px;
                 &.unable{
                     cursor: not-allowed;
                     padding: 0 !important;
-                    a, a.act{
-                        background: #f4f4f4 !important;
-                        span{
-                            background: $primaryColor;
-                            color: #fff;
-                        }
-                    }
+                    // a, a.act{
+                    //     background: #f4f4f4 !important;
+                    //     span{
+                    //         background: $primaryColor;
+                    //         color: #fff;
+                    //     }
+                    // }
                 }
             }
         }
