@@ -90,6 +90,7 @@ $menuItems: 15;
                     }
                 }
             }
+            // 第一層
             ul {
                 display: flex;
                 animation: showMenu 0.3s $cubic;
@@ -106,7 +107,7 @@ $menuItems: 15;
                     &.hasChild {
                         > a {
                             position: relative;
-                            padding: 0.5em 2em 0.5em 1em;
+                            padding: .5em 2em .5em 1em;
                             color: #fff;
                             &:after {
                                 content: '';
@@ -124,6 +125,7 @@ $menuItems: 15;
                             }
                         }
                     }
+                    // 第二層
                     ul {
                         display: none;
                         position: relative;
@@ -145,23 +147,34 @@ $menuItems: 15;
                             }
                             &.hasChild {
                                 > a {
-                                    padding: 0.5em 1em 0.5em 2em !important;
+                                    padding: .5em 1em .5em 2em;
                                     &:after {
                                         top: 0.85em;
                                     }
                                 }
                             }
-                            li {
-                                a {
-                                    padding: 0.5em 1em 0.5em 4em !important;
-                                    &:hover,
-                                    &:focus {
+                            // 第三層
+                            > ul{
+                                li {
+                                    a {
+                                        padding: .5em 1em .5em 3.2em !important;
+                                        &:hover,
+                                        &:focus {
+                                        }
                                     }
-                                    &:after {
-                                        display: none;
+                                    // 第四層
+                                    ul{
+                                        padding-left: 0;
+                                        background: rgba(0,0,0,.1);
+                                        li {
+                                            a{
+                                                padding: .5em 1em .5em 4.4em !important;
+                                            }
+                                        }
                                     }
                                 }
                             }
+                            
                         }
                     }
                 }
