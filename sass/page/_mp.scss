@@ -469,10 +469,11 @@ a.more {
                     right: 0;
                     z-index: 1;
 
-                    -webkit-writing-mode: vertical-lr;
-                    writing-mode: vertical-lr;
+                    // -webkit-writing-mode: vertical-lr;
+                    // writing-mode: vertical-lr;
                     width: 50px;
-                    padding: 0.65em 1em;
+                    padding-top: .65em;
+                    padding-bottom: .65em;
                     font-size: 112.5%;
                     line-height: 1.2;
 
