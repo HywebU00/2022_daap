@@ -464,16 +464,17 @@ a.more {
                 // tab 標題：absolute，羅列在右上
                 .sudo_tabItem{
                     position: absolute;
-                    // top: -180px;
-                    bottom: 106%;
+                    top: -180px;
+                    // bottom: 106%;
                     right: 0;
                     z-index: 1;
 
                     // -webkit-writing-mode: vertical-lr;
                     // writing-mode: vertical-lr;
                     width: 50px;
-                    padding-top: .65em;
-                    padding-bottom: .65em;
+                    // padding-top: .65em;
+                    // padding-bottom: .65em;
+                    padding: .65em;
                     font-size: 112.5%;
                     line-height: 1.2;
 
@@ -507,6 +508,7 @@ a.more {
 
                     // 定位：改用js控制
                     background: transparent;
+                    // background: pink;
                     border: transparent;
                     &:nth-child(1){
                         right: calc(60px * 4 + 10%);
