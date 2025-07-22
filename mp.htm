@@ -194,7 +194,21 @@
             <section class="top_section">
                 <div class="container">
                     <div class="col">
+                        <!-- 輪播控制按鈕 -->
+                        <button id="toggle-autoplay" class="slick-control" aria-label="暫停自動播放輪播" aria-pressed="false">暫停播放</button>
                         <div class="mpSlider">
+                            <div class="img-container">
+                                <a href="#" title="">
+                                    <picture>
+                                        <source media="(min-width: 1200px)" data-srcset="https://assets.imgix.net/unsplash/coffee.JPG?usm=20&auto=format%2Cenhance&fit=crop&h=460&w=1140">
+                                        <source media="(min-width: 992px)" data-srcset="https://assets.imgix.net/unsplash/coffee.JPG?usm=20&auto=format%2Cenhance&fit=crop&h=460&w=1140">
+                                        <source media="(min-width: 576px)" data-srcset="https://assets.imgix.net/unsplash/coffee.JPG?usm=20&auto=format%2Cenhance&fit=crop&h=460&w=1140">
+                                        <source media="(max-width: 575px)" data-srcset="https://assets.imgix.net/unsplash/coffee.JPG?usm=20&auto=format%2Cenhance&fit=crop&h=460&w=1140">
+                                        <img data-src="images/demo/01.jpg" class="cover lazy" alt="圖說test">
+                                        <noscript><img src="https://assets.imgix.net/unsplash/coffee.JPG?usm=20&auto=format%2Cenhance&fit=crop&h=460&w=1140" alt="圖說 test"></noscript>
+                                    </picture>
+                                </a>
+                            </div>
                             <div class="img-container">
                                 <a href="#" title="">
                                     <picture>
@@ -269,22 +283,143 @@
                 </div>
             </section>
 
-            <!-- 頁籤 -->
-            <section class="flex-8-4">
+            <section class="flex-12">
                 <div class="container">
+                    <!-- 跑馬燈 -->
+                    <div class="marquee">
+                        <b class="title">活動預告</b>
+                        <ul>
+                            <li><a href="javascript:;">1因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a></li>
+                            <li><a href="javascript:;">2因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a></li>
+                            <li><a href="javascript:;">3因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a></li>
+                            <li><a href="javascript:;">4因尼莎颱風來襲，7/31下午2時之我國化學物質管理政策綱領第一次跨部會研商會取消。</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- 頁籤 -->
+            <section class="flex-5-7">
+                <div class="container">
+                    <div class="col">
+                        <div class="posterSlider">
+                            <div class="img-container">
+                                <a href="#" title="">
+                                    <picture>
+                                        <source media="(min-width: 1200px)" data-srcset="images/poster.jpg">
+                                        <source media="(min-width: 992px)" data-srcset="images/poster.jpg">
+                                        <source media="(min-width: 576px)" data-srcset="images/poster.jpg">
+                                        <source media="(max-width: 575px)" data-srcset="images/poster.jpg">
+                                        <img data-src="images/poster.jpg" class="contain lazy" alt="圖說1">
+                                        <noscript><img src="images/poster.jpg" alt="圖說1"></noscript>
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="img-container">
+                                <a href="#" title="">
+                                    <picture>
+                                        <source media="(min-width: 1200px)" data-srcset="images/poster.jpg">
+                                        <source media="(min-width: 992px)" data-srcset="images/poster.jpg">
+                                        <source media="(min-width: 576px)" data-srcset="images/poster.jpg">
+                                        <source media="(max-width: 575px)" data-srcset="images/poster.jpg">
+                                        <img data-src="images/poster.jpg" class="contain lazy" alt="圖說1">
+                                        <noscript><img src="images/poster.jpg" alt="圖說1"></noscript>
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="img-container">
+                                <a href="#" title="">
+                                    <picture>
+                                        <source media="(min-width: 1200px)" data-srcset="images/poster.jpg">
+                                        <source media="(min-width: 992px)" data-srcset="images/poster.jpg">
+                                        <source media="(min-width: 576px)" data-srcset="images/poster.jpg">
+                                        <source media="(max-width: 575px)" data-srcset="images/poster.jpg">
+                                        <img data-src="images/poster.jpg" class="contain lazy" alt="圖說1">
+                                        <noscript><img src="images/poster.jpg" alt="圖說1"></noscript>
+                                    </picture>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col">
                         <div class="tabSet tab_mp_type">
                             <section class="tabs">
                                 <button type="button" class="tabItem active">最新消息<span>News</span></button>
                                 <!--選到的頁籤項目-->
                                 <div class="tabContent">
+                                    <div class="listSet">
+                                        <a href="#" class="firstInfo">
+                                            <div class="img-container">
+                                                <img src="images/img_tab_1.jpg" class="cover" alt="">
+                                            </div>
+                                            <time>107-01-01</time>
+                                            <h3 class="title">1民主時刻館春節開放時段公告民主時刻館春節開放時段公告民主時刻館春節開放時段公館春節開放時段公</h3>
+                                            <!-- <p>民主時刻館因應春節年假，調整開放時間，111/1/31(除夕)、111/2/1(初一)、111/2/2(初二)暫停開放，111/2/3(初三)恢復正常開館，歡迎前往園區參觀。</p> -->
+                                        </a>
+                                        <ul>
+                                            <li><time>107-01-01</time><a href="#">第二則消息Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sed cumque nihil itaque. Minus, exercitationem, est architecto doloremque ad maiores, vel suscipit cupiditate laudantium voluptatum temporibus ipsam beatae at, ipsa.</a></li>
+                                            <li><time>107-01-01</time><a href="#">第三則消息</a></li>
+                                            <li><time>107-01-01</time><a href="#">第四則消息</a></li>
+                                            <li><time>107-01-01</time><a href="#">第五則消息</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="btn_grp"><a href="#" class="more">更多內容</a></div>
+                                </div>
+
+                                <button type="button" class="tabItem">活動訊息<span>Activity</span></button>
+                                <div class="tabContent">
+                                    <div class="listSet">
+                                        <a href="#" class="firstInfo">
+                                            <div class="img-container">
+                                                <img src="images/img_tab_1.jpg" class="cover" alt="">
+                                            </div>
+                                            <time>107-01-01</time>
+                                            <h3 class="title">2民主時刻館春節開放時段公告民主時刻館春節開放時段公告民主時刻館春節開放時段公館春節開放時段公</h3>
+                                            <!-- <p>民主時刻館因應春節年假，調整開放時間，111/1/31(除夕)、111/2/1(初一)、111/2/2(初二)暫停開放，111/2/3(初三)恢復正常開館，歡迎前往園區參觀。</p> -->
+                                        </a>
+                                        <ul>
+                                            <li><time>107-01-01</time><a href="#">第二則消息Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sed cumque nihil itaque. Minus, exercitationem, est architecto doloremque ad maiores, vel suscipit cupiditate laudantium voluptatum temporibus ipsam beatae at, ipsa.</a></li>
+                                            <li><time>107-01-01</time><a href="#">第三則消息</a></li>
+                                            <li><time>107-01-01</time><a href="#">第四則消息</a></li>
+                                            <li><time>107-01-01</time><a href="#">第五則消息</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="btn_grp"><a href="#" class="more">更多內容</a></div>
+                                </div>
+
+                                <button type="button" class="tabItem">活動成果<span>Results</span></button>
+                                <div class="tabContent">
+                                    <div class="listSet">
+                                        <a href="#" class="firstInfo">
+                                            <div class="img-container">
+                                                <img src="images/img_tab_1.jpg" class="cover" alt="">
+                                            </div>
+                                            <time>107-01-01</time>
+                                            <h3 class="title">3民主時刻館春節開放時段公告民主時刻館春節開放時段公告民主時刻館春節開放時段公館春節開放時段公</h3>
+                                            <!-- <p>民主時刻館因應春節年假，調整開放時間，111/1/31(除夕)、111/2/1(初一)、111/2/2(初二)暫停開放，111/2/3(初三)恢復正常開館，歡迎前往園區參觀。</p> -->
+                                        </a>
+                                        <ul>
+                                            <li><time>107-01-01</time><a href="#">第二則消息Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, sed cumque nihil itaque. Minus, exercitationem, est architecto doloremque ad maiores, vel suscipit cupiditate laudantium voluptatum temporibus ipsam beatae at, ipsa.</a></li>
+                                            <li><time>107-01-01</time><a href="#">第三則消息</a></li>
+                                            <li><time>107-01-01</time><a href="#">第四則消息</a></li>
+                                            <li><time>107-01-01</time><a href="#">第五則消息</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="btn_grp"><a href="#" class="more">更多內容</a></div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- <section class="flex-8-4">
+                <div class="container">
+                    <div class="col">
+                        <div class="tabSet tab_mp_type">
+                            <section class="tabs">
+                                <button type="button" class="tabItem active">最新消息<span>News</span></button>
+                                <div class="tabContent">
                                     <ul>
                                         <li>
-                                            <!-- <div class="deco">
-                                                <div class="img-container">
-                                                    <img src="images/img_tab_1.jpg" class="cover" alt="">
-                                                </div>
-                                            </div> -->
                                             <a href="#">
                                                 <time>107-01-01</time>
                                                 <h3 class="title">民主時刻館春節開放時段公告</h3>
@@ -344,8 +479,7 @@
                         </a>
                     </div>
                 </div>
-            </section>
-
+            </section> -->
             <!-- 園區景點 -->
             <section class="spot">
                 <div class="container">
@@ -574,7 +708,7 @@
                     <div class="col wow fadeInLeft" data-wow-delay=".6s">
                         <a href="#">
                             <div class="img-container">
-                              <img data-src="images/img_traffic_path.png" alt="" class="contain lazy loaded" src="images/img_traffic_path.png" data-was-processed="true">
+                                <img data-src="images/img_traffic_path.png" alt="" class="contain lazy loaded" src="images/img_traffic_path.png" data-was-processed="true">
                             </div>
                         </a>
                     </div>
@@ -628,7 +762,7 @@
         <section class="fatfooter">
             <div class="container">
                 <div class="col">
-                   <div class="footer_logo wow fadeInDown">
+                    <div class="footer_logo wow fadeInDown">
                         <img src="images/logo-white.svg" alt="" class="img-responsive">
                     </div>
                     <div class="footer_info wow fadeInLeft">

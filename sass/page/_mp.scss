@@ -220,6 +220,13 @@ a.more {
                 // background: url(../images/bg_EXPO_mini.png) 50% bottom no-repeat;
                 // background-size: calc(100% - 3.8em);
 
+                > .col{
+                    &:first-child{
+                        // background: pink;
+                        position: relative;
+                    }
+                }
+
                 @include screen('tablet') {
                     background-size: cover;
                     margin-top: 0;
@@ -235,9 +242,13 @@ a.more {
                 // background: pink;
                 z-index: auto;
             }
+            .img-container{
+                @include aspect-ratio(57, 23);      //設定比例 4:3
+            }
+
             @include screen('tablet') {
                 .slick-dots{
-                    bottom: -10px;
+                    bottom: 10px;
                 }
             }
         }
@@ -250,6 +261,7 @@ a.more {
             // padding-left: 5em;
             padding: .5em 2em;
             margin-top: -20px;
+            margin-bottom: 20px;
             img{}
             .ani-icon{
                 padding-right: 10px;
@@ -299,7 +311,7 @@ a.more {
             }
 
             @include screen('tablet') {
-                margin-top: 0;
+                margin-top: 30px;
 
                 flex-wrap: wrap;
                 justify-content: center;
@@ -341,8 +353,84 @@ a.more {
                 }
             }
         }
+        // 暫停播放
+        .slick-control {
+            display: block;
+            // margin: 10px auto;
+            margin: 0;
+            padding: 10px 20px;
+            background-color: darken($primaryColor, 40);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: .3s;
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            right: 0;
+            &:hover, &:focus-visible{
+                // background-color: darken($primaryColor, 35);
+                // outline: dotted 3px $lightColor;
+                border: none !important;
+                outline: none;
+                box-shadow: 0px 0px 0px 2px #ff3e4d inset;
+            }
+            @include screen('tablet') {
+                left: 0;
+                right: auto;
+            }
+        }
 
         // tab 連結
+
+        // 海報 slider
+        .posterSlider{
+            margin: 1em 0;
+            .img-container{
+                background: transparent;
+                padding: 0 4em; //控制與tab的高度相當
+                @include aspect-ratio(5,7);
+            }
+            // .slick-arrow{}
+            // 上一則 位置 圖片
+            .slick-prev {
+                left: 20px;
+                background: url('../images/slick/icon_arrow_left_inverse.png') center center no-repeat #ffd807;
+                background-size: 42%;
+                // opacity: .5;
+                /* 箭頭 hover及focus 樣式 */
+                &:hover,
+                &:focus {
+                    // background: url('../images/slick/icon_arrow_left_inverse.png') center center no-repeat RGBA(255, 255, 255, .8);
+                    // background-size: 42%;
+                    opacity: 1;
+                }
+            }
+
+            // 下一則 位置 圖片
+            .slick-next {
+                right: 20px;
+                background: url('../images/slick/icon_arrow_right_inverse.png') center center no-repeat #ffd807;
+                background-size: 42%;
+                // opacity: .5;
+                /* 箭頭 hover及focus 樣式 */
+                &:hover,
+                &:focus {
+                    // background: url('../images/slick/icon_arrow_right_inverse.png') center center no-repeat RGBA(255, 255, 255, .8);
+                    // background-size: 42%;
+                    opacity: 1;
+                }
+            }
+            .slick-prev,
+            .slick-next {
+                width: 52px !important;
+                height: 52px !important;
+                border-radius: 50%;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
 
         // 園區景點
         .spot{
