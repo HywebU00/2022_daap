@@ -505,8 +505,8 @@ $(document).ready(function () {
         arrows: true,
         infinite: true,
         speed: 500,
-        autoplay: false,
-        // autoplaySpeed: 15000, // 每張幻燈片間隔15秒切換
+        autoplay: true,
+        autoplaySpeed: 15000, // 每張幻燈片間隔15秒切換
         fade: true,
         lazyLoaded: true,
         lazyLoad: 'ondemand',
@@ -536,14 +536,16 @@ $(document).ready(function () {
 			$(this)
 				.text("開始播放")
 				.attr("aria-label", "開始自動播放輪播")
-				.attr("aria-pressed", "true");
+				.attr("aria-pressed", "true")
+                .addClass('stopped');
 		} else {
 			// 開始播放
 			$(".mpSlider").slick("slickPlay");
 			$(this)
 				.text("暫停播放")
 				.attr("aria-label", "暫停自動播放輪播")
-				.attr("aria-pressed", "false");
+				.attr("aria-pressed", "false")
+                .removeClass('stopped');
 		}
 		isPlaying = !isPlaying;
 	});

@@ -7544,9 +7544,9 @@ table td.num {
   flex: 0 0 280px;
   padding: 1em 1.5em;
   border-radius: 4px;
-  background: #fff;
-  color: #333;
-  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  background: rgb(0, 92.925, 113.4);
+  color: #fff;
+  box-shadow: none;
   transition: 0.3s;
 }
 .tab_mp_type .tabContent .listSet a.firstInfo .img-container {
@@ -7565,9 +7565,9 @@ table td.num {
   text-overflow: ellipsis;
 }
 .tab_mp_type .tabContent .listSet a.firstInfo:hover, .tab_mp_type .tabContent .listSet a.firstInfo:focus-visible {
-  background: rgb(0, 92.925, 113.4);
-  color: #fff;
-  box-shadow: none;
+  background: #DEE157;
+  color: #333;
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
 }
 .tab_mp_type .tabContent .listSet ul {
   flex: 1 1 auto;
@@ -12354,29 +12354,57 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
 }
 .MP .main .slick-control {
   display: block;
+  width: 50px;
+  height: 50px;
   margin: 0;
-  padding: 10px 20px;
-  background-color: black;
-  color: white;
+  padding: 0;
+  background: black;
+  border-radius: 50% !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
   position: absolute;
   z-index: 1;
-  bottom: 0;
-  right: 0;
+  top: 45px;
+  left: 25px;
+  font-size: 0;
+}
+.MP .main .slick-control:before, .MP .main .slick-control:after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 20px;
+  background: #fff;
+  top: 50%;
+}
+.MP .main .slick-control:before {
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+.MP .main .slick-control:after {
+  right: 30%;
+  transform: translate(-50%, -50%);
+}
+.MP .main .slick-control.stopped:before {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10px 0px 10px 16px;
+  border-color: transparent transparent transparent rgb(255, 255, 255);
+  left: 52%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+}
+.MP .main .slick-control.stopped:after {
+  display: none;
 }
 .MP .main .slick-control:hover, .MP .main .slick-control:focus-visible {
+  background: rgb(0, 92.925, 113.4);
   border: none !important;
   outline: none;
   box-shadow: 0px 0px 0px 2px #ff3e4d inset;
-}
-@media screen and (max-width: 991px) {
-  .MP .main .slick-control {
-    left: 0;
-    right: auto;
-  }
 }
 .MP .main .posterSlider {
   margin: 1em 0;
