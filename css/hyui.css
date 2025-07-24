@@ -8017,6 +8017,19 @@ table td.num {
 .mpSlider .slick-dots li.slick-active button:before {
   background: #007690;
 }
+@media screen and (max-width: 991px) {
+  .mpSlider .slick-prev,
+  .mpSlider .slick-next {
+    top: calc(50% - 22px);
+    transform: translateY(-50%);
+  }
+  .mpSlider .slick-prev {
+    left: 0;
+  }
+  .mpSlider .slick-next {
+    right: 0;
+  }
+}
 
 .adSlider .slick-prev,
 .adSlider .slick-next {
