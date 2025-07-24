@@ -310,6 +310,19 @@
             }
         }
     }
+    @include screen('tablet'){
+        .slick-prev,
+        .slick-next {
+            top: calc(50% - 22px);
+            transform: translateY(-50%);
+        }
+        .slick-prev {
+            left: 0;
+        }
+        .slick-next {
+            right: 0;
+        }
+    }
 }
 
 
