@@ -398,9 +398,9 @@
                 flex: 0 0 280px;
                 padding: 1em 1.5em;
                 border-radius: 4px;
-                background: #fff;
-                color: #333;
-                box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+                background: darken($primaryColor, 6);
+                color: #fff;
+                box-shadow: none;
                 transition: .3s;
                 .img-container{
                     margin-bottom: 1em;
@@ -419,9 +419,9 @@
                 }
 
                 &:hover, &:focus-visible{
-                    background: darken($primaryColor, 6);
-                    color: #fff;
-                    box-shadow: none;
+                    background: $lightColor;
+                    color: #333;
+                    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
                 }
             }
             ul{

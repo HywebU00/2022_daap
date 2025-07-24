@@ -7944,7 +7944,7 @@ table td.num {
 
 .mpSlider {
   width: 100%;
-  padding-bottom: 3.6em;
+  padding-bottom: 3em;
   position: relative;
   min-height: 1px;
   padding-left: 0;
@@ -12240,7 +12240,7 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
 .MP .main .mpSlider .slick-dots {
   justify-content: flex-end;
   padding-right: 2em;
-  bottom: -40px;
+  bottom: 10px;
   z-index: auto;
 }
 .MP .main .mpSlider .img-container {
@@ -12405,6 +12405,14 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
   border: none !important;
   outline: none;
   box-shadow: 0px 0px 0px 2px #ff3e4d inset;
+}
+@media screen and (max-width: 991px) {
+  .MP .main .slick-control {
+    top: auto;
+    left: 0;
+    bottom: -10px;
+    transform: scale(0.85);
+  }
 }
 .MP .main .posterSlider {
   margin: 1em 0;

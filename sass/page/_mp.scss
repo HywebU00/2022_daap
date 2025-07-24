@@ -238,7 +238,7 @@ a.more {
             .slick-dots{
                 justify-content: flex-end;
                 padding-right: 2em;
-                bottom: -40px;
+                bottom: 10px;
                 // background: pink;
                 z-index: auto;
             }
@@ -356,29 +356,76 @@ a.more {
         // 暫停播放
         .slick-control {
             display: block;
-            // margin: 10px auto;
+            width: 50px;
+            height: 50px;
             margin: 0;
-            padding: 10px 20px;
-            background-color: darken($primaryColor, 40);
-            color: white;
+            padding: 0;
+            background: darken($primaryColor, 40);
+            border-radius: 50% !important;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             transition: .3s;
             position: absolute;
             z-index: 1;
-            bottom: 0;
-            right: 0;
+            top: 45px;
+            left: 25px;
+            font-size: 0;
+            &:before,
+            &:after{
+                content: '';
+                position: absolute;
+                width: 6px;
+                height: 20px;
+                background: #fff;
+                top: 50%;
+            }
+            &:before{
+                left: 40%;
+                transform: translate(-50%, -50%);
+            }
+            &:after{
+                right: 30%;
+                transform: translate(-50%, -50%);
+            }
+            &.stopped{
+                &:before{
+                    display: inline-block;
+                    width: 0;
+                    height: 0;
+
+                    // border-left: 17.32px solid #fff; /* 高度 = 邊長 * sin(60°) ≈ 0.866 */ 
+                    // border-top: 10px solid transparent;
+                    // border-bottom: 10px solid transparent;
+                    // border-right: none;
+
+                    border-style: solid;
+                    border-width: 10px 0px 10px 16px;
+                    border-color: transparent transparent transparent rgb(255, 255, 255);
+                    left: 52%;
+                    transform: translate(-50%, -50%);
+                    background: transparent;
+                }
+                &:after{
+                    display: none;
+                }
+            }
             &:hover, &:focus-visible{
-                // background-color: darken($primaryColor, 35);
+                background: darken($primaryColor, 6);
                 // outline: dotted 3px $lightColor;
                 border: none !important;
                 outline: none;
                 box-shadow: 0px 0px 0px 2px #ff3e4d inset;
             }
+            // @include screen('tablet') {
+            //     left: 0;
+            //     right: auto;
+            // }
             @include screen('tablet') {
+                top: auto;
                 left: 0;
-                right: auto;
+                bottom: -10px;
+                transform: scale(.85);
             }
         }
 
