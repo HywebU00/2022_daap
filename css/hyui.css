@@ -12320,7 +12320,9 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
 }
 @media screen and (max-width: 991px) {
   .MP .main .EXPO_mini {
-    margin-top: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-bottom: 3rem;
     flex-wrap: wrap;
     justify-content: center;
   }
