@@ -1359,6 +1359,7 @@ a.goCenter {
   }
 }
 a.goCenter:hover, a.goCenter:focus {
+  color: #fff;
   outline: none;
   top: 0;
   opacity: 1;
