@@ -426,7 +426,7 @@ a.more {
             @include screen('tablet') {
                 top: auto;
                 left: 0;
-                bottom: -10px;
+                // bottom: -10px;
                 transform: scale(.85);
             }
         }
@@ -478,6 +478,9 @@ a.more {
                 border-radius: 50%;
                 top: 50%;
                 transform: translateY(-50%);
+            }
+            .slick-dots{
+                bottom: -24px;
             }
         }
 

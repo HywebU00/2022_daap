@@ -88,6 +88,13 @@
             height: 10px !important
         }
     }
+    .slick-prev,
+    .slick-next {
+        &:focus{
+            outline: none;
+            box-shadow: 0 0px 0px 2px #ff3e4d inset;
+        }
+    }
     >div {
         padding: 0;
         margin: 0
@@ -101,7 +108,7 @@
         white-space: nowrap;
         text-overflow: ellipsis;
         color: #000;
-      text-decoration: none;
+        text-decoration: none;
         span {
             color:#7cb52f;
             margin-right: 15px;

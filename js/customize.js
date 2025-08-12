@@ -116,24 +116,24 @@ $(function() {
     });
 
     // 海報輪播
-    $('.posterSlider').slick({
-        arrows: true,                       //左右箭頭
-        autoplay: false,                    //自動播放
-        autoplaySpeed: 3000,                //自動播放秒數
-        dots: false,                        //顯示圓點
-        dotsClass:  'slick-dots',           //原點css
-        draggable: true,                    //滑鼠可以拖曳
-        infinite: false,                     //無限輪播
-        pauseOnHover: true,                 //滑鼠移過後暫停自動撥放
-        pauseOnDotsHover: false,            //滑鼠移過圓點後暫停自動撥放
-        rtl: false,                         //改變輪播方向
-        slidesToShow: 1,                    //一次顯示幾張
-        slidesToScroll: 1,                  //一次輪播幾張
-        vertical: false ,                   //改成垂直方向
-        fade: true,                         // 淡入
-        centerMode: true,                   //圖片中心模式
-        adaptiveHeight: true,               //圖片上下適應高度
-    });
+    // $('.posterSlider').slick({
+    //     arrows: true,                       //左右箭頭
+    //     autoplay: false,                    //自動播放
+    //     autoplaySpeed: 15000, // 每張幻燈片間隔15秒切換
+    //     dots: true,                        //顯示圓點
+    //     dotsClass:  'slick-dots',           //原點css
+    //     draggable: true,                    //滑鼠可以拖曳
+    //     infinite: false,                     //無限輪播
+    //     pauseOnHover: true,                 //滑鼠移過後暫停自動撥放
+    //     pauseOnDotsHover: false,            //滑鼠移過圓點後暫停自動撥放
+    //     rtl: false,                         //改變輪播方向
+    //     slidesToShow: 1,                    //一次顯示幾張
+    //     slidesToScroll: 1,                  //一次輪播幾張
+    //     vertical: false ,                   //改成垂直方向
+    //     fade: true,                         // 淡入
+    //     centerMode: true,                   //圖片中心模式
+    //     adaptiveHeight: true,               //圖片上下適應高度
+    // });
 
 
     // header search switch
@@ -496,78 +496,210 @@ $(function() {
     $('.switch').trigger('click');
 });
 
-$(document).ready(function () {
-    // 首頁輪播
-    // -------------------------------
-    $('.mpSlider').slick({
+$(function () {
+    // =========================
+    // ① 首頁輪播 .mpSlider 專屬設定
+    // =========================
+    const mpOptions = {
         mobileFirst: true,
         dots: true,
         arrows: true,
         infinite: true,
         speed: 500,
         autoplay: true,
-        autoplaySpeed: 15000, // 每張幻燈片間隔15秒切換
+        autoplaySpeed: 15000,          // 15秒
         fade: true,
         lazyLoaded: true,
         lazyLoad: 'ondemand',
-        // ease: 'ease',
-        pauseOnHover: true,   // 修正：滑鼠移入暫停
-        pauseOnFocus: true,   // 建議一起設定，避免鍵盤操作誤觸也會播放
-        customPaging: function(slider, i) {
-            var title = $(slider.$slides[i]).find('img').attr('alt').trim();
-            return $('<button type="button" aria-label="' + title + '"/>').text(title);
+        pauseOnHover: true,
+        pauseOnFocus: true,
+        customPaging: function (slider, i) {
+        var title = ($(slider.$slides[i]).find('img').attr('alt') || '').trim() || ('第 ' + (i + 1) + ' 張');
+        return $('<button type="button" aria-label="' + title + '"/>').text(title);
         }
+    };
+
+    // =========================
+    // ② 海報輪播 .posterSlider 專屬設定
+    // =========================
+    const posterOptions = {
+        arrows: true,
+        autoplay: true,                // 海報輪播預設不自動播
+        autoplaySpeed: 15000,
+        dots: true,
+        dotsClass: 'slick-dots',
+        draggable: true,
+        infinite: false,                // 不循環
+        pauseOnHover: true,
+        pauseOnDotsHover: false,
+        rtl: false,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        vertical: false,
+        fade: true,                     // 淡入
+        centerMode: true,
+        adaptiveHeight: true
+    };
+
+    // 初始化兩個輪播（各用各的設定）
+    const $mp = $('.mpSlider').slick(mpOptions);
+    const $poster = $('.posterSlider').slick(posterOptions);
+
+    // 小工具：更新按鈕狀態（同一套邏輯供兩種輪播用）
+    function setBtnState($btn, playing) {
+        if (playing) {
+        $btn.text('暫停播放')
+            .attr({'aria-label':'暫停自動播放輪播','aria-pressed':'false'})
+            .removeClass('stopped');
+        } else {
+        $btn.text('開始播放')
+            .attr({'aria-label':'開始自動播放輪播','aria-pressed':'true'})
+            .addClass('stopped');
+        }
+    }
+
+    // 綁定每個控制按鈕（用 data-target 找到它負責的輪播）
+    $('.sliderToggle').each(function () {
+        const $btn = $(this);
+        const targetSel = $btn.data('target');
+        const $slider = $(targetSel);
+
+        // 建立關聯
+        $slider.data('controller', $btn);
+
+        // 初始狀態：若此輪播的 slick 設定為 autoplay，就視為「播放中」，否則視為「暫停」
+        const slickInstance = $slider.slick('getSlick');
+        const initialPlaying = !!slickInstance.options.autoplay;
+        setBtnState($btn, initialPlaying);
+
+        // 點擊：手動切換暫停/播放（只影響各自輪播）
+        $btn.on('click', function () {
+        const isManuallyPaused = $btn.attr('aria-pressed') === 'true';
+        if (isManuallyPaused) {
+            $slider.slick('slickPlay');
+            setBtnState($btn, true);
+        } else {
+            $slider.slick('slickPause');
+            setBtnState($btn, false);
+        }
+        });
+
+        // 滑鼠：移入暫停；移出時「若不是手動暫停」才恢復播放
+        $slider.on('mouseenter', function () {
+        $(this).slick('slickPause');
+        });
+        $slider.on('mouseleave', function () {
+        const $ctl = $(this).data('controller');
+        const manuallyPaused = $ctl && $ctl.attr('aria-pressed') === 'true';
+        if (!manuallyPaused) $(this).slick('slickPlay');
+        });
+
+        // 鍵盤：左右切換、空白鍵切換播放狀態（焦點在輪播上時才作用）
+        $slider.on('keydown', function (e) {
+        switch (e.key) {
+            case 'ArrowLeft':
+            e.preventDefault();
+            $(this).slick('slickPrev');
+            break;
+            case 'ArrowRight':
+            e.preventDefault();
+            $(this).slick('slickNext');
+            break;
+            case ' ':
+            case 'Spacebar':
+            case 'Space':
+            e.preventDefault();
+            $btn.click();
+            break;
+        }
+        });
     });
 
-    // 控制自動播放的變數
-	let isPlaying = true;
-
-    // 更新輪播狀態提示
-	function updateCarouselStatus(currentSlide, totalSlides) {
-		$("#carousel-status").text(
-			`目前顯示第 ${currentSlide} 張投影片，共 ${totalSlides} 張`
-		);
-	}
-	// 處理暫停/播放按鈕點擊
-	$("#toggle-autoplay").click(function () {
-		if (isPlaying) {
-			// 暫停播放
-			$(".mpSlider").slick("slickPause");
-			$(this)
-				.text("開始播放")
-				.attr("aria-label", "開始自動播放輪播")
-				.attr("aria-pressed", "true")
-                .addClass('stopped');
-		} else {
-			// 開始播放
-			$(".mpSlider").slick("slickPlay");
-			$(this)
-				.text("暫停播放")
-				.attr("aria-label", "暫停自動播放輪播")
-				.attr("aria-pressed", "false")
-                .removeClass('stopped');
-		}
-		isPlaying = !isPlaying;
-	});
-
-    // 監聽輪播變化
-	$(".mpSlider").on("afterChange", function (event, slick, currentSlide) {
-		updateCarouselStatus(currentSlide + 1, slick.slideCount);
-	});
-
-	// 鍵盤控制
-	$(".mpSlider").on("keydown", function (e) {
-		switch (e.key) {
-			case "ArrowLeft":
-				$(this).slick("slickPrev");
-				break;
-			case "ArrowRight":
-				$(this).slick("slickNext");
-				break;
-			case "Space":
-				$("#toggle-autoplay").click();
-				e.preventDefault();
-				break;
-		}
-	});
+    //（可選）如果你有顯示目前張數的元素，可針對各自輪播另外綁定
+    // 例如：#mp-status、#poster-status
+    function bindStatus($slider, $statusEl){
+        if (!$statusEl || !$statusEl.length) return;
+        $slider.on('afterChange', function (event, slick, currentSlide) {
+        $statusEl.text(`目前顯示第 ${currentSlide + 1} 張，共 ${slick.slideCount} 張`);
+        });
+    }
+    // bindStatus($('.mpSlider'), $('#mp-status'));
+    // bindStatus($('.posterSlider'), $('#poster-status'));
 });
+
+
+// $(document).ready(function () {
+//     // 首頁輪播
+//     // -------------------------------
+//     $('.mpSlider').slick({
+//         mobileFirst: true,
+//         dots: true,
+//         arrows: true,
+//         infinite: true,
+//         speed: 500,
+//         autoplay: true,
+//         autoplaySpeed: 15000, // 每張幻燈片間隔15秒切換
+//         fade: true,
+//         lazyLoaded: true,
+//         lazyLoad: 'ondemand',
+//         // ease: 'ease',
+//         pauseOnHover: true,   // 修正：滑鼠移入暫停
+//         pauseOnFocus: true,   // 建議一起設定，避免鍵盤操作誤觸也會播放
+//         customPaging: function(slider, i) {
+//             var title = $(slider.$slides[i]).find('img').attr('alt').trim();
+//             return $('<button type="button" aria-label="' + title + '"/>').text(title);
+//         }
+//     });
+
+//     // 控制自動播放的變數
+// 	let isPlaying = true;
+
+//     // 更新輪播狀態提示
+// 	function updateCarouselStatus(currentSlide, totalSlides) {
+// 		$("#carousel-status").text(
+// 			`目前顯示第 ${currentSlide} 張投影片，共 ${totalSlides} 張`
+// 		);
+// 	}
+// 	// 處理暫停/播放按鈕點擊
+// 	$("#toggle-autoplay").click(function () {
+// 		if (isPlaying) {
+// 			// 暫停播放
+// 			$(".mpSlider").slick("slickPause");
+// 			$(this)
+// 				.text("開始播放")
+// 				.attr("aria-label", "開始自動播放輪播")
+// 				.attr("aria-pressed", "true")
+//                 .addClass('stopped');
+// 		} else {
+// 			// 開始播放
+// 			$(".mpSlider").slick("slickPlay");
+// 			$(this)
+// 				.text("暫停播放")
+// 				.attr("aria-label", "暫停自動播放輪播")
+// 				.attr("aria-pressed", "false")
+//                 .removeClass('stopped');
+// 		}
+// 		isPlaying = !isPlaying;
+// 	});
+
+//     // 監聽輪播變化
+// 	$(".mpSlider").on("afterChange", function (event, slick, currentSlide) {
+// 		updateCarouselStatus(currentSlide + 1, slick.slideCount);
+// 	});
+
+// 	// 鍵盤控制
+// 	$(".mpSlider").on("keydown", function (e) {
+// 		switch (e.key) {
+// 			case "ArrowLeft":
+// 				$(this).slick("slickPrev");
+// 				break;
+// 			case "ArrowRight":
+// 				$(this).slick("slickNext");
+// 				break;
+// 			case "Space":
+// 				$("#toggle-autoplay").click();
+// 				e.preventDefault();
+// 				break;
+// 		}
+// 	});
+// });

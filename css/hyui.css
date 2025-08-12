@@ -8919,6 +8919,11 @@ div.function ul li.icon_forward a:before {
   width: 10px !important;
   height: 10px !important;
 }
+.marquee .slick-prev:focus,
+.marquee .slick-next:focus {
+  outline: none;
+  box-shadow: 0 0px 0px 2px #ff3e4d inset;
+}
 .marquee > div {
   padding: 0;
   margin: 0;
@@ -9404,6 +9409,7 @@ body:before {
 .flex-5-7 .container .col {
   -moz-column-gap: 20px;
        column-gap: 20px;
+  position: relative;
 }
 @media (min-width: 320px) {
   .flex-5-7 .container .col {
@@ -9428,9 +9434,6 @@ body:before {
     flex-basis: calc(8.3333333333% * 5 - 4px);
     max-width: calc(8.3333333333% * 5 - 4px);
   }
-}
-.flex-5-7 .container .col:first-child {
-  overflow: hidden;
 }
 .flex-5-7 .container .col:first-child a {
   display: block;
@@ -12426,7 +12429,6 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
   .MP .main .slick-control {
     top: auto;
     left: 0;
-    bottom: -10px;
     transform: scale(0.85);
   }
 }
@@ -12479,6 +12481,9 @@ a.more:hover:after, a.more:focus:after, a.more.active:after {
   border-radius: 50%;
   top: 50%;
   transform: translateY(-50%);
+}
+.MP .main .posterSlider .slick-dots {
+  bottom: -24px;
 }
 .MP .main .spot {
   background: url(../images/bg_spot.png) 50% 50% no-repeat, #1f6a82;

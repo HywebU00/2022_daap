@@ -186,9 +186,11 @@ body {
             @include flex-md(5, $m-gutter);
             @include flex-lg(5, $m-gutter);
             column-gap: 20px;
+            position: relative;
 
             &:first-child{
-                overflow: hidden;
+                // overflow: hidden;
+                // background: pink;
 
                 a{
                     display: block;
