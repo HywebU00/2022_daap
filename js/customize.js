@@ -529,7 +529,7 @@ $(function () {
         dots: true,
         dotsClass: 'slick-dots',
         draggable: true,
-        infinite: false,                // 不循環
+        infinite: true,                // 不循環
         pauseOnHover: true,
         pauseOnDotsHover: false,
         rtl: false,
